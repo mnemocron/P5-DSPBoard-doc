@@ -1,0 +1,22 @@
+\subsubsection{Elektrische Komponenten}
+\label{sec:ElektrischeKomponenten}
+
+Da in diesem Projekt nur die Steuerplatine des Ender 3 Pro ersetzt wird, können diverse elektrische Komponenten übernommen werden:
+
+
+\paragraph{Motoren:}
+Die Motoren sind normale, zweiphasige, 200-Schritt Schrittmotoren mit einem Nennstrom von $1.5\,\si{A}$. Sie stellen ansonsten keine besonderen Ansprüche an die Motorentreiber.
+
+\paragraph{Lüfter:}
+Der Ender 3 Pro verfügt über 3 Lüfter: Einer Kühlt das Filament, einer den Extruder und einer die Steuerung mit den Treiber-ICs. Alle drei benötigen $100\,\si{mA}$ bei $24\,\si{V}$.
+
+\paragraph{Netzteil:}
+Durch das Netzteil des Ender 3 Pro ist eine 24\,V, 14.6\,A 350\,W DC-Speisung gegeben. 
+Für den STM32 und die umgebende Schaltung wird eine 3.3\,V Versorgung benötigt. 
+Das Display des Ender 3 Pro sowie auch das USB Interface (FT2322) verlangen zusätzlich eine 5\,V Speisung. Beide Spannungen werden direkt auf dem Print aus den 24\,V erzeugt.
+
+\paragraph{LCD-Display mit Drehgeber:}
+Das Display, Matrixanzeige mit 128x64 Pixel, sowie der Drehgeber sind bereits auf einem abgesetzten Print. Aus Nachhaltigkeitsgründen wurde diese nicht ersetzt. Beide Komponenten werden wie bereits erwähnt mit $5\,\si{V}$ gespeist. Daher benötigt die Ansteuerung eine Spannungsanpassung, da die Steuerplatine mit $3.3\,\si{V}$ arbeitet. Die Ansteuerung des LCDs erfolgt über SPI, der Drehgeber benötigt drei IO-Pins. 
+
+\paragraph{NTC Thermistoren:}
+Die am Extruder und dem Heizbett vorhandenen Thermistoren sind $100\,\si{k}\Omega$ NTC Widerstände und dienen zum regeln der Temperaturen des Heizbettes und des Hotends. Diese sind vom Ender 3 Pro übernommen und werden mittels ADC des Mikrocontrollers ausgelesen.

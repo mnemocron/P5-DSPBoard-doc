@@ -1,0 +1,17 @@
+\subsubsection{Funktionsgruppen}
+\label{sec:Funktionsblocke}
+
+Die Funktionsgruppen des PCB-Layouts entsprechen grundsätzlich der Unterteilung des Schemas.
+Zusätzlich werden analoge und leistungsführende Schaltungsteile separat behandelt.
+Die Abbildung \ref{pic:Layout_Block} zeigt die Anordnung der Funktionsgruppen auf dem PCB.
+Die linke untere Hälfte des PCBs füllen die Schrittmotortreiber.
+Daneben befindet sich der SD-Karten Slot und die USB Typ-C Buchse.
+Beide Schnittstellen müssen so platziert sein, dass sie im eingebauten Zustand für den Benutzer zugänglich sind.
+Rechts oben ist der ESP32 so platziert, dass die Antenne am Rand des PCBs liegt. Links und rechts von der Antenne bleibt ein kupferfreier Bereich von 5\,mm.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{Layout.pdf}
+	\caption{Übersicht des PCB-Layouts mit Unterteilung in Funktionsgruppen}
+	\label{pic:Layout_Block}
+\end{figure}

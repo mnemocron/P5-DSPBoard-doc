@@ -1,0 +1,22 @@
+\subsection{Microstepping}
+\label{sec:Microstepping}
+
+Beim 3D-Drucker ist eine genaue Positionierung des Extruders essenziell. Ist dies nicht gewährleistet, wird das zu druckende Objekt nicht entsprechend den Vorgaben gefertigt, es bekommt Ecken und Dellen wo keine sein sollten. Die genaue Positionierung wird mit Schrittmotoren erreicht, da diese durch ihre Bauweise Positionen exakt anfahren können ohne auf einen Closed Loop Controller angewiesen zu sein. Im Folgenden wird die Theorie dazu erläutert \cite{SchrittmotorDeltron}.\
+
+Der Rotor eines Schrittmotors besteht aus mehreren Permanentmagneten, wobei Nord und Südpol entlang des Umfangs alternierend angeordnet sind. Es gibt auch Bauformen, bei denen der Rotor nicht aus Permanentmagneten besteht, sondern das Magnetfeld anhand von Spulen erzeugt wird, diese sind aber selten anzutreffen \cite{ElektrischeAntriebe}. Der Stator besteht bei einem bipolaren Schrittmotor aus zwei Spulen, die magnetisiert werden können und so den nächstliegenden Nord, respektive Südpol des Rotors anzieht. Wird der Stromfluss durch die Spule invertiert, wird der benachbarte Pol des Rotors angezogen, was einem Vollschritt des Motors entspricht.  Wird dies wiederholt durchgeführt, resultiert eine Drehung des Rotors.\
+
+Aufgrund der Limitierung der Anzahl Permanentmagnete im Rotor, ist die Auflösung, der einzelnen Vollschritte begrenzt und liegt bei den Schrittmotoren des 3D-Druckers Ender 3 Pro bei 1.8° pro Schritt resp. 200 Schritte pro Umdrehung.\
+
+Eine höhere Auflösung und dadurch auch ein gleichmässigeres Drehmoment wird durch Microstepping erreicht. Im einfachsten Fall des Microsteppings werden beide Spulen gleichzeitig und gleichstark bestromt,  wodurch auf den Rotor zwei Kräfte gleichzeitig wirken und sich so eine Rotorposition zwischen den Hauptpositionen einstellt, siehe Abbildung \ref{pic:Schrittmotor_Schema}. Durch unterschiedlich starke Bestromung der Spulen können theoretisch nahezu beliebig viele Teilschritte erreicht werden. In der Praxis sind aufgrund der Ansteuerungshardware aber Unterteilung von  2$^0$ bis 2$^8$  üblich. Eine Unterteilung in 256 Schritten resultiert in einer Auflösung von 0.007° pro Schritt oder 51200 Schritte pro Umdrehung.
+Weil der Spulenstrom in kleineren Schritten verändert wird, resultiert ein gleichmässigeres Drehmoment und dadurch ein ruhigerer Lauf. Dies ermöglicht beim 3D-Drucker eine exaktere Positionierung der Mechanik, was in einem saubereren Druck resultiert.\
+Das Microstepping hat aber auch seinen Preis, denn das Drehmoment ist im Microstepping Modus kleiner als im Fullstepping Modus. So handelt es sich beim Microstepping um einen Abwägen zwischen Präzision und Drehmoment.\
+
+%Neben dem Microstepping, das eine grundlegende Betriebsform für Schrittmotoren ist, hat der verwendete Schrittmotorentreiber noch weitere Funktionen - StallGuard und Coolstepping - deren Grundlagen in den folgenden zwei Kapiteln erklärt sind.
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6]{Schrittmotor_Schema.eps}
+	\caption{Schematische Darstellung eines zweiphasigen Schrittmotor. A und B sind die 2 Spulen, N und S auf dem Rotor symbolisieren die Permanentmagnete. \textbf{Links:} Der Motor ist in einer Vollschritt Position. Nur Spule A ist bestromt, 2 Magnete richten sich nach ihr aus. \textbf{Rechts:} Der Motor ist in einem Microstep. Spule A und B sind so bestromt, dass die Magnete in einer Zwischenposition gehalten werden }
+	\label{pic:Schrittmotor_Schema}
+\end{figure}

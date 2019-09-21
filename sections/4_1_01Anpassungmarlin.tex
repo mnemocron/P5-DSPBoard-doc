@@ -1,0 +1,49 @@
+\subsubsection{Anpassungen an Marlin}
+\label{sec:AnpassungeMarlin}
+Damit die Firmware Marlin auf dem STM32F103ZE stabil läuft, mussten einige kleinere sowie auch grössere Anpassungen vorgenommen werden.
+Um diese Anpassungen nachzuvollziehen, wird allerdings ein Grundwissen bezüglich Arduino und STM32 benötigt, welches zuerst geliefert wird.
+Danach werden die wichtigsten Änderungen genauer beschrieben.
+
+Damit auf der STM32F1 Mikrocontrollerreihe Arduino-Programmcode ausgeführt werden kann, wird ein sogenanntes Hardware Abstraction Layer (HAL) benötigt.
+Es existieren zwei Verschiedene, untereinander nicht vollständig kompatible, HALs.
+Einerseits gibt es das \flqq STM32duino\frqq\ HAL, welches ursprünglich von LeafLabs für das Maple Board entwickelt wurde. Aus diesem Grund ist es auch unter dem Namen \flqq libmaple\frqq\ bekannt.
+Das \flqq STM32duino\frqq\ HAL gilt als vollständig und erhält keine grösseren Updates mehr.
+Andererseits gibt es ein offizielles HAL vom Hersteller STMicroelectronics. Dieses trägt verwirrenderweise ebenfalls den Namen \flqq STM32duino\frqq . Die Firmware Marlin baut auf dem älteren \flqq libmaple\frqq\ HAL auf. Dies hat den Grund, dass das offizielle HAL von ST noch nicht alle Bibliotheken unterstützt, welche vom älteren HAL unterstützt wurden.
+
+\paragraph{SPI-Schnittstelle}
+Für die SPI-Schnittstelle verwendet die Firmware Marlin das vom \flqq libmaple\frqq\ HAL global deklarierte \texttt{SPI} Objekt der Klasse \texttt{SPIClass}. Dieses wird allerdings standardmässig an die \texttt{SPI1}-Schnittstelle vom STM32F103ZE gebunden. Hier wird allerdings die \texttt{SPI2}-Schnittstelle (PB13 - PB15) verwendet. Somit muss das \texttt{SPI} Objekt direkt im \flqq libmaple\frqq\ HAL modifiziert werden.
+
+\paragraph{LCD-Display}
+Standardmässig unterstützt die Firmware Marlin die Ansteuerung eines LCD-Displays nur über Software-SPI (auch bekannt als \flqq bit-banged\frqq\ SPI). Das SPI-Protokoll wurde also softwaremässig implementiert, indem reguläre GPIO-Pins zur richtigen Zeit umgeschaltet werden. Dies hat wohl den Grund, dass standardmässig die Ünterstützung einer SD-Karte über den SPI-Bus erfolgt. Wenn nun auch noch das LCD-Display am gleichen SPI-Bus angeschlossen wird, kann dies aufgrund von unterschiedlichen Baudraten zu Problemen führen. Hier wird für die SD-Karte allerdings nicht SPI, sondern die SDIO-Schnittstelle verwendet (siehe \ref{sec:SDKarte}).
+
+Des Weiteren wurde das LCD-Display auf die reguläre \texttt{SPI2}-Schnittstelle gelayoutet. Damit keine Hardwaremodifikation nötig ist, wurde für das LCD-Display die Unterstützung des regulären, hardwaremässigen SPI-Busses implementiert.
+
+Somit sind die Schrittmotortreiber die einzigen Komponenten, welche ebenfalls an der \texttt{SPI2}-Schnittstelle hängen. Da der LCD-Controller ST7920 strenge Timing-Vorgaben aufweist, wurde eine langsame Symbolrate von 140'625 Baud gewählt. Diese erwies sich sowohol bei der Kommunikation mit den Schrittmotortreibern als auch mit dem LCD-Controller als äusserst robust.
+
+\paragraph{Sanity Check}
+In der Firmware Marlin dient der Sanity Check für eine grobe Validierung aller konfigurierten Parameter. Er stellt beispielsweise sicher, dass keine inkompatible Kombination von  Hardwarekomponenten konfiguriert wird. Da für den STM32F103ZE allerdings andere Limitation gelten mussten einige dieser Tests entweder deaktiviert oder abgeändert werden. Ein Beispiel dafür ist das Sensorless Homing mittels der Schrittmotortreibern, siehe Kapitel \ref{sec:Konfiguration_Motortreiber}.
+
+\paragraph{EEPROM Emulation auf der SD-Karte}
+Da der STM32F103ZE über kein internes EEPROM verfügt, wird dieses mittels der Datei \texttt{eeprom.dat} auf der SD-Karte emuliert. Dies führte allerdings zu einem Timing-Problem.
+Normalerweise wird nach einem Reset als Erstes das EEPROM initialisiert und die vom Benutzer abgespeicherte Konfiguration geladen. Als Nächstes wird dann die SD-Karte initialisiert. Da hier das EEPROM auf der SD-Karte emuliert wird, ist dies problematisch. Aus diesem Grund wurde die Initialisierungsreihenfolge so angepasst, dass die SD-Karte vor dem EEPROM initialisiert wird. Dies ist in Abbildung \ref{pic:EEPROM_Init} dargestellt.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{Init_SD_FlowChart.eps}
+	\caption{Flowchart der Initialisierungsreihenfolge von Marlin}
+	\label{pic:EEPROM_Init}
+\end{figure}
+
+\paragraph{G-Code Dateiupload}
+Die G-Code Syntax erlaubt es, jeden Befehl mit einer optionalen Zeilennummer und Checksumme zu versehen. Dies ermöglicht es, Datenverlust und Übertragungsfehler zu erkennen. Aus diesem Grund verlangt die Firmware Marlin, dass bei einem G-Code Dateiupload alle Zeilen der Datei mit einer Zeilennummer und Checksumme versehen werden. Das Beenden des Dateiuploads sollte allerdings sowohl mit, als auch ohne Zeilennummer möglich sein.
+
+Aufgrund eines Implementierungsfehlers war es allerdings nicht möglich, den Dateiupload zu beenden, wenn der Befehl mit einer Zeilennummer versehen wurde. In diesem Fall wurde der Befehl einfach in die Datei geschrieben. Dies hatte den Grund, dass nur geprüft wurde, ob die einzelnen ASCII-Zeichen des Befehls an den ersten Stellen des empfangenen Strings vorhanden sind. Wird ein Befehl allerdings mit einer Zeilennummer übertragen, befindet sich diese gerade an den ersten Stellen.
+
+Da die meisten Implementationen aus den o. g. Gründen alle Befehle mit Zeilennummer und Checksumme senden, ist diese Funktionalität äusserst wichtig. So sendet die verwendete Firmware ESP3D beispielsweise den Befehl zum Beenden des Dateiuploads mit einer Zeilennummer versehen.
+
+\paragraph{Controllerboard Lüfter}
+Die Firmware Marlin stellt eine Funktion zur Verfügung, welche es erlaubt einen dedizierten Lüfter zur Kühlung des Controllerboards zu verwenden. Dieser wird nur dann eingeschaltet, wenn ein Schrittmotortreiber aktiviert ist oder geheizt wird. Wenn die soeben genannten Komponenten ausgeschaltet werden, läuft der Lüfter noch für eine Minute nach und wird dann ausgeschaltet.
+
+Generell wurde hier Software-PWM (vgl. Software-SPI) verwendet, da so von der Firmware Marlin eine tiefere PWM-Frequenz erreicht wird. Die Implementierung der oben beschriebenen Funktion erlaubte allerdings nur die Verwendung von Hardware-PWM (von Timern gesteuert).
+
+Der Lüfter zur Kühlung des Controllerboards soll bei dieser Anwendung entweder vollständig ein- oder ausgeschaltet sein. Somit ist keine PWM-Funktionalität nötig. Aus diesem Grund konnte das Problem mit einem einfachen Umschalten des entsprechenden GPIO-Pins behoben werden.

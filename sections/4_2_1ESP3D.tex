@@ -1,0 +1,26 @@
+\subsubsection{Firmware ESP3D}
+\label{sec:ESP3D}
+
+Für das Webinterface wird die Open-Source-Software ESP3D benutzt (siehe Abbildung \ref{pic:ESP3D_ProgressBar}). ESP3D ermöglicht es dem Benutzer, Marlin zu steuern und zu überwachen. Die Achsen des Druckers können einzeln referenziert und bewegt werden. Es können ebenfalls G-Code Dateien über die Weboberfläche auf die SD-Karte übertragen werden. Weitere Funktionen, wie die Verwendung einer Kamera zum Filmen des Druckvorgangs, können implementiert werden.
+
+Die Firmware ESP3D verfügt über zwei Betriebsmodi, welche nachfolgend beschrieben werden. Weiter wird auch die neu implementierte Fortschrittsanzeige näher erläutert.
+Details zur Bedingung vom Webinterface können dem Handbuch oder der GitHub-Seite der Firmware ESP3D entnommen werden \cite{ESP3D, ESP3D-WEBUI}.
+
+Sowohl die auf dem ESP32 laufende Server-Software wie auch das separat erhältliche Webinterface unterliegen der GNU General Public License Version 3 (GPLv3).
+
+\paragraph{Betriebsmodi}
+Die Firmware ESP3D kennt zwei Betriebsmodi. Im Access-Point-Modus wird ein eigenes Wi-Fi-Netzwerk erstellt. Es wird auch einfache Netzwerk-Infrastruktur wie beispielsweise ein DHCP-Server zur Verfügung gestellt. Clients können sich in dieses Netzwerk einwählen, wie in jedes andere Wi-Fi-Netzwerk. Die Clients können anschliessend mithilfe eines Webbrowsers auf das Webinterface zugreifen.
+
+Im Client-Station-Modus verbindet sich die Firmware ESP3D mit einem bestehenden Wi-Fi-Netzwerk. Clients, welche sich im selben Netzwerk befinden, können wiederum mit einem Webbrowser auf das Webinterface zugreifen. Zusätzlich kann noch auf jede andere Website zugegriffen werden. Ein Zugriff aus dem Internet ist theoretisch auch möglich, sofern das Netzwerk (Router, Firewall, NAT, etc.) entsprechend konfiguriert ist.
+
+Bei dieser Arbeit wird der Access-Point-Modus verwendet. Der Betriebsmodi kann allerdings jederzeit über das Webinterface geändert werden.
+
+\paragraph{Fortschrittsanzeige}
+Neu wurde eine Fortschrittsanzeige implementiert. Diese ruft mithilfe des G-Code Befehls \texttt{M27} den aktuellen Druckfortschritt vom 3D-Drucker ab und zeigt ihn mithilfe eines Ladebalkens im Webinterface an. Die Anzeige arbeitet im Pull-Verfahren. Sie kann manuell oder periodisch (Intervall konfigurierbar) aktualisiert werden. Die Anzeige lässt sich wie die restlichen Elemente des Webinterfaces ausblenden. Abbildung \ref{pic:ESP3D_ProgressBar} zeigt die Fortschrittsanzeige während eines Druckvorgangs.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{ESP3D_ProgressBar.PNG}
+	\caption{Screenshot vom ESP3D-Webinterface mit Fortschrittsanzeige}
+	\label{pic:ESP3D_ProgressBar}
+\end{figure}

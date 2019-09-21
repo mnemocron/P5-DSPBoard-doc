@@ -1,0 +1,22 @@
+\subsection{Erweiterungsmöglichkeiten}
+\label{sec:Erweiterungsmöglichkeiten}
+In diesem Kapitel werden zusätzliche Erweiterungsmöglichkeiten beschrieben, die das System Drucker stabiler, effizienter und Benutzerfreundlicher machen würden, aufgrund von Zeitmangel allerdings nicht umgesetzt werden konnten.
+
+
+\paragraph{Marlin Firmware Update prüfen}
+Das Update der Marlin Firmware über ESP3D (Abschnitt \ref{sec:MarlinFirmwareUpdateüberESP3D}) erfolgt aktuell ohne Prüfung der Firmware, nach dem die Firmware in den Flash des STM32 geschrieben wurde. Das heisst es kann nicht komplett garantiert werden das die Firmware nicht versehentlich verändert wurde. Aktuell besteht der Schutz gegen Bit Errors aus folgenden Komponenten:
+\begin{itemize}
+	\item  Frame Check Sequence des Ethernet Frames zwischen dem PC und dem ESP32
+    \item  Prüfsumme der einzelnen Firmware Blöcke zwischen ESP32 und STM32.  
+    \item  Parity Bit zwischen ESP32 und STM32
+\end{itemize}
+
+Idealerweise müsste die Firmware nach dem sie komplett auf den STM32 geschrieben wurde, komplett vom STM32 gelesen werden und mit der Firmware, die hochgeladen wurde verglichen werden. Alternative könnte auch ein Prüfsummer verwendet werden. Die einfachste Option eine solche Funktion hinzufügen wäre das generieren einer Prüfsummer in JavaScript im Webbrowser. Die Prüfsumme könnte im Anschluss an das Schreiben des Flash an den ESP32 gesendet werden. Der ESP32 könnte dann den Flash des STM32 auslesen und ebenfalls die Prüfsumme berechnen und mit der Prüfsumme, die er vom Webbrowser erhalten hat vergleichen.\\
+
+\paragraph{Firmwareupdate mittels SD-Karte}
+Als zweite Option um die Firmware zu flashen wäre der Weg über die SD-Karte möglich. Dafür wäre ein neuer Bootloader auf dem STM nötig. Weiter müsste sichergestellt werden, das beim Kompilieren der Firmware die der Programmadressbereich mit einem Offset versehen wird. Dies sorgt dafür, dass der Bootloader nicht überschrieben wird. Realisieren lässt sich das mittels Compilerinstruktion die über Makros definiert werden. 
+Der Prozess läuft dan so ab, das nach einem Reset der Bootloader schaut, ob ein .bin File auf der SD-Karte vorhanden ist, Wenn ja, wird dieses in den Programmspeicher geladen. Das bedeute aber auch das der Bootvorgang minim länger dauert. \\
+
+\paragraph{Coolstepping}
+Die TMC Treiber haben eine Option um den Motorenstrom abhängig vom Aktuellen Lastmoment anzupassen, genannt Coolstepping. Dies würde das Erwärmen der Motoren reduzieren sowie generell weniger Energie benötigen. Demnach wäre das eine Option den Energieverbrauch des Ender 3 Pro zu reduzieren. Die benötigten Funktion um die Entsprechenden Register der TMC zu schreiben sind in Marlin bereits vorhanden. Allerdings ist Parametrisierung sehr aufwändig, da der StallGuard sehr sensibel auf Geschwindigkeit und Reibung reagiert. Da beides im Druckbetrieb Konstant ändert, wird man um eine grössere Versuchsreihe nicht herumkommen um dieses Feature zu aktivieren. 
+

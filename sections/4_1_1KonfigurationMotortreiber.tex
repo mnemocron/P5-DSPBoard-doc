@@ -1,0 +1,77 @@
+\subsubsection{Konfiguration Schrittmotortreiber}
+\label{sec:Konfiguration_Motortreiber}
+
+In diesem Teil werden die Parametrisierung der Schrittmotortreiber und die dafür nötigen Änderungen an der Firmware Marlin erläutert.
+
+%Die Motorentreiber bieten neben der Hohen Strombelastbarkeit auch eine Vielzahl an Optionen zur Parametrisierung des Verhalten. In diesem Unterkapitel werden diese Parameter, deren Einfluss und wie sie gesetzt werden beschrieben.
+\paragraph{Registerkonfigurationen}
+Das Verhalten der Motortreiber lässt sich über fünf Register einstellen. Jedes der Register ist 20 Bit gross, wovon die 3 MSB die Adresse definieren. In Tabelle \ref{tab:RegisterTMC} befindet sich eine grobe Übersicht der Register und im  Anhang \ref{app:RegisterKonfigTMC} sind sämtliche Konfigurationen aufgelistet. Eine detaillierte Beschreibung befindet sich im Datenblatt des TMC2660 Chips. Nachfolgend werden nur die wichtigsten Einstellungen erwähnt, welche für eine Feinabstimmung auf den Ender 3 Pro nötig sind. Für alle anderen Parameter wurden die Standardwerte von Marlin übernommen. Nennenswert sind:
+
+\begin{enumerate}
+	\item Anzahl Microsteps (MRES3:0)
+	\item Maximale Shuntspannung $U_{FS}$ (VSENSE)
+	\item Motorstrom (CS4:0)
+	\item StallGuard Threshold (SGT6:0)
+\end{enumerate}
+
+\begin{table}[h]
+	\small
+		\begin{center}
+		\def\arraystretch{1.3} \tabcolsep=10pt
+			\begin{tabular}{|c|C{4cm}|C{5cm}|c|}
+				\hline
+				Abkürzung	 & 	Name	 & 	Funktion	 & 	Read /Write\\ \hline
+				DRVCTRL	 & 	Driver Control Register	 & 	Einstellung Stepping / Microstepping 	 & 	W\\ \hline
+				CHOPCONF	 & 	Chopper Configuration Register	 & 	Einstellungen wie die H-Brücke schaltet	 & 	W\\ \hline
+				SMARTEN	 & 	coolStep Configuration Register	 & 	Einstellungen für CoolStep betrieb	 & 	W\\ \hline
+				SGCSCONF	 & 	stallGuard2 Configuration Register	 & 	Einstellung Motorstrom, StallGuardvalue	 & 	W\\ \hline
+				DRVCONF	 & 	Driver Configuration Register	 & 	Einstellung  Shunt Spannung, Short to Ground Detection, Step/		Dir oder SPI / 	 & 	W\\ \hline
+				DRVSTATUS	 & 	Driver Status Register	 & 	Status des Treibers: StallGuard Value, Overtemperatur, Short to GND	 & 	R \\ \hline
+			\end{tabular} 
+		\end{center}
+		\caption{Register des TMC2660}
+		\label{tab:RegisterTMC}
+\end{table}
+	
+	
+Für die Anzahl Microsteps wurden 32 gewählt, dies resultiert in einem guten Verhältnis zwischen ruhigem Lauf und Drehmoment. Ein höherer Wert als 32 wäre durchaus möglich. Es ist jedoch fraglich, ob dies Sinnvoll ist, da die Druckermechanik die gewonnene Präzision wohl nicht Wiedergeben kann. So Ergeben 32 Microsteps an der X-Achse eine Auflösung von $\approx\, 6 \,\si{\mu m}$. Beim nächst höheren Wert von 64 sind es $\approx\, 0.47 \,\si{\mu m}$. Dies ist weniger, als der Antriebsriemen Spiel hat. Weiter hat ein höheres Microstepping  den Nachteil von einem verringerten Drehmoment, welches durch eine Erhöhung des Motorenstroms kompensiert werden muss. Allerdings wird dadurch der Schrittmotor wie auch dessen Treiber stärker erwärmt. Des Weiteren steigt auch die benötigte Rechenleistung, was je nach Controller den 3D-Drucker verlangsamen kann. Dies ist hier jedoch vernachlässigbar.
+
+%Beim StallGuard Threshold verhält es sich ähnlich. Es konnten keine Parameter gefunden werden, die ein konstant reproduzierbares Ergebnis lieferten. Ein Satz Parameter konnte 10 mal funktionieren und danach nie mehr. Sprich der Treiber meldete eine Blockierung des Motors, auch wenn dort keine sein sollte. Die Ursache für dieses Verhalten konnte nicht exakt detektiert werden. Ein Fehler im Marlin lässt sich jedoch ausschliessen, da die verwendeten Settings für eine Testreihe verifizierbar die selben blieben. Das Problem ist eher, dass der StallGuard extrem sensitiv auf die Motordrehzahl, den Motorenstrom und die Reibung des Schlittens reagiert. Mit den Werten in Tabelle \ref{tab:SGTValue} konnten ein Blockieren detektiert werden, allerdings nicht reproduzierbar genug.
+ 
+Die Shuntspannung wurde anhand der Berechnungen in Kapitel \ref{sec:SteppertreiberTMC2660} gesetzt. Die Motorenströme sind in Tabelle \ref{tab:SGTValue} aufgeführt. Diese sind so gewählt, dass die Motoren mit dem geringstmöglichen Strom noch sauber drehen. Das verhindert unnötiges Erwärmen der Schrittmotoren und deren Treiber. Es ist wichtig, auch das dynamische Verhalten beim Druckvorgang zu berücksichtigen. So benötigen schnelle Richtungswechsel deutlich mehr Strom als eine gerade Linie. Der Registerwert (CS4:0) berechnet sich dann anhand nachfolgender Formel:
+
+\begin{equation}
+	CS = \lfloor 32\cdot \sqrt{2}\cdot I_{\text{RMS}} \cdot R_S \cdot \frac{1}{U_{fs}} -1 \rceil
+ 	\label{equ:CurrentSetting}
+\end{equation} 
+
+
+Für die Wahl des StallGuard Schwellwerts wurde ähnlich vorgegangen. Der Schwellwert ist durch Ausprobieren sukzessiv dem passenden Wert angenähert worden. Ein detaillierte Beschreibung, wie man dabei vorgehen soll, findet man in einem Application Note von Trinamic \cite{StallGuardAppnote}. Die gefundenen Werte sind in Tabelle \ref{tab:SGTValue} aufgelistet. Allerdings muss beachtet werden, dass ein Ändern der Riemenspannung oder eine Abnutzung der Rollen ein Nachjustieren des Schwellwerts erfordert. Das Sensorless Homing wurde jedoch nur für die X- und die Y-Achse aktiviert. Bei der Z-Achse trat das Problem auf, dass der Schwellwert sehr hoch gewählt werden musste, um Falschmeldungen einer Motorblockierung zu verhindern. Dies führte allerdings bei der Referenzfahrt dazu, dass sich aufgrund des grossen Drehmoments der Spindel die Mechanik vom Ender 3 Pro leicht verbog.
+
+
+\paragraph{Einbindung in Marlin}
+Da der TMC2660 Chip von der Firmware Marlin bereits weitestgehend unterstützt wird, mussten an dieser Stelle keinen grossen Modifikationen getätigt werden. Die Implementation des TMC2660 Chips ist mit Ausnahme der Sensorless Homing Funktion gegeben, wobei die benötigten Methoden bereits vorhanden wären.
+Die Sensorless Homing Funktion unterscheidet sich für Marlin vom Funktionsprinzip her nicht von gewöhnlichen Endschaltern. Dies hat den Grund, dass der Treiber einen Pin besitzt, welcher ein Blockieren des Motors signalisiert, indem er den Zustand von diesem Pin auf \texttt{HIGH} setzt. Der einzige Unterschied besteht darin, dass die Konfiguration des StallGuard Schwellwerts an den Treiber gesendet werden muss. Auch dies funktioniert bereits zuverlässig. Allerdings erzeugt das Aktivieren der Sensorless Homing Funktion, welches für den TMC2130 Treiber sofort funktioniert, einen Fehler beim Kompilieren.\\
+Nach einer Analyse des Quellcodes stellte sich heraus, dass dies nur durch einen Fehler in der Datei \texttt{SanityCheck.h} von Marlin hervorgerufen wird. Der Sanity Check prüft die vorgenommenen Konfigurationen auf Plausibilität und verlangt, dass die Pull-Up Widerstände der Endschalter eingeschaltet werden. Allerdings handelt es sich beim entsprechenden Pin vom TMC2660 um einen Push-Pull-Ausgang. Somit werden keine Pull-Up Widerstände benötigt. Nach dem Auskommentieren der entsprechenden Zeilen, ist die Sensorless Homing Funktion voll funktionsfähig. Die entsprechenden Parameter müssen noch in der Datei \texttt{Configuration\_adv.h} gesetzt werden.\\
+
+Eine wichtige Einstellung, welche die Stepper nicht direkt betrifft, aber essenziell für das Druckergebnis ist, sind die Steps per Unit. Also wie viele Schritte der Motor machen muss, um eine Einheit weiterzugehen. Diese befindet sich in der Datei \texttt{Configuration.h}. Um die passenden Werte zu finden, druckt man ein Objekt mit einer bekannten Grösse aus und misst dies danach aus. Normalerweise verwendet man dazu einen Würfel. Die eruierten Werte sind in Tabelle \ref{tab:SGTValue} zu finden.\\
+
+Die Umrechnung der Druckgeschwindigkeit funktioniert noch nicht richtig. Bei einem 3D-Druck wird beim Slicen in der Slicer-Software die Druckgeschwindigkeit angegeben. Das sind normalerweise $60\,\si{mm/s}$. Bei dem hier beschriebenen Drucker führt dies allerdings zu einer wesentlich höheren Druckgeschwindigkeit ($\approx\, 200\,\%$). Die passende Einstellung im Marlin, welches dieses Verhalten korrigieren würde, konnte nicht gefunden werden. Somit ist es nötig in der Slicer-Software die Geschwindigkeit auf $30\,\si{mm/s}$ zu stellen. Ein möglicher Grund für dieses Problem könnte sein, dass im Vergleich zu den Standardeinstellungen das Microstepping verdoppelt wurde.
+
+\begin{table}[h]
+\small
+	\begin{center}
+	\def\arraystretch{1.3} \tabcolsep=8pt
+		\begin{tabular}{|c|c|C{3cm}|C{3cm}|c|c|}
+			\hline
+			Achse & SGT  & Motorenstrom gewählt in mA & Motorenstrom effektiv in mA  & $CS$ & Steps per Unit\\ \hline
+			X &  6 & 400 & 405& 29 	& 160\\ \hline
+			Y &  6 & 400 & 405 & 29	& 160 	\\ \hline
+			Z &  - & 600 & 607 & 25 & 800	\\ \hline
+			Extruder &  - & 400 & 405& 29 & 210 \\ \hline
+		\end{tabular} 
+	\end{center}
+	\caption{StallGuard Schwellwerte, Motorenströme und Steps per Unit der einzelnen Achsen / Motorenstrom effektiv ist dabei der Strom, welcher nach der Diskretisierung \eqref{equ:CurrentSetting} verwendet wird}
+	\label{tab:SGTValue}
+\end{table}
+

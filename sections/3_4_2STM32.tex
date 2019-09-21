@@ -1,0 +1,49 @@
+\subsubsection{STM32, SD-Karte und LCD-Display}
+\label{sec:SchemaSTM32}
+
+Hier wird das Teilschema \texttt{appendix\_STM32F103.sch} und dessen direkt angeschlossene Peripherie beschrieben.
+Auf dieser Ebene wird ab Nummer 200 beschriftet.\\
+
+
+\paragraph{Mikrocontroller} 
+Die Steuerung des 3D Druckers übernimmt ein STM32F103 $\mu$C. Dieser ist aus folgenden Gründen verbaut:
+
+\begin{itemize}
+\item Moderner ARM Cortex-M3 Core (ohne Floating Point Unit)
+\item $72\,\si{MHz}$ Taktfrequenz
+\item Wird vom Marlin 2.0.x Entwicklungsbranch weitestgehend unterstützt
+\item LQFP-144 verfügt über 112 GPIO Pins, somit genügend Pins für Peripherie 
+\item Der STM32F103 wird bereits in anderen 3D-Druckern verwendet (vgl. MKS Robin \cite{MKS_Robin})
+\end{itemize}
+
+\vspace{3mm}
+\paragraph{Interrupt Pins}
+Der STM32 unterstützt bis zu 16 externe Interruptquellen (EXTI).
+Der jeweilige Interrupt-Kanal (0-15) kann einem passenden Pin (0-15) einer beliebigen GPIO-Bank (A-G) zugewiesen werden.
+Interruptquellen sind die Endstops bzw. die StallGuard-Ausgänge der Schrittmotortreiber sowie der Drehgeber und die Taste des Displays.
+Die vollständige Pinbelegung ist der Tabelle im Anhang \ref{app:PinDef_STM32} zu entnehmen.\\
+
+
+\paragraph{Expansion Header}
+Da der STM32 mehr GPIOs zur Verfügung stellt, als vom Ender 3 Pro benötigt werden, sind die unbenutzten Pins auf einen Expansion Header (J203) geführt. Dadurch kann die Steuerplatine auch für andere Drucker, welche zum Beispiel über eine zweite Z-Achse oder mehrere Extruder verfügen, verwendet werden.\\
+Bei der Entwicklung eines Expansion Boards muss darauf geachtet werden, dass die $3.3\,\si{V}$ Analogreferenz neu gefiltert werden muss.
+Ausserdem wird empfohlen, das Expansion Board separat mit 24\,V zu versorgen, da die gelayouteten Leiterbahnen nicht für den Strom von zusätzlichen Schrittmotortreibern ausgelegt sind.
+Weiter sollten die SPI-Signale gepuffert werden, um das Fan-Out des Mikrocontrollers nicht zu überlasten.\\
+
+
+\paragraph{Programmierschnittstelle (SWD / JTAG)}
+Programmiert wird der STM32 über eine Serial Wire Debug (SWD) Schnittstelle. Diese fungiert zudem auch als JTAG-Schnittstelle. Aus Platzgründen kommt eine 10-Pin SMD-Stiftleiste mit einem Pinabstand von 1.27\,mm zum Einsatz. Das JTAG Interface des Mikrocontrollers wird mit Seriewiderständen und Schutzdioden vor Überspannung geschützt.\\
+
+
+\paragraph{SD-Karte}
+Die SD-Karte wird über die SDIO Schnittstelle an den STM32 angebunden. Dieser unterstützt das entsprechende Protokoll an den Pins PC8 bis PC12 und PD2. Zudem kann mit dem Pin PA11 das Einsetzen einer SD-Karte erkannt werden.\\
+
+
+\paragraph{LCD-Display und Pegelwandler}
+Das LCD-Display mit Drehgeber wird mit $5\,\si{V}$ betrieben. Weil die Betriebsspannung des Mikrocontrollers $3.3\,\si{V}$ ist, werden Pegelwandler benötigt. Diese passen die tieferen Spannungspegel des Mikrocontrollers an die höheren Spannungspegel der Displayplatine an. Dazu gehören sowohl die SPI-Leitungen als auch die Signale des Drehgebers und der Taste.\\
+
+
+\paragraph{Reset und Bootloader}
+Der Mikrocontroller verfügt über einen Power-On-Reset (POR) und lässt sich manuell über einen Taster zurücksetzen. Gleichzeitig wird auch das LCD-Display zurückgesetzt. Weiter muss der ESP32 für die OTA-Update Funktion (siehe \ref{sec:MarlinFirmwareUpdateüberESP3D}) in der Lage sein, den STM32 zurück zu setzen. Dazu ist der Reset-Pin zusätzlich noch an einem IO-Pin des ESP32 angeschlossen. Das Gleiche gilt für den BOOT0-Pin vom STM32. Somit ist der ESP32 in der Lage, den STM32 in den gewünschten Bootloader-Modus zu versetzen und die Firmware zu ändern.
+
+

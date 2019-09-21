@@ -1,0 +1,35 @@
+\subsection{Schema}
+\label{sec:Schema}
+
+\todo[inline]{Erledigt? - SB - In den Unterkapiteln werden häufig Schaltungen detailliert beschrieben. Wenn die Funkion einer Schaltung beschrieben wird, sollte das Teilschema als Bild eingefügt sein (wie beim Verpolschutz) - A: MR}
+
+Der folgende Abschnitt beschreibt die Unterteilung des Schemas, die relevanten Schemablöcke und deren Funktionen in den jeweiligen Unterkapiteln. Die Aufteilung in Unterebenen verbessert die Übersicht und vereinfacht die Wartung an den Teilschaltungen. Die Abbildung \ref{pic:Blockschaltbild_Schema} zeigt den Zusammenhang des Blockschaltbildes mit der Unterteilung des Schemas. Das Gesamtschema befindet sich im Anhang \ref{app:Schema} sowie die Stückliste \ref{app:Stückliste}. Da es hierarchisch aufgebaut ist und über mehrere Seiten verfügt, wird nachfolgend jeweils mit dem entsprechenden Dateinamen auf die einzelne Seite referenziert. Tabelle \ref{tab:Schemaaufteilung} fast diese zusammen.
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{Blockschaltbild_V2.eps}
+	\caption{Blockschaltbild der Steuerelektronik mit eingezeichneten Schemaunterteilung}
+	\label{pic:Blockschaltbild_Schema}
+\end{figure}
+
+Aufgebaut ist das Schema wie folgt: Die oberste Schemaebene bildet das Dokument \texttt{FHNW-Pro4E -FS19T8-3DPrinterBoard-STM32}, welches die Sicherungen, die DC-DC-Wandler und die hierarchischen Schemablöcke beinhaltet.
+Die Beschriftung der Bauteile auf dieser Ebene starten mit der Zahl 100. Danach folgt eine Ebene für den STM32 Mikrocontroller mit dessen Peripherie sowie jeweils eine weitere für das ESP32 Modul und die peripheren Anschlüsse inkl. Eingangsfilter. Die nächste Ebene beinhaltet das FT2322 UART Interface mit den Schutzschaltungen des USB-Anschlusses. Zuletzt sind die vier Schrittmotortreiber auf einer separaten Schemaebene.
+
+\begin{table}[H]
+	\centering
+	\def\arraystretch{1.1} 
+	\begin{tabular}{|L{6cm}|L{5cm}|c|}
+		\hline
+		\textbf{Dateiname}              & \textbf{Beinhaltet} & \textbf{Beschriftung} \\ \hline
+		\texttt{FHNW-Pro4E-FS19T8- 3DPrinterBoard-STM32.sch} & Funktionsblöcke, Speisung & 100 \\ \hline
+		\texttt{appendix\_STM32F103.sch} & STM32, JTAG, SD-Karte, Display Stecker & 200 \\ \hline
+		\texttt{appendix\_ESP32.sch}     & ESP32-WROOM-32 & 300 \\ \hline
+		\texttt{appendix\_SENSORS\_POWER.sch} & Anschlüsse für Sensoren und Endschalter, Leistungstreiber & 400 \\ \hline
+		\texttt{appendix\_UART\_USB.sch}  & USB-C mit Filter und Schutzschaltung, FT2322 & 500 \\ \hline
+		\texttt{appendix\_TMC2660\_X.sch} & 4x Schrittmotortreiber & 600 \\ \hline
+		
+	\end{tabular}
+	\caption{Aufteilung des Schemas}
+	\label{tab:Schemaaufteilung}
+\end{table}

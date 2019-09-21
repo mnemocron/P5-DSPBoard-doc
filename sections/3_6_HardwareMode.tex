@@ -1,0 +1,18 @@
+\subsection{PCB-Modifikationen}
+\label{sec:HardwareMod}
+
+Die aktuelle Leiterplatte enthält zwei Fehler, welche kleine Modifikationen erfordern. Ansonsten ist die Leiterplatte voll funktionsfähig. Abbildung \ref{pic:Print} zeigt die mit SMD-Bauteilen bestückte Leiterplatte.
+
+\paragraph{Schemafehler}
+Die beiden DC-DC-Wandler (U101 / U102) haben einen On/Off-Pin, welcher mit der 24\,V Speisung verbunden ist. Dies ist insofern ein Fehler, da an diesem Pin des LM2675 Chips maximal 6\,V anliegen darf.
+Laut dem Datenblatt muss der On/Off-Pin nicht zwingend angeschlossen werden. Die nötige Modifikation besteht darin, den besagten Pin vor dem Einlöten abzuschneiden.
+
+\paragraph{Layoutfehler} 
+Die npn-Bipolartransistoren in der Resetschaltung vom ESP32 sind mit einem falschen Footprint gelayoutet. Dadurch stimmt die Pinbelegung nicht ganz. Die Basis (Pin 2) und der Kollektor (Pin 3) sind vertauscht. Es handelt sich dabei um ein Bauteil im SOT-23 Gehäuse, welches eine vertikale Spiegelsymmetrie aufweist. Die Modifikation besteht darin, die Pins vom Transistor umzubiegen und das Bauteil \flqq dead-bug style\frqq\ (auf dem Rücken) einzulöten.
+\vspace{5mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{Print_V2.jpg}
+	\caption{Bestückte Leiterplatte (ohne THT-Bauteile, ESP32-Modul und DC-DC-Wandler)}
+	\label{pic:Print}
+\end{figure}

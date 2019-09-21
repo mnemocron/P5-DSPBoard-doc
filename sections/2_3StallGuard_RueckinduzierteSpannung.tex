@@ -1,0 +1,16 @@
+\subsection{StallGuard}
+\label{sec:StallGuardRueckinduzierteSpannung}
+
+StallGuard nennt sich die integrierte Stillstandserkennung des Motorentreibers TMC2660, siehe Kapitel \ref{sec:SteppertreiberTMC2660}. An dieser Stelle wird die Funktionsweise des StallGuards  erläutert \cite{ElektrischeAntriebe}.\\
+Schrittmotoren sind Synchronmaschinen und haben meistens Permanentmagnete im Rotor und Erregerwicklungen im Stator. Wird der Rotor durch ein von den Statorwicklungen induziertes Magnetfeld zum Drehen gebracht, erzeugt das drehende Magnetfeld des Rotors in den Statorwicklungen eine der Anregung entgegengesetzte Spannung,(Lenzsche Regel). Je höher die Winkelgeschwindigkeit, desto höher ist diese Spannung. Bei einem Stillstand des Motors, wie es beim Anfahren eines Endanschlages der Fall ist, fällt diese Spannung zusammen, da der Rotor nicht mehr dreht. Durch überwachen der Spannung kann so ein Stillstand des Motors detektiert werden. Der Hersteller des TMC2660, Trinamic, hat dieses Prinzip noch so weit verbessert, dass nicht nur gesagt werden kann, ob ein Motor blockiert, sondern auch wie viel Reserve zu einem Schrittverlust besteht. Sie nennen das \textit{load angle}. Ist dieser $>90\,\si{\degree}$ entstehen Schrittverluste. Auslesen lässt sich der \textit{load angle} mittels SPI (siehe Kapitel \ref{sec:Konfiguration_Motortreiber}). Der TMC2660 gibt einen linear vom Drehmoment abhängigen Wert zwischen 1023 und 0 zurück.  Ein Wert von 0 bedeutet Stillstand des Motors, bzw. Schrittverlust, was auch in Abbildung  \ref{pic:StallGuardThreshold} zu erkennen ist. Der Treiber setzt in dem Fall neben den internen Registern auch einen seiner Pins auf high, was als Interruptquelle für ein $\mu$C dienen kann.  Parametrieren lässt sich das System mittels des \textit{StallGuard Threshold}, dieser bestimmt die Steigung der Gerade. Ist sie steiler, wird die Empfindlichkeit erhöht, ist sie flacher, wird sie reduziert. 
+
+%Dieser Wert lässt sich auch zur Stromreduktion des Motors verwenden, wenn nicht das volle Drehmoment benötigt wird. Diese Funktion wird als coolStep vermarktet und ist im folgenden Kapitel erläutert.
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{StallGuardThreshold.pdf}
+	\caption{StallGuard Wert des Motorentreibers TMC2660 in Abhängigkeit des Drehmoments. Nähert sich das benötigte Drehmoment dem maximalen Drehmoment des Motors, so sinkt der Wert. Der Wert 0 weist auf eine Blockierung des Motors hin \cite{TMC2660}.}
+	\label{pic:StallGuardThreshold}
+\end{figure}
+

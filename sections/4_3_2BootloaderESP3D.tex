@@ -1,0 +1,50 @@
+\subsection{Marlin Firmware-Update über ESP3D}
+\label{sec:MarlinFirmwareUpdateüberESP3D}
+
+Neu wurde ein Update-Mechanismus für Marlin implementiert. Dieser ermöglicht es, die Firmware des STM32 über das Webinterface ESP3D zu ändern. Somit ist kein externes Programmiergerät notwendig. Zusammen mit dem im ESP3D integrierten Update-Mechanismus für den ESP32, ist es möglich, alle im Drucker verwendeten Softwareteile über Wi-Fi zu aktualisieren. Abbildung \ref{pic:BootloaderFlowchart} zeigt den vereinfachten Ablauf des Firmware-Updates. Auf die Fehlerbehandlung wird aufgrund der Übersichtlichkeit nicht eingegangen. Die Implementierung vom Update-Mechanismus erfolgte komplett im ESP3D und dem dazugehörigen Webinterface. Dies wird nachfolgend detailliert beschrieben.
+
+\paragraph{STM32 ROM-Bootloader}
+Für das Firmware-Update wird auf der STM32 Seite der integrierte ROM-Bootloader verwendet. Dieser wird durch das \texttt{HIGH} ziehen vom Pin \texttt{BOOT0} beim Reset vom STM32 aktiviert. Nach der Initialisierung des Bootloaders kann einer der verfügbaren Befehle über eine UART-Schnittstelle an den STM32 gesendet werden. Die Befehle ermöglichen es unter anderem, jede beliebige Adresse vom Flash des STM32 zu beschreiben oder zu lesen. Details zum ROM-Bootloader des STM32 sind im Application Note AN3155 von ST zu finden \cite{AN3155}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{BootloaderFlowchart.eps}
+	\caption{Vereinfachter Ablauf des STM32 Firmware-Updates}
+	\label{pic:BootloaderFlowchart}
+\end{figure}
+
+\paragraph{Ablauf des Firmware-Updates}
+Der Ablauf ist in der Abbildung \ref{pic:BootloaderFlowchart} ersichtlich. Die Beschreibung erfolgt aus der Sicht vom ESP32. Zuerst wählt der Nutzer eine binäre Firmware-Datei im Webinterface aus. Nach der Bestätigung des Nutzers wird das Update auf dem ESP32 gestartet.
+
+Anschliessend muss die serielle Schnittstelle, welche die Verbindung zwischen ESP32 und STM32 zur Verfügung stellt, umkonfiguriert werden. Dies ist aus zwei Gründen erforderlich. Erstens unterstützt der Bootloader nur eine maximale Geschwindigkeit von $115'200\,\si{Baud}$, während Marlin eine Geschwindigkeit von $250'000\,\si{Baud}$ nutzt. Zweitens muss für die Kommunikation mit dem Bootloader ein Even-Parity-Bit verwendet werden, was von Malin nicht unterstützt wird. Daher muss die Konfiguration von $250'000$ $8N1$ nach $115'200$ $8E1$ geändert werden.
+
+Der Reset vom STM32 erfolgt mit \texttt{BOOT0} auf \texttt{HIGH} gesetzt. Anschliessend wird der Bootloader initialisiert und die Version des Bootloaders abgefragt. Die Bootloader-Version wird aktuell nur zum Testen der Kommunikation mit dem STM32 benutzt, die Informationen werden nicht weiterverarbeitet.
+
+Damit die Daten korrekt in den Flashspeicher vom STM32 geschrieben werden können, muss der Flashspeicher zuerst gelöst werden. Aktuell wird immer der gesamte Flashspeicher mithilfe vom Global-Erase gelöscht. Es wäre aber auch möglich, nur einzelne Pages vom Flashspeicher zu löschen. Die Grösse einer Page von einem High-Density STM32 beträgt $2\,\si{kByte}$ \cite{RM0008}. Dies wäre z.B. notwendig, wenn sich auf dem STM32 zusätzlich zum ROM-Bootloader noch ein eigener Bootloader befinden würde.
+
+Nach erfolgreichem Löschen des Flashspeichers vom STM32 sendet der Webbrowser das erste Ethernet Frame mit dem ersten Teil der Firmware. Die kompilierte und gelinkte Firmware hat mit der aktuellen Konfiguration eine Grösse von $>200\,\si{kByte}$. Da der ESP32 nur $512\,\si{kByte}$ RAM hat, kann die Firmware nicht zuerst zwischengespeichert werden, sondern muss direkt in den Flashspeicher vom STM32 geschrieben werden. Pro Schreibbefehl können maximal $256\,\si{Byte}$ geschrieben werden. Daher wird das Ethernet Frame mit den Firmware-Daten in $256\,\si{Byte}$ Blöcke unterteilt. Neben den Firmware-Daten muss auch noch die Flash-Adresse, an welche die Daten geschrieben werden sollen, sowie eine Prüfsumme übermittelt werden. Die Adresse hat eine Grösse von $4\,\si{Byte}$. Dabei muss das MSB als erstes Byte übertragen werden. Bei der Prüfsumme handelt es sich um eine XOR-Verknüpfung aller Bytes vom aktuellen Block der Firmware. Diese ist unabhängig vom Parity-Bit.
+
+Zusätzlich muss beim Scheiben der Firmware darauf geachtet werden, dass pro Schreibvorgang immer nur ein ganzzahliges Vielfaches von $4\,\si{Byte}$ geschrieben werden kann (bis zu einem Maximum von $256\,\si{Byte}$). Da es allerdings keine Garantie gibt, dass ein Ethernet-Frame ein ganzzahliges Vielfaches von $4\,\si{Byte}$ an Firmware Daten enthält, müssen bis zu 3 Byte zwischengespeichert werden, bis das nächste Ethernet-Frame empfangen wird. Dies ist in Abbildung \ref{pic:BootloaderFlowchart} nicht dargestellt.
+
+Wenn alle Firmware Daten eines Ethernet-Frames geschrieben wurden, kann das nächste Packet empfangen werden. Dieser Vorgang wird solang wiederholt, bis die komplette Firmware geschrieben wurde. Anschliessend wird ein erneuter Reset des STM32 durchgeführt (\texttt{BOOT0} auf \texttt{LOW} gezogen) und die serielle Schnittstelle wieder auf die Ursprungseinstellungen ($250'000$ $8N1$) zurückgesetzt. Damit ist das Firmware-Update beendet.
+
+\paragraph{Benutzerschnittstelle}
+Die Benutzerschnittstelle für das Firmware-Update hat sich am bereits existierenden Firmware-Update vom ESP3D orientiert. Es ist im Tab \flqq ESP3D\frqq\ vom Webinterface zu finden. Über den orangen Download-Button kann wie bisher die Firmware ESP3D aktualisiert werden. Neu kann zusätzlich über den roten Download-Button die Firmware vom STM32 aktualisiert werden (siehe Abbildung \ref{pic:MarlinFirmwareUpdate1}).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{MarlinFirmwareUpdate1.PNG}
+	\caption{Screenshot von den Einstellungen im Webinterface mit den Update-Optionen}
+	\label{pic:MarlinFirmwareUpdate1}
+\end{figure}
+
+Nachdem der Benutzer eine Firmware ausgewählt und bestätigt hat, wird ein Ladebalken mit dem Uploadfortschritt angezeigt. Dieser Ladebalken zeigt dabei an, zu wie viel Prozent die Firmware bereits an den ESP32 gesendet wurde. Er zeigt nicht an, wie viele Bytes bereits in den Flashspeicher des STM32 geschrieben wurden. Diese Information über den Fortschritt wird dabei vom Webbrowser an das JavaScript vom Webinterface übermittelt. Daher ist die dargestellte Anzeige vom Webbrowser abhängig. Dies führt dazu, dass beispielsweise Google Chrome (Version: $74.0.3729.169$) einen Fortschritt anzeigt, während Firefox (Version: $67.0.1$) sofort zu $100\,\%$ springt, obwohl die gleiche API zum Abfragen des Uploadfortschritts verwendet wurde \cite{XMLHttpRequest_upload, XMLHttpRequest_progress}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{MarlinFirmwareUpdate2.PNG}
+	\caption{Screenshot der Anzeige vom Uploadfortschritt im Google Chrome Browser}
+	\label{pic:MarlinFirmwareUpdate2}
+\end{figure}
+
+Nach einem erfolgreichen Update wird ein Timer von zehn Sekunden angezeigt, währenddem der STM32 neu startet.

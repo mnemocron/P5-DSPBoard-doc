@@ -1,0 +1,48 @@
+\subsubsection{Schrittmotortreiber TMC2660}
+\label{sec:SteppertreiberTMC2660}
+
+Schrittmotoren benötigen ein Steuersignal, welches die internen Magnetspulen in der richtigen Reihenfolge abwechslungsweise umpolt, um die gewünschte Drehbewegung zu erzeugen. 
+Ausserdem muss das Signal über eine Treiberstufe verstärkt werden, um die hohen Ströme liefern zu können.
+Für die konkrete Ansteuerung von Schrittmotoren existieren vielseitige Treiber, welche die benötigten Timing-Schaltungen sowie die H-Brückenschaltung integriert haben.
+
+Verbaut wird der TMC2660 von Trinamic. Dieser erfüllt alle Anforderungen, welche im Pflichtenheft definiert wurden.
+Dazu zählt, der Nennstrom von mindestens 2\,A, die Konfiguration über einen Bus und die bestehende Integration in die Firmware Marlin.
+Weiter verfügt der TMC2660, wie bereits im Kapitel \ref{sec:StallGuardRueckinduzierteSpannung} erwähnt, über die Möglichkeit, ein Blockieren des Motors mittels StallGuard zu erkennen. Die Einbindung dieser Funktion in Marlin wird im Kapitel \ref{sec:Konfiguration_Motortreiber} erläutert. Ausserdem ist der Treiber in einem LQFP-44 Gehäuse verfügbar. Dies ist im Falle eines unerwarteten Defektes, vergleichsweise einfach zu löten ist.
+
+Das Schema für die Peripherie des TMC2660 Chips (siehe Abbildung \ref{pic:Schema_TMC}) wurde anhand vom Schema des Evaluationskits \mbox{TMC2660-BOB} erstellt \cite{TMC2660_Bob}. In den Design-Richtlinien ist ein 470\,$\mu$F Elektrolytkondensator (C4) zur Stabilisierung der Speisung vorgesehen, jedoch nicht bestückt -- wahrscheinlich aus Kostengründen. Dieser Kondensator hat die Funktion, Spannungsspitzen beim Bremsen des Motors abzufangen, bevor diese die Spannung der 24\,V Speisung erhöhen können. Der Kondensator ist aus diesem Grund sinnvoll und auf dem Board für jeden Treiber vorgesehen (C633 - C636).
+
+Die Ansteuerung des Treibers erfolgt über die Standard Step-Direction-Schnittstelle, bei welcher eine steigende Flanke am Step-Pin ein Weiterdrehen des Motors verursacht. Eine Ansteuerung über SPI wäre auch möglich, wird von der Firmware Marlin jedoch nicht unterstützt und wäre sehr aufwendig zu implementieren. Daher wird das SPI Interface nur zur Parametrierung des Treibers verwendet (siehe Kapitel \ref{sec:Konfiguration_Motortreiber}). Die Meldung eines blockierten Motors geschieht über einen Pin vom TMC2660 Chip (SG\_{}TST), welcher auf \texttt{HIGH} wechselt, sobald der Motor blockiert. Dies wird mittels Interrupt vom $\mu$C detektiert.
+
+Die Einstellung des Motorenstroms geschieht in zwei Schritten. Erstens bestimmt die Grösse der verbauten Strommesswiderstände (R604 / R608) den Maximalstrom. Zweitens wird eine Feineinstellung mittels Software in 32 Schritten (5-Bit) vorgenommen. Allerdings ist maximal eine Halbierung des Maximalstromes empfohlen \cite{TMC2660}. Der Shunt $R_S$ wird so dimensioniert, dass bei $\hat{I}$ eine Spannung $U_{fs}$ von $165\,\si{mV}$ oder $310\,\si{mV}$ über dem Shunt entsteht, vgl. Formel \eqref{equ:BerechnungShunt}. Tabelle \ref{tab:Shuntwiderstaende} listet die Werte der Strommesswiderstände für die entsprechenden Motoren auf. Der maximale Motorenstrom $I_{\text{RMS, max}}$ wurde dabei anhand von Versuchen am Gesamtsystem ermittelt. Sollte wider Erwarten trotzdem mehr Strom benötigt werden, kann dieser durch einen Wechsel auf $U_{fs} = 310\,\si{mV}$ erhöht werden. So müssen die Strommesswiderstände nicht ausgewechselt werden. Ein Überschreiten der maximalen Verlustleitung von $P_V > 0.5\,\si{W}$ der Strommesswiderstände ist dabei nicht möglich.\\
+
+\begin{equation}
+	R_S = \frac{U_{fs}}{I_{\text{RMS, max}}} \cdot \frac{1}{\sqrt{2}} 
+	\label{equ:BerechnungShunt}
+\end{equation}
+
+Die Widerstände R607 und R603 zusammen mit den Kondensatoren C610 und C612 dienen als Schutzbeschaltung und Tiefpass für den Analogeingang des TMC2660 Chips, indem sie die Schaltspitzen abblocken.
+
+\begin{table}[h]
+	\small
+	\begin{center}
+	\def\arraystretch{1.3} \tabcolsep=14pt
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			Motor & $I_{\text{RMS, max}}$ in mA & $U_{fs}$ in mV & $R_S$ in $\si{m\Omega}$ & $P_V$ in mW @ $165\,\si{mV}$  \\ \hline
+			X-Achse & 432 & 165 & 270  & 50\\ \hline
+			Y-Achse & 432 & 165 & 270  & 50\\ \hline
+			Z-Achse & 777 & 165 & 150  & 90\\ \hline
+			Extruder & 430 & 165 & 270  &50 \\ \hline
+		\end{tabular} 
+	\end{center}
+	\caption{Strommesswiderstände und daraus resultierende Motorenströme }
+	\label{tab:Shuntwiderstaende}
+\end{table}
+ 
+ \vspace{10mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{TMC_Schema.pdf}
+	\caption{Schaltung inkl. Peripherie von einem TMC2660 Schrittmotortreiber}
+	\label{pic:Schema_TMC}
+\end{figure}
