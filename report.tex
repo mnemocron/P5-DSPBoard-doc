@@ -2,7 +2,7 @@
                                         %{class} = fhnwreport, article, 
                                         %          report, book, beamer, standalone
 \input{header}			                %loads all packages, definitions and settings											
-\title{\textbf{Entwicklung einer Microcontrollerplatine basierend auf ARM Cortex-M4F für den DSP Unterricht}}  		        %Project Title
+\title{\textbf{Entwicklung einer Entry-Level Audioeffektbox mit einem ARM Cortex-M4F DSP}}  		        %Project Title
 \author{Burkhardt Simon, Studer Mischa} %Document Type => Technical Report, ...
 \date{\today}          				   %Place and Date
 
@@ -59,64 +59,19 @@
 %%---TEXT--------------------------------------------------------------------------------
 
 \pagenumbering{arabic}
-%\input{sections/1_0Einleitung}
-%\input{sections/1_a_Gesamtübersicht}
-%\input{sections/1_z_1Loesungskonzept}
-%\input{sections/1_z_2UseCase}
+\input{sections/1_0_0_Einleitung}
 
 \clearpage
-%\input{sections/2_0TechnischeGrundlagen}
-%\input{sections/2_1GrundlagenDes3DDrucks}
-\clearpage
-%\input{sections/2_2Microstepping}
-%\input{sections/2_3StallGuard_RueckinduzierteSpannung}
-%%\input{sections/2_4Coolstepping}
-\clearpage
-%\input{sections/3_0Hardware}
-%\input{sections/3_1Ender3Pro}
-%\input{sections/3_1_1Mechanik}
-\newpage
-%\input{sections/3_1_2ElektrischeKomponenten.tex}
-\newpage
-%%\input{sections/3_2Gehaeuse}
-%%\input{sections/3_3FilamentErkennung}
-%\input{sections/3_4_0Schema}
-%\input{sections/3_4_1Speisung}
-\newpage
-%\input{sections/3_4_2STM32}
-%\newpage
-%\input{sections/3_4_3ESP32}
-%\input{sections/3_4_4Sensoren}
-%\input{sections/3_4_5USBInterface}
-\newpage
-%\input{sections/3_4_6StepperTreiber}
-\clearpage
-%\input{sections/3_9_0Layout}
-%\input{sections/3_9_1DesignRules}
-%\input{sections/3_9_2Funktionsblocke}
-%\input{sections/3_9_3LayoutGuidelines}
-%\input{sections/3_6_HardwareMode}
-
+\input{sections/2_0_0_Analyse_Konzept}
+\input{sections/2_1_0_Produktbeschreibung}
+\input{sections/2_2_0_Ziele}
+\input{sections/2_3_0_Loesungskonzept}
+\input{sections/2_3_1_Konzept_Microcontroller}
+\input{sections/2_3_2_Konzept_Laderegler}
+\input{sections/2_3_3_Konzept_Kaskadierung}
 
 \clearpage
-%\input{sections/4_0Software}
-%\input{sections/4_1_0FirmwareMarlin}
-%\input{sections/4_1_01Anpassungmarlin}
-%\input{sections/4_1_1KonfigurationMotortreiber}
-%\input{sections/4_1_2WeitereKonfigurationen}
-%\input{sections/4_2_0HumanMachineInterface}
-%\input{sections/4_2_1ESP3D}
-%\input{sections/4_2_2Anzeige}
-%\input{sections/4_2_3SDKarte}
-%%\input{sections/4_3_0Bootloader}
-%%\input{sections/4_3_1BootloaderSDKarte}
-%\input{sections/4_3_2BootloaderESP3D}
-\clearpage
-%\input{sections/5_0Validierung}
-%\input{sections/5_1TestTeilsysteme}
-%\input{sections/5_2Funktionstest}
-%\input{sections/5_3Zielerreichung}
-%\input{sections/5_4Verbesserungen}
+
 \clearpage
 %\input{sections/6_0Schluss}
 \clearpage
