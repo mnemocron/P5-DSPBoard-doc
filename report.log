@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.9.21)  13 NOV 2019 12:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.9.21)  13 NOV 2019 12:38
 entering extended mode
 **./report.tex
 (report.tex
@@ -2054,10 +2054,24 @@ l.75 \clearpage
                 [2
 
 ] (sections/3_0_0_Hardware.tex)
-(sections/3_1_0_Blockschaltbild.tex) (sections/3_2_0_Pegeldiagramm.tex)
+(sections/3_1_0_Blockschaltbild.tex) (sections/3_2_0_Pegeldiagramm.tex
+<./graphics/level_diagram_line.png, id=141, 869.74937pt x 381.92688pt>
+File: ./graphics/level_diagram_line.png Graphic file (type png)
+<use ./graphics/level_diagram_line.png>
+Package pdftex.def Info: ./graphics/level_diagram_line.png  used on input line 
+9.
+(pdftex.def)             Requested size: 455.24408pt x 199.91435pt.
+<./graphics/level_diagram_ext.png, id=143, 935.495pt x 354.32375pt>
+File: ./graphics/level_diagram_ext.png Graphic file (type png)
+<use ./graphics/level_diagram_ext.png>
+Package pdftex.def Info: ./graphics/level_diagram_ext.png  used on input line 1
+7.
+(pdftex.def)             Requested size: 455.24408pt x 172.42531pt.
+)
 [3
 
-] (sections/4_2_1_SSD1306.tex
+ <./graphics/level_diagram_line.png> <./graphics/level_diagram_ext.png>]
+(sections/4_2_1_SSD1306.tex
 
 LaTeX Warning: Reference `' on page 4 undefined on input line 4.
 
@@ -2101,12 +2115,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--23
 
  []
 
-
-Overfull \hbox (21.03961pt too wide) in paragraph at lines 26--27
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][] |
- []
-
 ) [5]
 
 LaTeX Warning: Empty bibliography on input line 112.
@@ -2128,16 +2136,16 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 128.
  ) 
 Here is how much of TeX's memory you used:
- 55388 strings out of 492895
- 1189321 string characters out of 3133479
- 1764533 words of memory out of 3000000
- 58438 multiletter control sequences out of 15000+200000
- 609074 words of font info for 73 fonts, out of 3000000 for 9000
+ 55407 strings out of 492895
+ 1189802 string characters out of 3133479
+ 1764713 words of memory out of 3000000
+ 58451 multiletter control sequences out of 15000+200000
+ 615059 words of font info for 75 fonts, out of 3000000 for 9000
  1143 hyphenation exceptions out of 8191
  64i,14n,81p,1133b,2436s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/M
-iKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/d
-vips/lm/lm-mathsy.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit
+iKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files/MiKTeX 2.9/fonts/e
+nc/dvips/lm/lm-mathit.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm
 .enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/public/lm/lmcsc10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
@@ -2148,9 +2156,9 @@ e1/public/lm/lmro10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmss
 bx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Prog
 ram Files/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/lm/lmtt9.pfb>
-Output written on report.pdf (8 pages, 431863 bytes).
+Output written on report.pdf (8 pages, 518543 bytes).
 PDF statistics:
- 252 PDF objects out of 1000 (max. 8388607)
- 59 named destinations out of 1000 (max. 500000)
- 218 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 263 PDF objects out of 1000 (max. 8388607)
+ 62 named destinations out of 1000 (max. 500000)
+ 228 words of extra memory for PDF output out of 10000 (max. 10000000)
 
