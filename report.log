@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.3.25)  13 NOV 2019 16:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.3.25)  13 NOV 2019 17:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2401,10 +2401,61 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
-[6]) (./sections/3_3_3_Schema_Codec.tex) (./sections/3_4_0_PCB.tex)
-(./sections/3_5_0_Kosten.tex) [7] (./sections/4_2_1_SSD1306.tex
+[6]) (./sections/3_3_3_Schema_Codec.tex
+<./graphics/../graphics/Schema_Codec.png, id=188, 644.4075pt x 593.21625pt>
+File: ./graphics/../graphics/Schema_Codec.png Graphic file (type png)
 
-LaTeX Warning: Reference `' on page 8 undefined on input line 4.
+<use ./graphics/../graphics/Schema_Codec.png>
+Package pdftex.def Info: ./graphics/../graphics/Schema_Codec.png used on input 
+line 8.
+(pdftex.def)             Requested size: 322.20296pt x 296.60739pt.
+
+<./graphics/../graphics/Schema_HPOUT.png, id=189, 349.305pt x 350.30875pt>
+File: ./graphics/../graphics/Schema_HPOUT.png Graphic file (type png)
+
+<use ./graphics/../graphics/Schema_HPOUT.png>
+Package pdftex.def Info: ./graphics/../graphics/Schema_HPOUT.png used on input 
+line 16.
+(pdftex.def)             Requested size: 174.65207pt x 175.15395pt.
+ [7 <./graphics/../graphics/Schema_Codec.png>]
+<./graphics/../graphics/Schema_LineIN.png, id=197, 643.40375pt x 555.07375pt>
+File: ./graphics/../graphics/Schema_LineIN.png Graphic file (type png)
+
+<use ./graphics/../graphics/Schema_LineIN.png>
+Package pdftex.def Info: ./graphics/../graphics/Schema_LineIN.png used on input
+ line 23.
+(pdftex.def)             Requested size: 321.70108pt x 277.53618pt.
+
+<./graphics/../graphics/Schema_LineOUT.png, id=198, 387.4475pt x 395.4775pt>
+File: ./graphics/../graphics/Schema_LineOUT.png Graphic file (type png)
+
+<use ./graphics/../graphics/Schema_LineOUT.png>
+Package pdftex.def Info: ./graphics/../graphics/Schema_LineOUT.png used on inpu
+t line 31.
+(pdftex.def)             Requested size: 193.72327pt x 197.73827pt.
+ [8 <./graphics/../graphics/Schema_HPOUT.png> <./graphics/../graphics/Schema_Li
+neIN.png>]
+<./graphics/../graphics/Schema_MicIN.png, id=207, 382.42876pt x 295.1025pt>
+File: ./graphics/../graphics/Schema_MicIN.png Graphic file (type png)
+
+<use ./graphics/../graphics/Schema_MicIN.png>
+Package pdftex.def Info: ./graphics/../graphics/Schema_MicIN.png used on input 
+line 39.
+(pdftex.def)             Requested size: 191.2139pt x 147.55087pt.
+
+<./graphics/../graphics/Schema_GND.png, id=208, 192.72pt x 125.46875pt>
+File: ./graphics/../graphics/Schema_GND.png Graphic file (type png)
+
+<use ./graphics/../graphics/Schema_GND.png>
+Package pdftex.def Info: ./graphics/../graphics/Schema_GND.png used on input li
+ne 47.
+(pdftex.def)             Requested size: 96.35976pt x 62.7342pt.
+) (./sections/3_4_0_PCB.tex)
+(./sections/3_5_0_Kosten.tex) [9 <./graphics/../graphics/Schema_LineOUT.png> <.
+/graphics/../graphics/Schema_MicIN.png> <./graphics/../graphics/Schema_GND.png>
+] (./sections/4_2_1_SSD1306.tex
+
+LaTeX Warning: Reference `' on page 10 undefined on input line 4.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 6--7
@@ -2426,7 +2477,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
 
-) (./sections/4_2_2_TLV320.tex [8
+) (./sections/4_2_2_TLV320.tex [10
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
@@ -2443,7 +2494,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--23
 
  []
 
-) [9]
+) [11]
 
 LaTeX Warning: Empty bibliography on input line 114.
 
@@ -2459,6 +2510,9 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 LaTeX Warning: There were undefined references.
 
 
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                report
 (biblatex)                and rerun LaTeX afterwards.
@@ -2469,10 +2523,10 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 130.
  ) 
 Here is how much of TeX's memory you used:
- 47842 strings out of 492995
- 985996 string characters out of 6132704
- 1526843 words of memory out of 5000000
- 50513 multiletter control sequences out of 15000+600000
+ 47883 strings out of 492995
+ 987316 string characters out of 6132704
+ 1526879 words of memory out of 5000000
+ 50538 multiletter control sequences out of 15000+600000
  86361 words of font info for 65 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
  64i,14n,80p,10509b,2308s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2493,10 +2547,10 @@ blic/lm/lmr6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmr8
 exlive/2017/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/201
 7/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2017/texmf-di
 st/fonts/type1/public/lm/lmtt9.pfb>
-Output written on report.pdf (12 pages, 754585 bytes).
+Output written on report.pdf (14 pages, 819313 bytes).
 PDF statistics:
- 313 PDF objects out of 1000 (max. 8388607)
- 263 compressed objects within 3 object streams
- 78 named destinations out of 1000 (max. 500000)
- 185 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 342 PDF objects out of 1000 (max. 8388607)
+ 278 compressed objects within 3 object streams
+ 86 named destinations out of 1000 (max. 500000)
+ 215 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -19,8 +19,8 @@
 \contentsline {subsubsection}{\numberline {3.3.1}Schema Speisung}{5}{subsubsection.3.3.1}
 \contentsline {subsubsection}{\numberline {3.3.2}Schema DSP}{6}{subsubsection.3.3.2}
 \contentsline {subsubsection}{\numberline {3.3.3}Schema Codec}{7}{subsubsection.3.3.3}
-\contentsline {subsection}{\numberline {3.4}PCB}{7}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}Kosten}{7}{subsection.3.5}
-\contentsline {subsubsection}{\numberline {3.5.1}SSD1306 C Library}{8}{subsubsection.3.5.1}
-\contentsline {subsubsection}{\numberline {3.5.2}TLV320 C Library}{9}{subsubsection.3.5.2}
-\contentsline {subsubsection}{\numberline {3.5.3}Encoder Mode mit Hardware Timer}{9}{subsubsection.3.5.3}
+\contentsline {subsection}{\numberline {3.4}PCB}{9}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Kosten}{9}{subsection.3.5}
+\contentsline {subsubsection}{\numberline {3.5.1}SSD1306 C Library}{10}{subsubsection.3.5.1}
+\contentsline {subsubsection}{\numberline {3.5.2}TLV320 C Library}{11}{subsubsection.3.5.2}
+\contentsline {subsubsection}{\numberline {3.5.3}Encoder Mode mit Hardware Timer}{11}{subsubsection.3.5.3}
