@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.9.21)  13 NOV 2019 12:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.9.21)  13 NOV 2019 13:31
 entering extended mode
 **./report.tex
 (report.tex
@@ -2054,26 +2054,34 @@ l.75 \clearpage
                 [2
 
 ] (sections/3_0_0_Hardware.tex)
-(sections/3_1_0_Blockschaltbild.tex) (sections/3_2_0_Pegeldiagramm.tex
-<./graphics/level_diagram_line.png, id=141, 869.74937pt x 381.92688pt>
+(sections/3_1_0_Blockschaltbild.tex
+<./graphics/block_diagramm.png, id=139, 636.3775pt x 606.265pt>
+File: ./graphics/block_diagramm.png Graphic file (type png)
+<use ./graphics/block_diagramm.png>
+Package pdftex.def Info: ./graphics/block_diagramm.png  used on input line 6.
+(pdftex.def)             Requested size: 455.24408pt x 433.69821pt.
+) [3
+
+ <./graphics/block_diagramm.png>]
+(sections/3_2_0_Pegeldiagramm.tex
+<./graphics/level_diagram_line.png, id=150, 869.74937pt x 381.92688pt>
 File: ./graphics/level_diagram_line.png Graphic file (type png)
 <use ./graphics/level_diagram_line.png>
 Package pdftex.def Info: ./graphics/level_diagram_line.png  used on input line 
 9.
 (pdftex.def)             Requested size: 455.24408pt x 199.91435pt.
-<./graphics/level_diagram_ext.png, id=143, 935.495pt x 354.32375pt>
+<./graphics/level_diagram_ext.png, id=151, 935.495pt x 354.32375pt>
 File: ./graphics/level_diagram_ext.png Graphic file (type png)
 <use ./graphics/level_diagram_ext.png>
 Package pdftex.def Info: ./graphics/level_diagram_ext.png  used on input line 1
 7.
 (pdftex.def)             Requested size: 455.24408pt x 172.42531pt.
-)
-[3
+) [4
 
- <./graphics/level_diagram_line.png> <./graphics/level_diagram_ext.png>]
-(sections/4_2_1_SSD1306.tex
+ <./graphics/level_diagram_line.png> <./graphics/level_diagram_ext.png>] (secti
+ons/4_2_1_SSD1306.tex
 
-LaTeX Warning: Reference `' on page 4 undefined on input line 4.
+LaTeX Warning: Reference `' on page 5 undefined on input line 4.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 6--7
@@ -2098,7 +2106,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
 
-) (sections/4_2_2_TLV320.tex [4
+) (sections/4_2_2_TLV320.tex [5
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
@@ -2115,17 +2123,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--23
 
  []
 
-) [5]
+) [6]
 
-LaTeX Warning: Empty bibliography on input line 112.
+LaTeX Warning: Empty bibliography on input line 113.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 128.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 128.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 129.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 129.
 (report.aux (sections/abstract.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 128.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 128.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 129.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 129.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 9E226CED1E5CFD0316DA4F1CD6AAFF18;867.
+(rerunfilecheck)             Checksum: 10C941FE978D828154DE1F51F90D7059;983.
 
 
 LaTeX Warning: There were undefined references.
@@ -2133,13 +2141,13 @@ LaTeX Warning: There were undefined references.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 128.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 129.
  ) 
 Here is how much of TeX's memory you used:
- 55407 strings out of 492895
- 1189802 string characters out of 3133479
- 1764713 words of memory out of 3000000
- 58451 multiletter control sequences out of 15000+200000
+ 55415 strings out of 492895
+ 1190076 string characters out of 3133479
+ 1764838 words of memory out of 3000000
+ 58456 multiletter control sequences out of 15000+200000
  615059 words of font info for 75 fonts, out of 3000000 for 9000
  1143 hyphenation exceptions out of 8191
  64i,14n,81p,1133b,2436s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2156,9 +2164,9 @@ e1/public/lm/lmro10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmss
 bx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Prog
 ram Files/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/lm/lmtt9.pfb>
-Output written on report.pdf (8 pages, 518543 bytes).
+Output written on report.pdf (9 pages, 730877 bytes).
 PDF statistics:
- 263 PDF objects out of 1000 (max. 8388607)
- 62 named destinations out of 1000 (max. 500000)
- 228 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 271 PDF objects out of 1000 (max. 8388607)
+ 64 named destinations out of 1000 (max. 500000)
+ 233 words of extra memory for PDF output out of 10000 (max. 10000000)
 
