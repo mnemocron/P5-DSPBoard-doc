@@ -1,0 +1,38 @@
+\subsubsection{Encoder Mode mit Hardware Timer}
+\label{sec:Conf_Encoder}
+
+
+
+\paragraph{Spezifikationen}
+
+\begin{table}[H]
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Setting} & \textbf{Werte} & \textbf{Erklärung}                            \\ \hline
+Counter Mode     & Up | Down      & Zählrichtung in Abhängigkeit der Drehrichung  \\ \hline
+Counter Period   &                & maximaler Zählerwert (z.b. uint16\_t)         \\ \hline
+Encoder Mode     & T1 | T2        & \begin{tabular}[c]{@{}l@{}}Triggerfokus auf CH1 oder CH2 oder beides.
+                                     \\ Wenn beide aktiviert sind, zählt der Timer doppelt.\end{tabular} \\ \hline
+\end{tabular}
+\end{table}
+
+
+\todo{SB - Bild von CubeMX}
+
+\paragraph{Anwendung im Code}
+
+\begin{lstlisting}[language=c]
+/* USER CODE BEGIN 2 */
+HAL_TIM_Encoder_Start(&htim2, TIM_CHANNEL_1);   // start Encoder mode on one channel
+/* USER CODE END 2 */
+\end{lstlisting}
+
+\begin{lstlisting}[language=c]
+/* USER CODE BEGIN x */
+int new_encoder_val = TIM2->CNT;   // read encoder count anywhere in the code 
+/* USER CODE END x */
+\end{lstlisting}
+
+
+
+
