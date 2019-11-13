@@ -1,0 +1,21 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {ngerman}
+\select@language {ngerman}
+\select@language {english}
+\select@language {ngerman}
+\select@language {ngerman}
+\contentsline {section}{\numberline {1}Einleitung}{1}{section.1}
+\contentsline {section}{\numberline {2}Analyse und Konzept}{2}{section.2}
+\contentsline {section}{\numberline {3}Produktbeschreibung}{2}{section.3}
+\contentsline {section}{\numberline {4}Ziele}{2}{section.4}
+\contentsline {subsection}{\numberline {4.1}Harte Ziele}{2}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Weiche Ziele}{2}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Nicht Ziele}{2}{subsection.4.3}
+\contentsline {section}{\numberline {5}L\IeC {\"o}sungskonzept}{2}{section.5}
+\contentsline {section}{\numberline {6}Anforderungen an Microcontroller}{3}{section.6}
+\contentsline {section}{\numberline {7}Konzept USB Akkuladeregler IC}{3}{section.7}
+\contentsline {section}{\numberline {8}Kaskadierung mehrerer Boards}{3}{section.8}
+\contentsline {section}{\numberline {9}Hardware}{4}{section.9}
+\contentsline {subsection}{\numberline {9.1}Blockschaltbild}{4}{subsection.9.1}
+\contentsline {section}{\numberline {10}Pegeldiagram}{4}{section.10}
