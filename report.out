@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{1 Einleitung}{}% 1
+\BOOKMARK [1][-]{section.2}{2 Analyse und Konzept}{}% 2
+\BOOKMARK [1][-]{section.3}{3 Produktbeschreibung}{}% 3
+\BOOKMARK [1][-]{section.4}{4 L\366sungskonzept}{}% 4
+\BOOKMARK [1][-]{section.5}{5 Anforderungen an Microcontroller}{}% 5
+\BOOKMARK [1][-]{section.6}{6 Konzept USB Akkuladeregler IC}{}% 6
+\BOOKMARK [1][-]{section.7}{7 Kaskadierung mehrerer Boards}{}% 7
+\BOOKMARK [1][-]{section.8}{8 Hardware}{}% 8
+\BOOKMARK [2][-]{subsection.8.1}{8.1 Blockschaltbild}{section.8}% 9
+\BOOKMARK [2][-]{subsection.8.2}{8.2 Pegeldiagram}{section.8}% 10
+\BOOKMARK [3][-]{subsubsection.8.2.1}{8.2.1 SSD1306 C Library}{subsection.8.2}% 11
+\BOOKMARK [3][-]{subsubsection.8.2.2}{8.2.2 TLV320 C Library}{subsection.8.2}% 12
+\BOOKMARK [3][-]{subsubsection.8.2.3}{8.2.3 Encoder Mode mit Hardware Timer}{subsection.8.2}% 13

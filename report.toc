@@ -1,0 +1,19 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {ngerman}{}
+\babel@toc {ngerman}{}
+\babel@toc {english}{}
+\babel@toc {ngerman}{}
+\babel@toc {ngerman}{}
+\contentsline {section}{\numberline {1}Einleitung}{1}{section.1}% 
+\contentsline {section}{\numberline {2}Analyse und Konzept}{2}{section.2}% 
+\contentsline {section}{\numberline {3}Produktbeschreibung}{2}{section.3}% 
+\contentsline {section}{\numberline {4}L\IeC {\"o}sungskonzept}{2}{section.4}% 
+\contentsline {section}{\numberline {5}Anforderungen an Microcontroller}{2}{section.5}% 
+\contentsline {section}{\numberline {6}Konzept USB Akkuladeregler IC}{2}{section.6}% 
+\contentsline {section}{\numberline {7}Kaskadierung mehrerer Boards}{2}{section.7}% 
+\contentsline {section}{\numberline {8}Hardware}{3}{section.8}% 
+\contentsline {subsection}{\numberline {8.1}Blockschaltbild}{3}{subsection.8.1}% 
+\contentsline {subsection}{\numberline {8.2}Pegeldiagram}{3}{subsection.8.2}% 
+\contentsline {subsubsection}{\numberline {8.2.1}SSD1306 C Library}{4}{subsubsection.8.2.1}% 
+\contentsline {subsubsection}{\numberline {8.2.2}TLV320 C Library}{5}{subsubsection.8.2.2}% 
+\contentsline {subsubsection}{\numberline {8.2.3}Encoder Mode mit Hardware Timer}{5}{subsubsection.8.2.3}% 
