@@ -11,4 +11,10 @@
 \BOOKMARK [1][-]{section.8}{8 Kaskadierung mehrerer Boards}{}% 11
 \BOOKMARK [1][-]{section.9}{9 Hardware}{}% 12
 \BOOKMARK [2][-]{subsection.9.1}{9.1 Blockschaltbild}{section.9}% 13
-\BOOKMARK [1][-]{section.10}{10 Pegeldiagram}{}% 14
+\BOOKMARK [2][-]{subsection.9.2}{9.2 Pegeldiagram}{section.9}% 14
+\BOOKMARK [2][-]{subsection.9.3}{9.3 Schema}{section.9}% 15
+\BOOKMARK [3][-]{subsubsection.9.3.1}{9.3.1 Schema Speisung}{subsection.9.3}% 16
+\BOOKMARK [3][-]{subsubsection.9.3.2}{9.3.2 Schema DSP}{subsection.9.3}% 17
+\BOOKMARK [3][-]{subsubsection.9.3.3}{9.3.3 Schema Codec}{subsection.9.3}% 18
+\BOOKMARK [2][-]{subsection.9.4}{9.4 PCB}{section.9}% 19
+\BOOKMARK [2][-]{subsection.9.5}{9.5 Kosten}{section.9}% 20

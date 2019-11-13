@@ -1,0 +1,439 @@
+% Encoding: UTF-8
+
+@Misc{JohnCogge,
+  author       = {{John Coggeshall}},
+  title        = {Don’t burn your house down 3D Printing. A Cautionary Tale},
+  year         = {2018},
+  date         = {2018-03-17},
+  howpublished = {Online},
+  url          = {https://www.thissmarthouse.net/dont-burn-your-house-down-3d-printing-a-cautionary-tale/},
+  urldate      = {2019-03-04},
+}
+
+@Misc{K8200,
+  author       = {{Vellman Corp.}},
+  title        = {Velleman K8200 Hompage},
+  year         = {2019},
+  date         = {2019-03-04},
+  howpublished = {Online},
+  url          = {http://www.k8200.eu/},
+  urldate      = {2019-03-04},
+}
+
+@Misc{K8200Specs,
+  author       = {{Vellman Corp.}},
+  title        = {Velleman K8200 Spezifikationen},
+  year         = {2019},
+  date         = {2019-03-04},
+  howpublished = {Online},
+  url          = {http://www.k8200.eu/specs/},
+  urldate      = {2019-03-04},
+}
+
+@Misc{Marlin,
+  author    = {Scott Lahteine},
+  title     = {Marlin Frimware Hompage},
+  year      = {2019},
+  date      = {2019-03-04},
+  url       = {http://marlinfw.org/},
+  urldate   = {2019-03-04},
+  publisher = {Online},
+}
+
+@Misc{MarlinBoards,
+  author    = {Scott Lahteine},
+  title     = {Boards | Marlin Frimware},
+  year      = {2019},
+  date      = {2019-05-24},
+  url       = {http://marlinfw.org/docs/development/boards.html},
+  urldate   = {2019-05-24},
+  publisher = {Online},
+}
+
+@Misc{ListOfFirmware,
+  author       = {Reprap},
+  title        = {List of Firmware},
+  year         = {2019},
+  date         = {2019-03-04},
+  howpublished = {Online},
+  url          = {https://www.reprap.org/wiki/List_of_Firmware},
+  urldate      = {2019-03-04},
+}
+
+@Misc{ESP3D,
+  author       = {Luc Lebosse},
+  title        = {ESP3D Github Page},
+  year         = {2019},
+  howpublished = {Online},
+  url          = {https://github.com/luc-github/ESP3D},
+  urldate      = {2019-03-04},
+}
+
+@Misc{MarlinGCode,
+  author  = {Marlin},
+  title   = {Marline G-Code},
+  year    = {2019},
+  date    = {2019-03-12},
+  url     = {http://marlinfw.org/meta/gcode/},
+  urldate = {2019-03-12},
+}
+
+@Misc{RepRapDFGSC,
+  author  = {Reprap},
+  title   = {RepRapDiscount Full Graphic Smart Controller},
+  year    = {2019},
+  date    = {2019-03-12},
+  url     = {https://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller},
+  urldate = {2019-03-12},
+}
+
+@Misc{TMC2660,
+  author       = {Trinamic},
+  title        = {TMC2660 Datasheet},
+  year         = {2017},
+  date         = {2017-06-15},
+  howpublished = {Online},
+  organization = {Trinamic},
+  url          = {https://www.trinamic.com/fileadmin/assets/Products/ICs_Documents/TMC2660_datasheet.pdf},
+  urldate      = {2019-03-12},
+}
+
+@Misc{TMC2130,
+  author       = {Trinamic},
+  title        = {TMC2130 Datasheet},
+  year         = {2018},
+  date         = {2018-05-14},
+  howpublished = {Online},
+  url          = {https://www.trinamic.com/fileadmin/assets/Products/ICs_Documents/TMC2130_datasheet.pdf},
+  urldate      = {2019-03-12},
+}
+
+@Misc{L6470,
+  author       = {STMicroelectronics},
+  title        = {L6470 Datasheet},
+  year         = {2015},
+  howpublished = {Online},
+  url          = {https://www.st.com/resource/en/datasheet/l6470.pdf},
+  urldate      = {2019-03-12},
+}
+
+@Misc{A4988,
+  author       = {{Allegro MicroSystems}},
+  title        = {A4988 Datasheet},
+  year         = {2016},
+  howpublished = {Online},
+  url          = {https://www.allegromicro.com/~/media/Files/Datasheets/A4988-Datasheet.ashx?la=en&hash=B0052E915715F54E7338E1274BC43698E610D8A9},
+  urldate      = {2019-03-12},
+}
+
+@Misc{MarlinGitHub,
+  author       = {{Marlin Firmware}},
+  title        = {Marline Firmware},
+  year         = {2019},
+  date         = {2019-03-15},
+  howpublished = {Online},
+  url          = {https://github.com/MarlinFirmware/Marlin},
+  urldate      = {2019-03-15},
+}
+
+@Misc{STM32F103RE,
+  author       = {STMicroelectronics},
+  title        = {STM32F103RE Datasheet},
+  year         = {2018},
+  date         = {2018-07-10},
+  howpublished = {Online},
+  url          = {https://www.st.com/resource/en/datasheet/stm32f103re.pdf},
+  urldate      = {2019-03-15},
+}
+
+@Misc{ATmega2560,
+  author       = {Atmel},
+  title        = {ATmega2560 Datasheet},
+  year         = {2014},
+  date         = {2014-02},
+  howpublished = {Online},
+  url          = {http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-2549-8-bit-AVR-Microcontroller-ATmega640-1280-1281-2560-2561_datasheet.pdf},
+  urldate      = {2019-03-15},
+}
+
+@Misc{ESP32,
+  author       = {{Espressif Systems}},
+  title        = {ESP32 Datasheet},
+  year         = {2019},
+  howpublished = {Online},
+  url          = {https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf},
+  urldate      = {2019-03-16},
+}
+
+@Misc{GnuLGPL,
+  author       = {{GNU Fundation}},
+  title        = {GNU Lesser General Public License},
+  year         = {2007},
+  howpublished = {Online},
+  url          = {https://www.gnu.org/licenses/lgpl-3.0.de.html},
+  urldate      = {2019-03-16},
+}
+
+@Misc{GnuGPLv3,
+  author       = {{GNU Fundation}},
+  title        = {GNU General Public License},
+  year         = {2007},
+  howpublished = {Online},
+  url          = {https://www.gnu.org/licenses/gpl-3.0.de.html},
+  urldate      = {2019-05-24},
+}
+
+@Book{ElektrischeAntriebe,
+  author    = {A. Colotti},
+  title     = {Elektrische Antriebe},
+  year      = {2015},
+  subtitle  = {Effizient bewegen und fördern},
+  publisher = {Faktor Journalisten},
+  location  = {Zürich},
+  pages     = {60-70},
+}
+
+@Misc{SchrittmotorDeltron,
+  author       = {St. Schaad},
+  title        = {Schrittmotor kurz erklärt},
+  howpublished = {Online},
+  url          = {https://wiki.ntb.ch/infoportal/_media/hardware/sysp/bauteile/schrittmotor_kurz_erklaert_d.pdf},
+  urldate      = {2019-05-07},
+}
+
+@Misc{FT2232D,
+  author  = {Future Technology Devices International Limited},
+  title   = {Future Technology Devices International Ltd. FT2232D Dual USB to Serial UART/FIFO IC},
+  howpublished = {Online},
+  year    = {2010},
+  url     = {https://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT2232D.pdf},
+  urldate = {2019-05-08},
+}
+
+@Misc{ESP32BootMode,
+  author       = {{Espressif Systems}},
+  title        = {ESP32 Boot Mode Selection},
+  year         = {2019},
+  howpublished = {Online},
+  url          = {https://github.com/espressif/esptool/wiki/ESP32-Boot-Mode-Selection},
+  urldate      = {2019-05-08},
+}
+
+@Misc{AdafruitHuzzah32,
+  author       = {{Adafruit Industries}},
+  title        = {PCB files for the Adafruit Feather ESP32 HUZZAH32},
+  year         = {2019},
+  howpublished = {Online},
+  url          = {https://github.com/adafruit/Adafruit-HUZZAH32-ESP32-Feather-PCB},
+  urldate      = {2019-05-08},
+}
+
+@Misc{4PCB,
+  author       = {{B. Suppanz}},
+  title        = {Trace Width Calculator},
+  year         = {2018},
+  howpublished = {Online},
+  url          = {https://www.4pcb.com/trace-width-calculator.html},
+  urldate      = {2019-05-08},
+}
+
+@Misc{TMC2660_Bob,
+  author       = {{TRINAMIC Motion Control GmbH}},
+  editor       = {{ TRINAMIC Motion Control GmbH}},
+  title        = {{TMC2660-PA BOB Description}},
+  year         = {2017},
+  date         = {2017-10-19},
+  howpublished = {Online},
+  url          = {https://www.trinamic.com/fileadmin/assets/Products/Eval_Documents/TMC2660-BOB_datasheet_Rev1.0.pdf},
+  urldate      = {2019-05-09},
+}
+
+@Misc{PMV40UN2,
+  author       = {{Nexperia}},
+  title        = {PMV40UN230 V, N-channel Trench MOSFET},
+  year         = {2014},
+  howpublished = {Online},
+  url          = {https://assets.nexperia.com/documents/data-sheet/PMV40UN2.pdf},
+  urldate      = {2019-05-11},
+}
+
+@Misc{EurocircuitsDRC,
+  author       = {{Euro Circuits}},
+  title        = {PCB Design Guidelines},
+  year         = {2018},
+  howpublished = {Online},
+  url          = {Quelle: https://www.eurocircuits.com/pcb-design-guidelines/},
+  urldate      = {2019-05-11},
+}
+
+@Misc{AN3155,
+  author       = {STMicroelectronics},
+  title        = {AN3155 USART protocol used in the STM32 bootloader},
+  year         = {2019},
+  howpublished = {Online},
+  url          = {https://www.st.com/content/ccc/resource/technical/document/application_note/51/5f/03/1e/bd/9b/45/be/CD00264342.pdf/files/CD00264342.pdf/jcr:content/translations/en.CD00264342.pdf},
+  urldate      = {2019-05-12},
+}
+
+@Misc{ESP3D-WEBUI,
+  author       = {Luc Lebosse},
+  title        = {ESP3D-WEBUI},
+  year         = {2019},
+  howpublished = {Online},
+  url          = {https://github.com/luc-github/ESP3D-WEBUI/},
+  urldate      = {2019-05-12},
+}
+
+@Misc{StallGuardAppnote,
+  author       = {Trinamic},
+  title        = {Parameterization of stallGuard2 \& coolStep},
+  year         = {2014},
+  howpublished = {online},
+  url          = {https://www.trinamic.com/fileadmin/assets/Support/Appnotes/AN002-stallGuard2.pdf},
+  urldate      = {2019-05-14},
+}
+
+@Misc{Filaments,
+  author       = {filamentworld},
+  title        = {Materialien im 3D Druck},
+  howpublished = {online},
+  url          = {https://www.filamentworld.de/3d-druck-wissen/materialien-im-3d-druck/},
+  urldate      = {2019-05-15},
+}
+
+@Misc{Ender3Pro,
+  author       = {Creality3D},
+  title        = {Creality3D Ender-3 pro High Precision 3D Printer},
+  howpublished = {online},
+  url          = {https://www.creality3d.shop/collections/3d-printer/products/creality3d-ender-3-pro-high-precision-3d-printer},
+  urldate      = {2019-05-21},
+}
+
+@Misc{Druckverfahren,
+  author       = {SRF},
+  title        = {3-D-Druckverfahren auf einen Blick},
+  howpublished = {online},
+  url          = {https://www.srf.ch/wissen/technik/3-d-druckverfahren-auf-einen-blick},
+  urldate      = {2019-05-21},
+}
+
+@Misc{BUK963R3,
+  author       = {{Nexperia}},
+  title        = {BUK963R3-60E N-channel TrenchMOS logic level FET},
+  year         = {2016},
+  howpublished = {Online},
+  url          = {https://assets.nexperia.com/documents/data-sheet/BUK963R3-60E.pdf},
+  urldate      = {2019-05-25},
+}
+
+@Misc{SDIO,
+  author       = {Yannik LI},
+  title        = {SD and SDIO},
+  year         = {2016},
+  date         = {2016-03-01},
+  howpublished = {Online},
+  url          = {https://yannik520.github.io/sdio.html},
+  urldate      = {2019-05-28},
+}
+
+@Misc{LM2675M,
+  author       = {Texas Instrument},
+  title        = {LM2675 Datasheet},
+  year         = {2004},
+  howpublished = {Online},
+  url          = {http://www.ti.com/lit/ds/symlink/lm2675.pdf},
+  urldate      = {2019-05-29},
+}
+
+@Misc{RM0008,
+  author       = {STMicroelectronics},
+  title        = {RM0008 Reference manual STM32F101xx, STM32F102xx, STM32F103xx, STM32F105xx and STM32F107xx advanced Arm®-based 32-bit MCUs},
+  year         = {2018},
+  howpublished = {Online},
+  url          = {https://www.st.com/content/ccc/resource/technical/document/reference_manual/59/b9/ba/7f/11/af/43/d5/CD00171190.pdf/files/CD00171190.pdf/jcr:content/translations/en.CD00171190.pdf},
+  urldate      = {2019-05-30},
+}
+
+@Misc{MKS_Robin,
+  author       = {Makerbase},
+  title        = {MKS Robin GitHub Repository},
+  year         = {2019},
+  date         = {2019-06-07},
+  howpublished = {Online},
+  url          = {https://github.com/makerbase-mks/MKS-Robin/tree/master/MKS%20Robin},
+  urldate      = {2019-06-07},
+}
+
+@Misc{XMLHttpRequest_upload,
+  author       = {{MDN Web Docs}},
+  title        = {XMLHttpRequest.upload},
+  year         = {2005-2019},
+  howpublished = {Online},
+  url          = {https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/upload},
+  urldate      = {2019-06-08},
+}
+
+@Misc{XMLHttpRequest_progress,
+  author       = {{MDN Web Docs}},
+  title        = {XMLHttpRequest: progress event},
+  year         = {2005-2019},
+  howpublished = {Online},
+  url          = {https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/progress_event},
+  urldate      = {2019-06-08},
+}
+
+@Misc{KingstonSD,
+  author       = {{Kingston Technology}},
+  title        = {microSDHC memory cardFlash Storage Media},
+  year         = {},
+  howpublished = {Online},
+  url          = {https://www.kingston.com/datasheets/SDCIT-specsheet-8gb-32gb_en.pdf},
+  urldate      = {2019-06-09},
+}
+
+@Misc{EpsonCrystal,
+  author       = {{Seiko Epson Corp.}},
+  title        = {SG-210STF (Crystal Oscillator)},
+  year         = {2019},
+  howpublished = {Online},
+  url          = {https://www5.epsondevice.com/en/products/crystal_oscillator/sg210stf.html},
+  urldate      = {2019-06-09},
+}
+
+@Misc{EpsonCrystal6MHz,
+  author       = {{Seiko Epson Corp.}},
+  title        = {CRYSTAL OSCILLATOR(SPXO)},
+  year         = {2019},
+  howpublished = {Online},
+  url          = {https://www.mouser.de/datasheet/2/137/G5032CAN_en-961596.pdf},
+  urldate      = {2019-06-09},
+}
+
+@Misc{NXPLevelShift,
+  author       = {{NXP Semiconductor}},
+  title        = {NTS0104-Q100Dual supply translating transceiver},
+  year         = {2013},
+  howpublished = {Online},
+  url          = {https://www.nxp.com/docs/en/data-sheet/NTS0104_Q100.pdf},
+  urldate      = {2019-06-09},
+}
+
+@Misc{ESP32Wroom,
+  author       = {{Espressif Systems}},
+  title        = {ESP32-WROOM-32Datasheet},
+  year         = {2019},
+  howpublished = {Online},
+  url          = {https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32_datasheet_en.pdf},
+  urldate      = {2019-06-09},
+}
+
+@Misc{12864LCD,
+  author       = {{Newhaven Display International Inc.}},
+  title        = {NHD-12864AZ-NSW-BBW-TR GraphicLiquid Crystal Display Module},
+  year         = {2019},
+  howpublished = {Online},
+  url          = {http://www.newhavendisplay.com/specs/NHD-12864AZ-NSW-BBW-TR.pdf},
+  urldate      = {2019-06-09},
+}
+
+@Comment{jabref-meta: databaseType:biblatex;}

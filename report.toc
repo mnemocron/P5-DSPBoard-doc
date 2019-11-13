@@ -18,4 +18,10 @@
 \contentsline {section}{\numberline {8}Kaskadierung mehrerer Boards}{3}{section.8}
 \contentsline {section}{\numberline {9}Hardware}{4}{section.9}
 \contentsline {subsection}{\numberline {9.1}Blockschaltbild}{4}{subsection.9.1}
-\contentsline {section}{\numberline {10}Pegeldiagram}{4}{section.10}
+\contentsline {subsection}{\numberline {9.2}Pegeldiagram}{4}{subsection.9.2}
+\contentsline {subsection}{\numberline {9.3}Schema}{4}{subsection.9.3}
+\contentsline {subsubsection}{\numberline {9.3.1}Schema Speisung}{4}{subsubsection.9.3.1}
+\contentsline {subsubsection}{\numberline {9.3.2}Schema DSP}{4}{subsubsection.9.3.2}
+\contentsline {subsubsection}{\numberline {9.3.3}Schema Codec}{4}{subsubsection.9.3.3}
+\contentsline {subsection}{\numberline {9.4}PCB}{4}{subsection.9.4}
+\contentsline {subsection}{\numberline {9.5}Kosten}{4}{subsection.9.5}
