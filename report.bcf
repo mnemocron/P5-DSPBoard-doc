@@ -2130,6 +2130,10 @@
     <bcf:datasource type="file" datatype="bibtex">literature/bibliography.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="1">usb-fuse</bcf:citekey>
+    <bcf:citekey order="2">bq2409x</bcf:citekey>
+    <bcf:citekey order="3">AN2606</bcf:citekey>
+    <bcf:citekey order="4">AN2606</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

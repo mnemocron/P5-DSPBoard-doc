@@ -18,3 +18,8 @@ Auf dem Print wird eine 3.3$\,\si{\volt}$ und eine 5$\,\si{\volt}$ Speisung benÃ
             \paragraph{Berechnung}
 ```
 
+### Referenzen
+
+```tex
+\cite[p. 16 - Table 5.1]{FT2232D}
+```

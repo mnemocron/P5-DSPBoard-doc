@@ -1,10 +1,10 @@
 \subsubsection{Anforderungen an Microcontroller}
 \label{sec:Konzept_Microcontroller}
 
-Anforderungen an den Prozessor sind: ARM-Cortex M4 mit DSP und FPU sowie Schnittstelle(n) zur Kommunikation mit dem Audio Codec. Der Codec wird aufgrund der genaueren Samplingrate als Masterbetrieben. Der DSP muss also keine genaue Clock zur Verfügung stellen. 
-
+Die an den Prozessor gestellten Anforderungen sind ein ARM-Cortex M4 Core mit DSP und FPU sowie Schnittstelle(n) zur Kommunikation mit dem Audio Codec. 
+Dabei wird aufgrund der genaueren Samplingrate der Codec als Master betrieben und der DSP als Slave.
+Der DSP muss also keine genaue Clock zur Verfügung stellen. 
 Auf eine Cortex-M7 Architektur wird verzichtet, weil ab diesem Punkt auch ein Single-Board Computer (vgl. Raspberry Pi) eingesetzt werden kann.
-
-Eine Tacktfrequenz von 200MHz ist wünschenswert, jedoch befinden sich die Cortex-M4 Prozessoren mit 200MHz auf dem Preisniveau von Cortex-M7 Microcontrollern.
+Eine Tacktfrequenz von 200MHz ist wünschenswert, jedoch befinden sich die Cortex-M4 Prozessoren mit 200MHz auf dem selben Preisniveau von Cortex-M7 Microcontrollern.
 
 
