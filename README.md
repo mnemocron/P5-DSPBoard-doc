@@ -23,3 +23,10 @@ Auf dem Print wird eine 3.3$\,\si{\volt}$ und eine 5$\,\si{\volt}$ Speisung benÃ
 ```tex
 \cite[p. 16 - Table 5.1]{FT2232D}
 ```
+
+
+### Probleme
+
+- `\cite` werden nicht kompiliert --> case sensitiv !
+- `\title` bei Tabellen werden nicht angezeigt
+- `\todo`  erscheinen nicht in orange --> ist jetzt im header aktiviert
