@@ -2,6 +2,10 @@
 
 ---
 
+Sitzung vom 26. November 2019
+- es braucht ein Kapitel __"Status und weiteres vorgehen"__
+
+
 
 ### SI Einheiten
 

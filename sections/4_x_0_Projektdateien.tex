@@ -1,0 +1,35 @@
+\subsection{Projektstruktur}
+\label{sec:SWProjekt}
+
+Die Dateistruktur des Softwareprojektes in Keil uVision 5 ist unten beschrieben. 
+Es sind nur die Dateien erwähnt, die für die Entwicklung der Software massgeblich sind.
+
+\paragraph{main.c}
+
+In der \texttt{main.c} Datei befindet sich der Hauptteil des Softwareprojektes.
+Libraries werden inkludiert, golbale sowie lokale Variablen deklariert und die Initialisierung des STM32 und aller Peripherie aufgerufen.
+Innerhalb der \texttt{while(1)} Schlaufe ist eine State Machine realisierbar, die den Programmablauf des User Interfaces bestimmt.
+Viele Variablen sind global und \texttt{volatile} deklariert und werden laufend von den Interrupt Handlern (IRQ) in \texttt{stm32f4xx\_it.c} verändert.
+
+\paragraph{stm32f4xx\_it.c}
+
+In dieser Datei sind die Interrupt Request Handler (IRQ) Funktionen ausprogrammiert.
+Die definierten Funktionen werden bei verschiedenen Interrupt Events wie externen GPIO Interrupts (EXTI) oder DMA Transmission Completion Interrupt aufgerufen.
+
+\paragraph{dsp\_board\_bsp.c}
+
+Die Datei \texttt{dsp\_board\_bsp.} stellt ein Board Support Package für das P5 DSP Board dar.
+In dieser Datei sind Funktionen ausgelagert, die spezifisch für die Hardware gemacht sind.
+Die Interrupts werden hier abgefangen und über \texttt{extern volatile} Variablen an die State Machine im \texttt{main.c} weitergegeben.
+Ausserdem sind gewisse, nicht spezifisch auf die Hardware ausgelegte Helferfunktionen (z.B. Sinusgenerator) in dieser Datei ausgelagert.
+
+\paragraph{ssd1306.c}
+
+Die Dateien \texttt{ssd1306.c}, \texttt{ssd1306\_fonts.c} und \texttt{ssd1306\_tests.c} beinhalten die Funktionen zur Ansteuerung der SSD1306 OLED Displays und bilden die Library.
+
+\paragraph{tlv320aic.c}
+
+Die \texttt{tlv320aic.c} Datei bildet die Library für den TLV320 Audio Codec und beinhaltet Funktionen zur Lautstärkeregelung und Initialisierung des Codecs.
+
+
+
