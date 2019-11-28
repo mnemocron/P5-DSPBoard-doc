@@ -10,12 +10,8 @@ Dazu kommt eine auf STM32 angepasste Version der Library von Simon Gerber und Be
 
 \begin{lstlisting}[language=c]
 /* USER CODE BEGIN 2 */
-holed1.hi2cx = &hi2c1;   // set peripheral interface of Struct to I2C
 
-ssd1306_Init(&holed1);
-ssd1306_Fill(&holed1, Black);       // all pixels black
-ssd1306_SetCursor(&holed1, 2, 0);   // x = 2px (from left) / y = 0px (from top)
-ssd1306_WriteString(&holed1, "FHNW", Font_11x18, White); // medium font
-ssd1306_UpdateScreen(&holed1);      // write Buffer to OLED Display
+// @TODO ???
+
 \end{lstlisting}
 
