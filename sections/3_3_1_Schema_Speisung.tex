@@ -22,8 +22,14 @@ wird der Pin für die Temperaturüberwachung mit R19 terminiert.
 IC1 wird mit dem Pull-Down R51 am \texttt{ISET2} Pin auf \texttt{LOW} gezogen, was den Ladestrom auf ${I_{charge}=100\si{mA}}$ beschränkt. 
 Bei Bedarf kann der Ladestrom vom STM32 über \texttt{PB14} auf \texttt{HIGH} und damit ${I_{charge}=500\si{mA}}$ festgelegt werden.
 
-\todo{ - Bild mit Schemateil des BQ2409}
 
+\begin{figure} [H]
+\begin{center}
+\includegraphics[scale=0.5]{../graphics/Schema_Akku.png}
+\caption{BQ24093 mit äusserer Beschaltung nach Datenblatt}
+\label{fig:Schema_Akku}
+\end{center}
+\end{figure}
 
 \paragraph{ADC Akkumulator Spannungsmessung}
 
