@@ -31,5 +31,11 @@ Die Dateien \texttt{ssd1306.c}, \texttt{ssd1306\_fonts.c} und \texttt{ssd1306\_t
 
 Die \texttt{tlv320aic.c} Datei bildet die Library für den TLV320 Audio Codec und beinhaltet Funktionen zur Lautstärkeregelung und Initialisierung des Codecs.
 
+\paragraph{dsp\_processing.c}
 
+In der DSP Processing Datei werden die empfangenen Audiodaten an verschiedene DSP-Funktionen wie FIR-Filter verteilt und der Output-Buffer für den DMA Controller befüllt.
+
+\paragraph{fir.c}
+
+In dieser Datei ist ein FIR Filter aus der CMSIS/DSP Library implementiert.
 

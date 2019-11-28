@@ -1,25 +1,36 @@
 \subsubsection{Encoder Mode mit Hardware Timer}
 \label{sec:Conf_Encoder}
 
+Einige integrierte Timer im STM32 unterstützen einen Encoder Modus, bei dem 2 vorgegebene GPIO
+Pins den Zählstand des Timers verändern können.
+In der Konfiguration kann die Zählrichtung (up/down), die aktive Flanke (high/low) sowie der maximale Zählwert eingestellt werden. In der Abbildung \ref{pic:CubeMX_TIM3} ist die Konfiguration für den Timer 3 dargestellt. Der Timer 4 erhält die selbe Konfiguration.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\linewidth]{CubeMX_TIM3}
+	\caption{Konfiguration des Timer 3 im Encoder Modus}
+	\label{pic:CubeMX_TIM3}
+\end{figure}
 
-\paragraph{Spezifikationen}
+\paragraph{Parameter}
+
+Die nachfolgende Tabelle listet einige wichtige Parameter und deren Einfluss.
 
 \begin{table}[H]
-\begin{tabular}{|l|l|l|}
-\hline
-\textbf{Setting} & \textbf{Werte} & \textbf{Erklärung}                            \\ \hline
-Counter Mode     & Up | Down      & Zählrichtung in Abhängigkeit der Drehrichung  \\ \hline
-Counter Period   &                & maximaler Zählerwert (z.b. uint16\_t)         \\ \hline
-Encoder Mode     & T1 | T2        & \begin{tabular}[c]{@{}l@{}}Triggerfokus auf CH1 oder CH2 oder beides.
-                                     \\ Wenn beide aktiviert sind, zählt der Timer doppelt.\end{tabular} \\ \hline
-\end{tabular}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Setting} & \textbf{Werte} & \textbf{Erklärung}                            \\ \hline
+		Counter Mode     & Up | Down      & Zählrichtung in Abhängigkeit der Drehrichung  \\ \hline
+		Counter Period   &                & maximaler Zählerwert (z.b. uint16\_t)         \\ \hline
+		Encoder Mode     & T1 | T2        & \begin{tabular}[c]{@{}l@{}}Triggerfokus auf CH1 oder CH2 oder beides.
+			\\ Wenn beide aktiviert sind, zählt der Timer doppelt.\end{tabular} \\ \hline
+	\end{tabular}
 \end{table}
 
-
-\todo{SB - Bild von CubeMX}
-
 \paragraph{Anwendung im Code}
+
+Das untenstehende Listing stellt dar, wie der Timer im \texttt{main.c} gestartet werden muss.
+Eine Initialisierung alleine reicht nicht aus.
 
 \begin{lstlisting}[language=c]
 /* USER CODE BEGIN 2 */
@@ -27,6 +38,8 @@ Encoder Mode     & T1 | T2        & \begin{tabular}[c]{@{}l@{}}Triggerfokus auf 
 HAL_TIM_Encoder_Start(&htim2, TIM_CHANNEL_1);
 /* USER CODE END 2 */
 \end{lstlisting}
+
+Mit dem unten gezeigten Befehl lässt sich der aktuelle Zählstand des Timers resp. Encoders auslesen.
 
 \begin{lstlisting}[language=c]
 /* USER CODE BEGIN x */
