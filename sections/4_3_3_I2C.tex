@@ -1,4 +1,18 @@
 \subsubsection{Inter Integrated Circuit (I2C)}
 \label{sec:CubeMXI2C}
 
+Über insgesamt zwei I\textsuperscript{2}C Busse (I\textsuperscript{2}C1 / I\textsuperscript{2}C3) werden die beiden SSD1306 OLED Displays und der TLV320 angesprochen.
+Beide Busse werden nach den Standardeinstellungen gemäss Abbildung \ref{pic:CubeMX_I2C1} betrieben.
+Die Clock Frequenz beträgt $100\si{kHz}$, die Adressbreite 7 Bit.
+Es werden keine Interrupts oder DMA verwendet.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{CubeMX_I2C1}
+	\caption{Parameter Einstellungen der I\textsuperscript{2}C1 und  I\textsuperscript{2}C3 Schnittstelle}
+	\label{pic:CubeMX_I2C1}
+\end{figure}
+
+
+
 
