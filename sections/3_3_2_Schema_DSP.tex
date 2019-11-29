@@ -4,7 +4,6 @@
 \paragraph{I2S Schnittstelle}
 
 \begin{table}[H]
-\title{Signale zwischen dem DSP und dem Codec}
 \centering
 \begin{tabular}{|l|l|c|l|l|}
 \hline
@@ -15,6 +14,7 @@ PB12           & WS              & $\rightarrow$ & LRCIN           & 5          
 PB12           & WS              & $\leftarrow$  & LRCOUT          & 7               \\ \hline
 PA2            & CKIN            & $\leftarrow$  & CLKOUT          & 2               \\ \hline
 \end{tabular}
+\caption{Signale zwischen dem DSP und dem Codec}
 \end{table}
 
 
@@ -33,7 +33,6 @@ Unten in der Tabelle sind die beiden Boot Modi zusammengefasst.
 Der BOOT1 Pin ist beim STM32F412 auf PB2.
 
 \begin{table}[H]
-\title{Boot Mode Auswahl über BOOT[1:0] Pins}
 \centering
 \begin{tabular}{|l|c|c|}
 \hline
@@ -41,6 +40,7 @@ Der BOOT1 Pin ist beim STM32F412 auf PB2.
 Bootloader         & 0              & 1              \\ \hline
 Normal             & 0              & 0              \\ \hline
 \end{tabular}
+\caption{Mode Auswahl über BOOT[1:0] Pins}
 \end{table}
 
 
@@ -54,7 +54,6 @@ Dabei stehen 16 Interrupt Channel zur Verfügung, von welchen die Channel Nummer
 Wie in der nachfolgenden Tabelle aufgeführt, werden gesammthaft 4 EXTI Channels belegt.
 
 \begin{table}[H]
-\title{GPIO Mapping auf EXTI Interrupt Channels}
 \centering
 \begin{tabular}{|l|l|l|}
 \hline
@@ -64,6 +63,7 @@ Encoder 2 Button & PB13          & 13            \\ \hline
 Button 1         & PA0           & 0             \\ \hline
 Button 2         & PA1           & 1             \\ \hline
 \end{tabular}
+\caption{GPIO Mapping auf EXTI Interrupt Channels}
 \end{table}
 
 

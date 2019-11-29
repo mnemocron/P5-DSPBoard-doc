@@ -1,7 +1,7 @@
 \subsubsection{Schema Codec}
 \label{sec:Schema_Codec}
 
-Die Wandlung des analogen Audio-Signale sowie die Rückwandlung der digitalen Signale vom Microcontroller  übernimmt ein TLV320AIC23B von Texas Instruments. Dieser Codec hat eine variable Sampling-Frequenz (8kHz-96kHz), einen Köpfhörer- und einen Mikrofon-Vorverstärker. Die Register des Codecs werden über I2C programmiert (wobei auch SPI möglich wäre), dazu wird der "Mode" Pin über eine Widerstand auf GND gezogen. Die gesampelten Daten wiederum werden über I2S an den Microcontroller übermittelt. Zusätzlich wird der 12.28 MHz Audio-Clock mit dem der Codec taktet von einem externen ECS-Quarz erzeugt (Abbildung \ref{fig:Schema_Codec}). 
+Die Wandlung des analogen Audio-Signale sowie die Rückwandlung der digitalen Signale vom Microcontroller  übernimmt ein TLV320AIC23B von Texas Instruments. Dieser Codec hat eine variable Sampling-Frequenz (8kHz-96kHz), einen Köpfhörer- und einen Mikrofon-Vorverstärker. Die Register des Codecs werden über I2C programmiert (wobei auch SPI möglich wäre), dazu wird der Mode-Pin über einen Widerstand auf GND gezogen. Die gesampelten Daten wiederum werden über I2S an den Microcontroller übermittelt. Zusätzlich wird der 12.28 \si{MHz} Audio-Clock mit dem der Codec taktet von einem externen ECS-Quartz erzeugt (Abbildung \ref{fig:Schema_Codec}). 
 
 \begin{figure} [H]
 \begin{center}
@@ -11,21 +11,24 @@ Die Wandlung des analogen Audio-Signale sowie die Rückwandlung der digitalen Si
 \end{center}
 \end{figure}
 
-Die Analog-Speisung des TLVs wird neben den 100nF Stütz-Kondensatoren zusätzlich von einem Ferrit Bead geglättet. Damit wird sichergestellt, dass keine ungewollten hochfrequente Spitzen in der Speisung das Audio-Signal verfälschen.
+Die Analog-Speisung des TLVs wird neben den 100\si{nF} Stütz-Kondensatoren zusätzlich von einem Ferrit Bead geglättet. Damit wird sichergestellt, dass keine ungewollten hochfrequente Spitzen in der Speisung das Audio-Signal verfälschen.
 
 In den nachfolgenden Unterkapiteln wird genauer auf die In- und Outputs des DSP-Boards, beziehungsweise deren äusseren Beschaltung eingegangen.
 
 
 \paragraph{Line Input}
 \label{par:LineIN}
+Das Line-Signal wird am Eingang (Abbildung \ref{fig:Schema_LineIN}) erstmal durch den Spannungsteiler mit \textit{R23} und \textit{R14} bzw. \textit{R27} und \textit{R26} halbiert. Im Datenblatt des TLV320AIC23B \cite{tlv320} wird empfohlen die Signal-Amplitude von 2V auf 1V runterzubringen. Zudem bilden \textit{R23/R26} zusammen mit \textit{C23/C26}  einen Tiefpass-Filter mit einer Grenzfrequenz von 604.7 MHz, was schonmal die gröbsten hochfrequenten Störungen filtert. Mit \textit{C24/C20} wird das Signal zusätzlich galvanisch entkoppelt.
 
 \begin{figure} [H]
 \begin{center}
  \includegraphics[scale=0.5]{../graphics/Schema_LineIN.png}
-\caption{}
+\caption{Line Eingangsstufe mit Audio-Switch}
 \label{fig:Schema_LineIN}
 \end{center}
 \end{figure}
+
+Parallel dazu kommt über einen AVX-Stecker alternativ ein Audio-Signal von einem nächsten DSP-Board rein. Die Auswahl des Line-In Signals erfolgt über einen MAX4762 \cite{max4762} Audioswitch von Maxim.
 
 \paragraph{Line Output}
 \label{par:LineOUT}
