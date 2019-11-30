@@ -18,7 +18,8 @@ In den nachfolgenden Unterkapiteln wird genauer auf die In- und Outputs des DSP-
 
 \paragraph{Line Input}
 \label{par:LineIN}
-Das Line-Signal wird am Eingang (Abbildung \ref{fig:Schema_LineIN}) erstmal durch den Spannungsteiler mit \textit{R23} und \textit{R14} bzw. \textit{R27} und \textit{R26} halbiert. Im Datenblatt des TLV320AIC23B \cite{tlv320} wird empfohlen die Signal-Amplitude von 2V auf 1V runterzubringen. Zudem bilden \textit{R23/R26} zusammen mit \textit{C23/C26}  einen Tiefpass-Filter mit einer Grenzfrequenz von 604.7 MHz, was schonmal die gröbsten hochfrequenten Störungen filtert. Mit \textit{C24/C20} wird das Signal zusätzlich galvanisch entkoppelt.
+Das Line-Signal wird am Eingang (Abbildung \ref{fig:Schema_LineIN}) erstmal durch den Spannungsteiler mit \textit{R23} und \textit{R14} bzw. \textit{R27} und \textit{R26} halbiert. Im Datenblatt des TLV320AIC23B \cite{tlv320} wird empfohlen die Signal-Amplitude von 2V auf 1V runterzubringen. Zudem bilden \textit{R23/R26} zusammen mit \textit{C23/C26}  einen Tiefpass-Filter mit einer Grenzfrequenz von 604.7 MHz, was schonmal die gröbsten hochfrequenten Störungen filtert. Mit \textit{C24/C20} wird das Signal zusätzlich galvanisch entkoppelt. Da der Audio-Eingang grundsätzlich eher hochohmig gehalten werden sollen, sind die Widerstands-Werte mit 5.6k$\Omega$ nicht zu klein gewählt. \cite{book:douglas}
+Über den Tip-Switch des Mini-Jack-Steckers kann an einem GPIO-Pin des Microcontrollers auch detektiert werden ob ein Stecker eingesteckt ist, oder nicht.
 
 \begin{figure} [H]
 \begin{center}
@@ -28,10 +29,13 @@ Das Line-Signal wird am Eingang (Abbildung \ref{fig:Schema_LineIN}) erstmal durc
 \end{center}
 \end{figure}
 
-Parallel dazu kommt über einen AVX-Stecker alternativ ein Audio-Signal von einem nächsten DSP-Board rein. Die Auswahl des Line-In Signals erfolgt über einen MAX4762 \cite{max4762} Audioswitch von Maxim.
+Parallel dazu kommt über einen AVX-Stecker alternativ ein Audio-Signal von einem nächsten DSP-Board rein. Die Auswahl des Line-In Signals erfolgt über einen MAX4762 \cite{max4762} Audioswitch von Maxim der über einen GPIO-Pin des Microcontrollers angesteuert wird. 
 
 \paragraph{Line Output}
 \label{par:LineOUT}
+An der Ausgangsstufe des Codecs wird mit einem Hochpass mit einer Grenzfrequenz von 1.54Hz, realisiert durch \textit{C7/C16} und \textit{R10/R11}, der DC-Anteil rausgefiltert um Brummen auf der Leitung zu verhindern.
+Wie am Eingang wird hier der Ausgang parallel an einen AVX-Stecker geführt, um die Kaskadierung verschiedener Boards möglich zu machen.
+
 
 \begin{figure} [H]
 \begin{center}
