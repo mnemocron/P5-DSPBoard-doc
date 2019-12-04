@@ -1,0 +1,25 @@
+\subsubsection{DSP Processing}
+\label{sec:LibDSPProcessing}
+
+Die Datei \texttt{fir\_processing.c} enthält eine Routine \texttt{DSP\_Process\_Data} zur Verarbeitung des Audiodatenstreams. Die Routine wird in der DMA ISR ein Mal pro (halaber) Buffer aufgerufen.
+Die in der Routine enthaltene Switch-Case Struktur selektiert die Art auf welche die Daten verarbeitet werden. 
+Um einen anderen DSP Modus auszuwählen, kann die \texttt{dsp\_mode} Variable, die das Switch-Case steuert, extern durch das User Interface im \texttt{main.c} verändert werden.
+
+Die Tabelle \ref{tab:DSP_Modes} zeigt die verfügbaren DSP Modi: \textit{Passthrough} - Das Audiosignal wird unverändert in den Ausgangsbuffer geschrieben. \textit{FIR Filter} - Das Eingangssignal wird durch ein CMSIS/DSP FIR filter vom Typ \texttt{arm\_fir\_f32} gefiltert. \textit{Gain} - Das Eingangssignal wird mit einem konstanten Gain multipliziert.
+Im Falle des FIR Filters, wird die Datei \texttt{fir.c} als Wrapper für die CMSIS/DSP Funktionen angewandt. Diese externe Funktion ist im Abschnitt \ref{sec:LibFIRFilter} dokumentiert.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|}
+		\hline
+		\multicolumn{1}{|c|}{\textbf{Mode Available}} \\ \hline
+		\texttt{DSP\_MODE\_PASSTHROUGH}                        \\ \hline
+		\texttt{DSP\_MODE\_GAIN}                               \\ \hline
+		\texttt{DSP\_MODE\_FIR}                                \\ \hline
+	\end{tabular}
+	\caption{Implementierte DSP Modi}
+	\label{tab:DSP_Modes}
+\end{table}
+
+\todo{SB - Verweis auf Kapitel mit Messresultaten. Delay für FIR etc.}
+

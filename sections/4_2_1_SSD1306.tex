@@ -1,22 +1,23 @@
 \subsubsection{SSD1306 C Library}
 \label{sec:Library_ssd1306}
 
-Zur Ansteuerung der OLED Displays wird die Library stm32-ssd1306 von Aleksander Alekseev \ref{} verwendet.
+Zur Ansteuerung der OLED Displays wird die Library stm32-ssd1306 von Aleksander Alekseev \cite{github-stm32-ssd1306} verwendet. Die wichtigsten Eigenschaften der Library sind in der Tabelle \ref{tab:LibSSD1306} afugeführt.
 
 \paragraph{Spezifikationen}
 
 \begin{table}[H]
-\title{Eigenschaften der STM32-SSD1306 Library}
-\centering
-\begin{tabular}{|l|c|}
-\hline
-\textbf{Beschreibung} & \textbf{Wert}     \\ \hline
-Lizenz                & MIT               \\ \hline
-RAM Bedarf            & 1 kiB pro Display \\ \hline
-Textunterstützung     & ja                \\ \hline
-Schriftarten          & 3 font sizes      \\ \hline
-Grafikunterstützung   & nein              \\ \hline
-\end{tabular}
+	\centering
+	\begin{tabular}{|l|c|}
+		\hline
+		\textbf{Beschreibung} & \textbf{Wert}     \\ \hline
+		Lizenz                & MIT               \\ \hline
+		RAM Bedarf            & 1 kiB pro Display \\ \hline
+		Textunterstützung     & ja                \\ \hline
+		Schriftarten          & 3 font sizes      \\ \hline
+		Grafikunterstützung   & nein              \\ \hline
+	\end{tabular}
+	\caption{Eigenschaften der STM32-SSD1306 Library}
+	\label{tab:LibSSD1306}
 \end{table}
 
 Die Library funktioniert so, dass ein Pixelbuffer pro Display im RAM erstellt wird.
@@ -27,7 +28,7 @@ ${W * H / 8 = 128 * 64 / 8 = 1024\ \si{Bytes}}$
 
 \paragraph{Änderungen an der Library}
 
-Die Library unterstützt nur ein Display an einem I2C oder SPI Bus. Da bei diesem Projekt zwei Displays an unterschiedlichen Peripherischnittstellen sitzen, ist die Library für diese Anwendung angepasst.
+Die Library unterstützt nur ein Display an einem I\textsuperscript{2}C oder SPI Bus. Da bei diesem Projekt zwei Displays an unterschiedlichen Peripherischnittstellen sitzen, ist die Library für diese Anwendung angepasst.
 Jeder Funktion muss nun ein Pointer auf einen Display Struct mitgegeben werden.
 Im folgenden Listing ist dargestellt, wie die Library in C verwendet wird.
 
@@ -55,7 +56,7 @@ ssd1306_UpdateScreen(&holed1);      // write Buffer to OLED Display
 \end{lstlisting}
 
 Die Library hat folgende Einschränkung: Alle Displays müssen entweder über I2C oder SPI Peripheriebusse angeschlossen sein.
-Ein Mischen von SPI und I2C ist nicht möglich. Ausserdem sind die Funktionen für SPI nicht implementiert.
+Ein Mischen von SPI und I\textsuperscript{2}C ist nicht möglich. Ausserdem sind die Funktionen für SPI nicht implementiert.
 
 \paragraph{Copyright Notice}
 

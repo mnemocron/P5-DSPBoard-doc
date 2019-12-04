@@ -1,0 +1,37 @@
+\subsubsection{FIR Filter}
+\label{sec:LibFIRFilter}
+
+Als Wrapper für die CMSIS/DSP Funktionen für FIR Filter dienen die Dateien \texttt{fir.h} und \texttt{fir.c}. In dieser Library sind die Filterkoeffizienten in einem statischen Array abgelegt.
+
+
+\paragraph{FIR Filter initialisieren}
+
+Zusätzlich sind Init-Funktionen für das Mono- und Stereo-FIR Filter vorhanden. 
+Das Initialisieren durch die Init Funktion muss vor dem Aufrufen der FIR-Processing Funktion geschehen, da die MCU sonst in einen Hard Fault läuft.
+
+Im \texttt{main.c} muss der nachfolgende Code zur Initialisierung aufgeruffen werden.
+
+\begin{lstlisting}[language=c]
+/* USER CODE BEGIN 2 */
+FIR_Init_Mono();
+FIR_Init_Stereo();
+/* USER CODE END 2 */
+\end{lstlisting}
+
+
+\paragraph{Filterkoeffizienten mit MATLAB berechnen}
+
+Die Berechnung eines konkreten Filters ist nicht Teil dieses Projekts.
+Für die Beispielimplementation des FIR Filters wurde für das Mono-Filter das Tiefpassfilter Example aus der CMSIS/DSP Dokumentation verwendet. 
+Eine Kopie des Beispielcodes ist im Projekt unter \texttt{./Drivers/CMSIS/DSP/Examples/ARM/arm\_fir\_example/arm\_fir\_example\_f32.c} enthalten.
+Die Dokumentation des Filters bzw. der gesamten CMSIS/DSP Library ist auf der Webseite von ARM \cite{cmsis-doc-arm} oder Keil \cite{cmsis-doc-keil} abrufbar.
+
+Für das Stereofilter wurde mit folgendem MATLAB-Befehl die 11 Filterkoeffizienten berechnet. Das Filter hat eine 3dB-Grenzfrequenz bei $6/24 \pi rad/Sample$.
+
+\todo{SB - fir1 Funktionsparameter erklären}
+
+\begin{lstlisting}[language=matlab]
+fir1(10, 6/24)
+\end{lstlisting}
+
+

@@ -1,0 +1,27 @@
+\subsubsection{Bootloader starten}
+\label{sec:Enter_DFU}
+
+Der STM32 muss in den internen Bootloader starten. Dies könnte theoretisch über Software (Assembler) per Anpassung der \texttt{startup.s} Datei erreicht werden.
+Jedoch ist auf dem DSP Board eine Schaltung vorhanden, um den \texttt{BOOT0} Pin vorübergehend auf \texttt{HIGH} zu ziehen.
+Wenn ein Starten des Bootloaders und somit des DFU Modus gewünscht wird, muss dies in der Software folgendermassen realisiert werden.
+
+\begin{lstlisting}[language=c]
+/* If User Button is pressed on Startup, enter DFU Firmware Upgrade Mode */
+if(HAL_GPIO_ReadPin(SW2_GPIO_Port, SW2_Pin) == GPIO_PIN_SET){
+  // pull BOOT0 = 1
+  HAL_GPIO_WritePin(SET_BOOT0_GPIO_Port, SET_BOOT0_Pin, GPIO_PIN_SET);
+  HAL_Delay(500);      // wait for Capacitor to charge to ~3.3V
+  NVIC_SystemReset();  // Reset the MCU
+}
+\end{lstlisting}
+
+Das oben aufgeführte Listing beschreibt das Auslösen des DFU Modus sobald der einer der User Buttons gedrückt wird.
+Damit der Kondensator zeit hat, sich aufzuladen, wird ein Delay von ca. 500ms benötigt.
+Anschliessend wird mit dem Befehl \texttt{NVIC\_SystemReset()} ein Software Reset ausgelöst.
+Der STM32 sollte nun in den Bootloader starten.
+
+Vor dem Systemreset besteht die Möglichkeit, einen Hinweisstring (z.B. \textit{"upgrading..."}) auf dem OLED Display anzuzeigen.
+Der Text bleibt während dem Upgrade bestehen, da die Spannungsversorgung nicht unterbrochen wird.
+
+
+
