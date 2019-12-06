@@ -1,7 +1,7 @@
 \subsubsection{Digitaler Datenfluss}
 \label{sec:Dataflow}
 
-Die Abbildung \ref{pic:DMA_Dataflow} zeigt den Datenfluss durch den STM32 mit den jeweils verwendeten Datentypen, den Routinen und den Quelldateien.
+Anhand der nachfolgenden Abbildung \ref{pic:DMA_Dataflow} wird gezeigt, wie der Datenfluss durch den STM32 mit den jeweils verwendeten Datentypen, den Routinen und den Quelldateien aufgebaut ist.
 
 \begin{figure}[H]
 	\centering
@@ -10,7 +10,7 @@ Die Abbildung \ref{pic:DMA_Dataflow} zeigt den Datenfluss durch den STM32 mit de
 	\label{pic:DMA_Dataflow}
 \end{figure}
 
- Die Datenverarbeitung läuft folgendermassen ab:\\
+Die Datenverarbeitung läuft folgendermassen ab:\\
 
 Der DMA Controller wird im \texttt{main.c} so gestartet, dass ankommende Daten automatisch in den \texttt{uint16\_t} Buffer \texttt{pRxData} geschrieben werden. Die Datengrösse des DMA Buffers ist 256. 
 
@@ -33,7 +33,7 @@ Der DMA Controller ist bereits im \texttt{main.c} so konfiguriert, diesen Output
 		\textbf{\#define}       & \textbf{Wert} & \textbf{Beschreibung}                                                 \\ \hline
 		\texttt{DSP\_BUFFERSIZE} & 128 & Anzahl Samples (L+R) pro DMA Interruptzyklus \\ \hline
 		\texttt{DSP\_BUFFERSIZE\_HALF} & 64 & \begin{tabular}[c]{@{}l@{}}Anzahl Samples pro Kanal.\\ Auch blockSize für FIR Filter\end{tabular} \\ \hline
-	\texttt{	DSP\_BUFFERSIZE\_DOUBLE} & 256 & Grösse des Circular Buffers für den I2S DMA \\ \hline  
+	\texttt{DSP\_BUFFERSIZE\_DOUBLE} & 256 & Grösse des Circular Buffers für den I2S DMA \\ \hline  
 	\end{tabular}
 	\caption{Erklärung der Werte im C-Code}
 	\label{tab:buffer_sizes}
