@@ -3,7 +3,7 @@
 
 Damit auf dem STM32 dynamisch ein FIR Tiefpassfilter generiert werden kann, ist die Helperlibrary \texttt{adaptive\_fir.c} im Projektordner dabei.
 Die Library enthält eine Funktion, die aus für eine gewünschte Grenzfrequenz die gewünschte Anzahl Koeffizienten liefert.
-Dabei wird die \textit{Windowing-Methode}, dessen Funktionsweise hier kurz erklärt wird, verwendet.
+Dabei wird die \textit{Windowing-Methode} \cite{FIR-Windowing}, dessen Funktionsweise hier kurz erklärt wird, verwendet.
 
 \paragraph{Tiefpassfilter mit der Windowing Methode erzeugen}
 
@@ -13,14 +13,14 @@ Wird $rect()$-Funktion Laplace-Transformiert, hat sie im Zeitbereich die Funktio
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\linewidth]{lowpass_ideal}
-	\caption{Amplitudengang eines idealen Tiefpassfilters mit Grenzfrequenz $f_t$}
+	\caption{Amplitudengang eines idealen Tiefpassfilters mit Grenzfrequenz $f_t$ \cite{FIR-Windowing}}
 	\label{pic:lowpass_ideal}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\linewidth]{lowpass_sinc}
-	\caption{Die Impulsantwort eines idealen Tiefpassfilters folgt der Funktion $\frac{\sin{x}}{x}$}
+	\caption{Die Impulsantwort eines idealen Tiefpassfilters folgt der Funktion $\frac{\sin{x}}{x}$ \cite{FIR-Windowing}}
 	\label{pic:lowpass_sinc}
 \end{figure}
 
@@ -42,13 +42,18 @@ fir1(num_taps, 1000.0f/48000.0f, new_coeffs);
 \end{lstlisting}
 
 
-Nachfolgend der äquivalente MATLAB Befehl.
+Nachfolgend der äquivalente MATLAB Befehl mit zusätzlichen Darstellungsformen.
 
 
 
 \begin{lstlisting}[language=matlab]
 num_taps = 19;
 new_coeffs = fir1(num_taps-1, 1000/48000)
+% Koeffizienten darstellen
+stem(new_coeffs)
+grid on
+% Uebertragungsfunktion anzeigen
+freqz(new_coeffs)
 \end{lstlisting}
 
 
