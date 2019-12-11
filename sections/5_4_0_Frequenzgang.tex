@@ -1,0 +1,15 @@
+\subsection{Frequenzgang}
+\label{subsec:Frequenzgang}
+Um zu beurteilen ob die Audio-Wandlung und Rückwandlung korrekt funktioniert wird der Frequenzgang der entworfenen Schaltung gemessen. Damit sollte ersichtlich werden welche Frequenz mit welcher Verstärkung von Ein- zu Ausgang übertragen wird. Angestrebt wäre eine möglichst linearer Frequenzgang mit einer Verstärkung von 1 (0dB) auf allen Frequenzen.
+
+\textbf{Anmerkung:} Da am Line-Eingang ein Spannungsteiler die Amplitude des Signals halbiert wurde dies software-mässig korrigiert. Das heisst 0dB in der Software bewirkt eigentlich +6dB am Codec, aber wiederum 0dB auf die ganze Schaltung gesehen wegen des Spannungsteilers.
+
+\begin{figure} [H]
+\begin{center}
+ \includegraphics[scale=0.23]{../graphics/DSP_Board_FREQ.png}
+ \caption{Der gemessene Frequenzgang von Audio-Eingang zu Audio-Ausgang (oben) sowie der Phasengang der Schaltung(unten)}
+\label{fig:frequenzgang}
+\end{center}
+\end{figure}
+\todo{Frequenzgang nochmal messen}
+Die Messung wurde mit einem Analog Discovery 2 von Digilent durchgeführt. In Gelb wurde das Referenz-Signal gemessen und in Blau die Antwort durch die Schaltung. Wie zu erwarten fängt das Anti-Aliasing-Filter bei der halben Abtastfrequenz (22.05kHz) an zu sperren. Der Phasengang ist wie erwartet linear mit entsprechenden Wrap-around von -180° zu 180°.
