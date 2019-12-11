@@ -19,5 +19,14 @@ Um zu beurteilen ob die Audio-Wandlung und Rückwandlung korrekt funktioniert wi
 \todo{Frequenzgang nochmal messen}
 Die Messung wurde mit einem Analog Discovery 2 von Digilent durchgeführt. In Gelb wurde das Referenz-Signal gemessen und in Blau die Antwort durch die Schaltung. Wie zu erwarten fängt das Anti-Aliasing-Filter bei der halben Abtastfrequenz (22.05kHz) an zu sperren. Der Phasengang ist wie erwartet linear mit entsprechenden Wrap-around von -180° zu 180°.
 
-\subsubsection{Klirrfaktor}
-\label{subsubsec:Klirrfaktor}
+\subsubsection{Total Harmonic Distortion}
+\label{subsubsec:Total Harmonic Distortion}
+Die Total Harmonic Distortion oder auch THD genannt ist ein Leistungs-Verhältnis der harmonischen Oberschwingungen zum ursprünglich  eingespeisten Signal. In diesem Fall ist das eine Sinusschwingung mit einer Frequenz von 1kHz und $1V_{PP}$ Amplitude. Mit dem Stanford SR770 FFT Network Analyzer kann die THD direkt gemessen werden.
+
+\begin{figure} [H]
+\begin{center}
+ \includegraphics[scale=0.1]{../graphics/THD.jpg}
+ \caption{Die gemessene Total Harmonic Distortion}
+\label{fig:frequenzgang}
+\end{center}
+\end{figure}
