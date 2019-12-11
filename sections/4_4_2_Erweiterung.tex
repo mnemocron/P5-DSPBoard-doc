@@ -14,10 +14,21 @@ Die Abbildung \ref{pic:Buffer_stage} zeigt die letzten beiden Abschnitte der Dat
 Die Daten werden in Form eines Buffers an die nächste Funktion weitergereicht.
 Damit die Datenverarbeitung wie gewünscht funktioniert, muss im \texttt{dsp\_processing.c} das Management der Buffer im Sinne von "\textit{Verbindungskabel}" verwaltet werden.
 
+Das nachfolgende Listing zeigt das Beispiel aus Abbildung \ref{pic:Buffer_stage}, bei dem die Daten durch zwei FIR Filter durchgereicht werden.
+
+\begin{lstlisting}[language=c]
+// process rxLeft in FIR(1), store in intermediate buffer: firLeft
+arm_fir_f32(&FIR_F32_Struct_1, rxLeft, firLeft, blockSize);
+// process firLeft in FIR(2), output to txLeft
+arm_fir_f32(&FIR_F32_Struct_2, firLeft, txLeft, blockSize);
+
+\end{lstlisting}
+
 Dieses Konzept weist folgende drei Punkte auf, die beim Design beachtet werden müssen.
 Einerseits nimmt mit jedem Buffer dazwischen die \textbf{Latenzzeit} um $t_{lat}=BUFFERSIZE*t_S=64*\frac{1}{48'000\si{Hz}}=1.3\si{ms}$ zu.
 Weiterhin steigt mit der Anzahl Buffer auch der \textbf{RAM Bedarf} um $BUFFERSIZE*n_{Bytes}*n_{channels}=64*2*2=256\si{Bytes}$ pro Buffer.
 Zuletzt steigt mit jedem neuen Effekt auch die \textbf{Rechenzeit}. Diese muss in jedem Fall individuell beachtet werden, da sie auch stark von der Art des Effektes abhängt.
 Die gesamte Rechenzeit darf auf keinen Fall länger als die oben berechneten $1.3\si{ms}$, die der zeitlichen Länge eines Buffers beträgt, sein.
+
 
 
