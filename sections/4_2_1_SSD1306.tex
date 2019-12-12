@@ -32,19 +32,15 @@ Die Library unterstützt nur ein Display an einem I\textsuperscript{2}C oder SPI
 Jeder Funktion muss nun ein Pointer auf einen Display Struct mitgegeben werden.
 Im folgenden Listing ist dargestellt, wie die Library in C verwendet wird.
 
-\begin{lstlisting}[language=c]
+\begin{lstlisting}[style=Cuvision, caption={Initialisierung und Anwendung der SSD1306 Library}]
 /* USER CODE BEGIN Includes */
 #include "ssd1306.h"
 /* USER CODE END Includes */
-\end{lstlisting}
 
-\begin{lstlisting}[language=c]
 /* USER CODE BEGIN PV */
 SSD1306_t holed1;    // Display Struct
 /* USER CODE END PV */
-\end{lstlisting}
 
-\begin{lstlisting}[language=c]
 /* USER CODE BEGIN 2 */
 holed1.hi2cx = &hi2c1;   // set peripheral interface of Struct to I2C
 

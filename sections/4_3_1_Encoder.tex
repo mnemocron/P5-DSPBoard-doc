@@ -35,7 +35,7 @@ Die nachfolgende Tabelle listet einige wichtige Parameter und deren Einfluss.
 Das untenstehende Listing stellt dar, wie der Timer im \texttt{main.c} gestartet werden muss.
 Eine Initialisierung alleine reicht nicht aus.
 
-\begin{lstlisting}[language=c]
+\begin{lstlisting}[style=Cuvision, caption={Timer im Encoder Modus starten}]
 /* USER CODE BEGIN 2 */
 // start Encoder mode on one channel
 HAL_TIM_Encoder_Start(&htim2, TIM_CHANNEL_1);
@@ -44,7 +44,7 @@ HAL_TIM_Encoder_Start(&htim2, TIM_CHANNEL_1);
 
 Mit dem unten gezeigten Befehl lässt sich der aktuelle Zählstand des Timers resp. Encoders auslesen.
 
-\begin{lstlisting}[language=c]
+\begin{lstlisting}[style=Cuvision, caption={Encoderwert auslesen}]
 /* USER CODE BEGIN x */
 int new_encoder_val = TIM2->CNT;   // read encoder count anywhere in the code 
 /* USER CODE END x */

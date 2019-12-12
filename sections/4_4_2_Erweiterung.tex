@@ -16,7 +16,7 @@ Damit die Datenverarbeitung wie gewünscht funktioniert, muss im \texttt{dsp\_pr
 
 Das nachfolgende Listing zeigt das Beispiel aus Abbildung \ref{pic:Buffer_stage}, bei dem die Daten durch zwei FIR Filter durchgereicht werden.
 
-\begin{lstlisting}[language=c]
+\begin{lstlisting}[style=Cuvision, caption={Daten mittels Buffer und zwei FIR Filter bearbeiten}]
 // process rxLeft in FIR(1), store in intermediate buffer: firLeft
 arm_fir_f32(&FIR_F32_Struct_1, rxLeft, firLeft, blockSize);
 // process firLeft in FIR(2), output to txLeft

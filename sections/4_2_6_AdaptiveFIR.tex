@@ -35,7 +35,7 @@ Im unten aufgeführten Listing ist gezeigt, wie die Funktion benutzt wird, um di
 
 
 
-\begin{lstlisting}[language=c]
+\begin{lstlisting}[style=Cuvision, caption={Berechnung von 19 Koeffizienten in C}]
 uint8_t num_taps = 19;
 float32_t new_coeffs[num_taps];
 fir1(num_taps, 1000.0f/48000.0f, new_coeffs);
@@ -44,9 +44,7 @@ fir1(num_taps, 1000.0f/48000.0f, new_coeffs);
 
 Nachfolgend der äquivalente MATLAB Befehl mit zusätzlichen Darstellungsformen.
 
-
-
-\begin{lstlisting}[language=matlab]
+\begin{lstlisting}[language=matlab, caption={Berechnung von 19 Koeffizienten in MATLAB}]
 num_taps = 19;
 new_coeffs = fir1(num_taps-1, 1000/48000)
 % Koeffizienten darstellen
