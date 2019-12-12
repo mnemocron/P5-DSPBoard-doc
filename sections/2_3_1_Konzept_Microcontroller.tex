@@ -1,10 +1,31 @@
 \subsubsection{Anforderungen an Microcontroller}
 \label{sec:Konzept_Microcontroller}
 
-Die an den Prozessor gestellten Anforderungen sind ein ARM-Cortex M4 Core mit DSP und FPU sowie Schnittstelle(n) zur Kommunikation mit dem Audio Codec. 
+Die an den Prozessor gestellten Anforderungen sind ein ARM-Cortex M4 Core mit und FPU sowie Schnittstelle(n) zur Kommunikation mit dem Audio Codec. 
 Dabei wird aufgrund der genaueren Samplingrate der Codec als Master betrieben und der DSP als Slave.
-Der DSP muss also keine genaue Clock zur Verfügung stellen. 
-Auf eine Cortex-M7 Architektur wird verzichtet, weil ab diesem Punkt auch ein Single-Board Computer (vgl. Raspberry Pi) eingesetzt werden kann.
-Eine Tacktfrequenz von 200MHz ist wünschenswert, jedoch befinden sich die Cortex-M4 Prozessoren mit 200MHz auf dem selben Preisniveau von Cortex-M7 Microcontrollern.
+Der Microcontroller muss also keine genaue Clock zur Verfügung stellen. 
+Auf eine Cortex-M7 Architektur wird verzichtet, weil ab diesem Punkt auch für ein Single-Board Computer (vgl. Raspberry Pi) argumentiert werden kann.
+Eine Tacktfrequenz von 200MHz ist wünschenswert, jedoch befinden sich die Cortex-M4 Prozessoren mit mehr als 100MHz auf dem selben Preisniveau von Cortex-M7 Microcontrollern.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		\textbf{MCU}  & \textbf{Flash {[}kB{]}} & \textbf{RAM {[}kB{]}} & \textbf{Clock {[}MHz{]}} & \textbf{Preis} & \textbf{Core} \\ \hline
+		STM32F407VGTx & 1024                    & 192                   & \textbf{168}             & \textbf{5.632} (10kU) & M4            \\ \hline
+		\textbf{STM32F412RETx} & 512            & 256                   & 100                      & 3.435 (10kU)        & M4            \\ \hline
+		STM32F722RCTx & 256                     & 256                   & 216                      & 3.663 (10kU)        & \textbf{M7}   \\ \hline
+		ATSAMD51P20A  & 1024                    & 256                   & 120                      & 4.33 (5kU)          & M4            \\
+		\hline
+		S6E2CCAJ0A    & 2048                    & 256                   & \textbf{200}             & > 11.00             & M4            \\
+		\hline
+	\end{tabular}
+ 	\caption{Parametervergleich verschiedener Cortex-M Microcontrollern}
+ 	\label{tab:ComparisonMCU}
+\end{table}
+
+\textit{Quelle der Preise: STMicroelectronics, Microchip (Atmel), Octopart (Cypress)} \\
+
+Verwendet wird basierend auf dem Preis und 
 
 

@@ -5,6 +5,20 @@ Ein weiches Ziel ist die Autonomie ohne externe Energieversorgung.
 Dazu soll ein Akkumulator genügend Energie liefern, um die Schaltung während einiger weniger Stunden (live-Konzert) zu betreiben. 
 Der Ladestrom soll nicht grösser als die über USB-2.0 zugelassenen $2.0\si{A}$ betragen.
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Specification} & \textbf{BQ2409x}             & \textbf{MAX1811} \\ \hline
+		Ladestrom              & 100mA / 500mA                & 100mA / 500mA    \\ \hline
+		Ladespannung           & 4.2V                         & 4.1V / 4.2V      \\ \hline
+		Features               & safety timer / thermal sense & thermal sense    \\ \hline
+		Gehäuse                & MSOP-10                      & SO-8             \\ \hline
+		Preis @ 25 Stk.        & 1.13                         & 3.90             \\ \hline
+	\end{tabular}
+	\caption{Parametervergleich zweier USB Akkuladungs-ICs}
+	\label{tab:ComparisonCharger}
+\end{table}
 
-
-
+Wie in der Tabelle \ref{tab:ComparisonCharger} gezeigt, existieren integrierte Schaltungen für den sehr spezifischen Verwendungszweck der Akkuladeregelung ab USB Speisung.
+Der BQ2409x überwiegt durch den niedrigen Preis und den grossen Funktionsumfang.
