@@ -1,7 +1,7 @@
 \subsubsection{SSD1306 C Library}
 \label{sec:Library_ssd1306}
 
-Zur Ansteuerung der OLED Displays wird die Library stm32-ssd1306 von Aleksander Alekseev \cite{github-stm32-ssd1306} verwendet. Die wichtigsten Eigenschaften der Library sind in der Tabelle \ref{tab:LibSSD1306} afugeführt.
+Zur Ansteuerung der OLED Displays wird die Library stm32-ssd1306 von Aleksander Alekseev \cite{stm32-ssd1306} verwendet. Die wichtigsten Eigenschaften der Library sind in der Tabelle \ref{tab:LibSSD1306} afugeführt.
 
 \paragraph{Spezifikationen}
 
@@ -24,7 +24,9 @@ Die Library funktioniert so, dass ein Pixelbuffer pro Display im RAM erstellt wi
 Der Buffer wird beim Aufruf der Funktion \texttt{ssd1306\_UpdateScreen()} über den I2C Bus auf das Display geschrieben.
 Dadurch entsteht ein RAM Bedarf von:
 
-${W * H / 8 = 128 * 64 / 8 = 1024\ \si{Bytes}}$
+\begin{equation}
+W * H / 8 = 128 * 64 / 8 = 1024\ \si{Bytes}
+\end{equation}
 
 \paragraph{Änderungen an der Library}
 

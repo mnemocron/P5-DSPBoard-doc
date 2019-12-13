@@ -11,9 +11,9 @@ Diese Zeit kommt durch die Buffergrösse und die Abtastfrequenz zustande.
 Da die Verarbeitung innerhalb einer Bufferlänge abgeschlossen sein muss, darf die 
 kritische Zeit $t_p$ auf keinen Fall erreicht, oder überschritten werden.
 
-\begin{gather*}
+\begin{equation}
 	t_p=\frac{DSP\_BUFFER\_SIZE\_HALF}{f_s}=\frac{64}{48'000\si{Hz}}=1.333\si{ms}
-\end{gather*} 
+\end{equation}
 
 
 \paragraph{Delay des Audio Passthrough}
