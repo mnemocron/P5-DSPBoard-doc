@@ -52,7 +52,7 @@ HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
 \paragraph{FIR Filter unterschiedlicher Anzahl Koeffizienten}
 
 Theoretisch wird von einer FPU erwartet, dass diese ein FIR Filter mit der Effizienz von $1\frac{cycle}{TAP}$ mit Hilfe des Multiply-Accumulate Befehls (\texttt{MAC})) berechnet.
-Bei ARM Cortex-M4 ist es jedoch so, dass das FIR Filter ohne Multiply-Accumulate Funktion kompiliert wird. Die Instruktion \texttt{VMLA.F32} benötigt 3 clock cycles. 
+Bei ARM Cortex-M4 ist es jedoch so, dass das FIR Filter ohne Multiply-Accumulate Funktion kompiliert wird. Die Instruktion \texttt{VMLA.F32} benötigt 3 clock cycles \cite{ARM-M4-FPU-reference}. 
 
 \begin{lstlisting}[style=Cuvision,caption={Kompilierte Multiply-Accumulate Instruktion}]
 0x080008E8 EE628A0D VMUL.F32 s17,s4,s26
@@ -63,7 +63,7 @@ Bei ARM Cortex-M4 ist es jedoch so, dass das FIR Filter ohne Multiply-Accumulate
     acc3 += x4 * c0;
 \end{lstlisting}
 
-Die folgende Messung soll das tatsächliche Ergebnis liefern.
+Die folgende Messung liefert das tatsächliche Ergebnis.
 
 Mit dem Nachfolgenden Code wird die Verzögerung des FIR Filters bestimmt.
 Der Versuch wird mehrmals mit unterschiedlicher Anzahl Koeffizienten durchgeführt.
