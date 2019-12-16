@@ -57,30 +57,30 @@ F_C=\frac{V_{bat_{max}}}{V_{out_{max}}}=\frac{3.27\si{V}}{4.5\si{V}}=\underline{
 Unten aufgeführt ist eine Abschätzung des Energiebedarfs der Schaltung, die massgebend für die Wahl der Spannungsregler ist. Die Speisung ist in analog und digital aufgeteilt.
 
 \begin{table}[H]
-\title{Stromverbrauch 3.3V digital}
 \centering
 \begin{tabular}{|l|r|}
 \hline
-\textbf{Schaltungsteil} & \textbf{Imax {[}\si{mA}{]}} \\ \hline
+\textbf{Schaltungsteil} & \textbf{$I_{max}$ {[}\si{mA}{]}} \\ \hline
 STM32                   & 40                     \\ \hline
 SSD1306                 & 30                     \\ \hline
 SSD1306                 & 30                     \\ \hline
 reserve                 & 50                     \\ \hline
-textbf{Total}           & \textbf{150}            \\ \hline
+\textbf{Total}          & \textbf{150}          \\ \hline
 \end{tabular}
+\caption{Stromverbrauch 3.3V digital}
 \end{table}
 
 \begin{table}[H]
-\title{Stromverbrauch 3.3V analog}
 \centering
 \begin{tabular}{|l|r|}
 \hline
-\textbf{Schaltungsteil} & \textbf{Imax {[}\si{mA}{]}} \\ \hline
+\textbf{Schaltungsteil} & \textbf{$I_{max}$ {[}\si{mA}{]}} \\ \hline
 MAX4762                 & 0.01                   \\ \hline
 TLV320                  & 26.00                  \\ \hline
 reserve                 & 30.00                  \\ \hline
-textbf{Total}           & \textbf{56.01}          \\ \hline
+\textbf{Total}          & \textbf{56.01}        \\ \hline
 \end{tabular}
+\caption{Stromverbrauch 3.3V analog}
 \end{table}
 
 Die verbauten Festspannungsregler TLC7333 (IC2, IC3) mit Low Dropout Voltage können bis zu ${I_{out}=300\si{mA}}$ liefern.
