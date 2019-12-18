@@ -1,6 +1,46 @@
 \subsection{PCB}
 \label{sec:PCB}
 
+Im nachfolgenden Kapitel wird näher erläutert wie das PCB aufgebaut ist und worauf geachtet wurde.
 
+Grundsätzlich wurde das Board in zwei fundamentale Teile eingeteilt (ersichtlich in Abbildung \ref{fig:PCB_GNDVDD}).  Den Digital-Teil inklusive Speisung, Microcontroller und den digitalen Schnittstellen. Und den Analog-Teil mit dem Codec und den verschiedenen Ein- und Ausgängen. In beiden Teilen wird rückseitig separat die Ground-Fläche geführt. Die beiden sind, wie schon in \ref{par:GND} erläutert, an genau einem Punkt durch einen $0\Omega$ Widerstand verbunden. Um die Speisungen grösstmöglich zu führen wurden vorderseitig die beiden Teile mit 3.3VA beziehungsweise 3.3VD ausgegossen (nachdem alle Verbindungen gezogen worden sind).
 
+\begin{figure} [H]
+\begin{center}
+ \includegraphics[scale=0.37]{../graphics/PCB-Layout_GNDVDD.jpg}
+ \caption{Die Unterteilung des PCBs in Analog- und Digital-Teil}
+\label{fig:PCB_GNDVDD}
+\end{center}
+\end{figure}
 
+\begin{figure} [H]
+\begin{center}
+ \includegraphics[scale=0.37]{../graphics/PCB-Layout_AUDIO.jpg}
+ \caption{Der Audio-Teil mit dem Codec, dem Audio-Switch, dem 12.28MHz Quartz sowie der äusseren Beschaltung der Ein- und Ausgänge}
+\label{fig:PCB_AUDIO}
+\end{center}
+\end{figure}
+
+\begin{figure} [H]
+\begin{center}
+ \includegraphics[scale=0.37]{../graphics/PCB-Layout_DGTL.jpg}
+ \caption{Der Digital-Teil mit dem Mikrokontroller, dem 8MHz Quartz und der JTAG-Schnittstelle}
+\label{fig:PCB_DGTL}
+\end{center}
+\end{figure}
+
+\begin{figure} [H]
+\begin{center}
+ \includegraphics[scale=0.37]{../graphics/PCB-Layout_INOUT.jpg}
+ \caption{Die Audio-Ein- und -Ausgänge mit 2x2 Mini-Jack Buchsen und 2 AVX-Verbinder für die Board-to-Board Verbindung}
+\label{fig:PCB_INOUT}
+\end{center}
+\end{figure}
+
+\begin{figure} [H]
+\begin{center}
+ \includegraphics[scale=0.37]{../graphics/PCB-Layout_PWR.jpg}
+ \caption{Die Speisung des PCBs mit der Mini-USB-Buchse, dem Lade-IC für den Akku sowie den beiden LDOs für Digital- sowie Analog-Teil}
+\label{fig:PCB_PWR}
+\end{center}
+\end{figure}
