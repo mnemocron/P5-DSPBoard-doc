@@ -13,6 +13,18 @@ Grundsätzlich wurde das Board in zwei fundamentale Teile eingeteilt (ersichtlic
 \end{center}
 \end{figure}
 
+Im Speisungs-Teil musste beachtet werden, dass keine Speisungs-Schleifen entstehen. Die  Speiseleitungen sind zudem doppelt so breit wie die restlichen Leitungen (0.5mm), um den maximalen Strom von 500mA auszuhalten.
+
+\begin{figure} [H]
+\begin{center}
+ \includegraphics[scale=0.37]{../graphics/PCB-Layout_PWR.jpg}
+ \caption{Die Speisung des PCBs mit der Mini-USB-Buchse, dem Lade-IC für den Akku sowie den beiden LDOs für Digital- sowie Analog-Teil}
+\label{fig:PCB_PWR}
+\end{center}
+\end{figure}
+
+Die räumliche Trennung verschiedener Teile auf dem PCB sollte mögliche gegenseitige Wechselwirkungen vermeiden oder zumindest vermindern. Speziell die Speisung und der Audio-Teil wurden getrennt. Im Speisungs-Teil fliessen sicher die grössten Ströme auf dem ganzen Print, was mögliche EMV-Einflüsse nachsichziehen kann. Im Audio-Teil würden im schlimmsten Fall solche Induktions-Spannungen als Signal interpretiert werden. Deswegen wurden diese beiden Teile weitmöglichst voneinander, in den beiden Ecken, platziert.
+
 \begin{figure} [H]
 \begin{center}
  \includegraphics[scale=0.37]{../graphics/PCB-Layout_AUDIO.jpg}
@@ -37,10 +49,4 @@ Grundsätzlich wurde das Board in zwei fundamentale Teile eingeteilt (ersichtlic
 \end{center}
 \end{figure}
 
-\begin{figure} [H]
-\begin{center}
- \includegraphics[scale=0.37]{../graphics/PCB-Layout_PWR.jpg}
- \caption{Die Speisung des PCBs mit der Mini-USB-Buchse, dem Lade-IC für den Akku sowie den beiden LDOs für Digital- sowie Analog-Teil}
-\label{fig:PCB_PWR}
-\end{center}
-\end{figure}
+
