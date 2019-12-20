@@ -31,7 +31,7 @@ Die Total Harmonic Distortion oder auch THD genannt ist ein Leistungs-Verhältni
 \end{center}
 \end{figure}
 
-Eine Messung mit dem Stanford SR770 FFT Network Analyzer \ref{fig:thd} ergab eine THD von 0.016\% unter Berücksichtigung von 2 Harmonischen.
+Die Messung mit dem Stanford SR770 FFT Network Analyzer \ref{fig:thd} ergab eine THD von 0.016\% unter Berücksichtigung von 2 Harmonischen.
 Um jedoch die Messung zu verifizieren wird eine zweite Messung mit dem AD2 \ref{fig:thdAD2}  durchgeführt. Diese ergab eine THD von -75.7744dB, was ebenfalls 0.016\% entspricht. Betrachtet man fünf harmonische Vielfache erhöht sich die THD nur leicht auf 0.021\%. Das heisst die ersten fünf harmonische Vielfachen des 1kHz Sinus tragen nicht einmal ein tausendstel zum übertragenen Signal bei.
 
 \begin{figure} [H]
@@ -42,3 +42,13 @@ Um jedoch die Messung zu verifizieren wird eine zweite Messung mit dem AD2 \ref{
 \end{center}
 \end{figure}
 
+\subsubsection{ENOB/SINAD}
+\label{subsubsec:ENOB/SINAD}
+
+Die "Effective number of bits", oder kurz ENOB genannt, gibt an wieviel Bits an Auflösung eines AD-Wandlers effektiv nutzbar sind. Durch Rauschen verschiedener Art, sei es von der Quantisierung oder von Widerständen, hat der Wandler-Kanal einen gewissen Grundpegel der nicht für Information genutzt werden kann. Entsprechend sinkt der Amplitudenbereich in dem Information eines Signals übertragen werden kann. Sozusagen die effektive Anzahl nutzbarer Bits (wie es der Name schon sagt).
+
+Der SINAD oder auch "Signal to noise and distortion" ist das Leistungs-Verhältnis  von Rauschen und den Harmonischen Verzerrungen zum Signal (wie der SNR, aber mit Distortion). Er steht auch in direktem Verhältnis zum ENOB:
+
+\begin{equation}
+ENOB=\frac{SINAD-1.76dB}{6.02dB}
+\end{equation} 
