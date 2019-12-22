@@ -16,16 +16,32 @@ Einige Signale haben im Schema keinen Pull-Up oder Pull-Down Widerstand verbaut.
 
 \paragraph{Analoge Speisung muss immer enabled sein}
 
-\todo{Analog Enable}
+Ursprünglich war angedacht, dass der analoge Schaltungsteil über den Enable des LDO ausgeschaltet werden kann. Dies funktioniert nicht, da der STM32 ebenfalls eine stabile analoge Speisung benötigt. Fällt die analoge Speisung weg, fällt der STM32 in einen Reset-Loop.
+Die neue Hardware benötigt ein neues Konzept für den Energiesparmodus.
 
-\paragraph{}
+\paragraph{Kompatibilität des AVX Steckers mit einem Gehäuse}
 
-\todo{FP Audio-Clock - der war doch dann doch kein Problem?}
-\todo{Beschriftungen In-/Outputs oben}
-\todo{Herausführen des PCBs für AVX-Stecker (Platz für Gehäuse)}
-\todo{Audio-Switch auf Board 4 auswechseln (schaltet nur eine Seite)}
-\todo{Battery IC hat kein Kühlpad}
-\todo{Filterkondensator bei ADC Spannungsteiler}
+Die Beiden AVX Stecker für die Kaskadierung sind genau an der Kante des PCBs montiert. Dadurch müssen zwei Boards Kante an Kante nebeneinander platziert werden.
+Ein Gehäuse, dass die PCB Kante einschliesst, kann deshalb nicht verbaut werden.
+Das Konzept mit den Steckverbindern muss nochmals überarbeitet werden.
+Der Vorschlag lautet: AVX Stecker beibehalten und die PCB-Kante beim Stecker um einige Millimeter nach versetzen (PCB-Form nicht rechteckig).
+
+\paragraph{Kühlfläche für BQ2409x}
+
+Der BQ2409x hat auf der Unterseite ein Kühlpad. Die Kühlung des Chips ist in diesem Projekt nicht beachtet worden. Dadurch kann die Ladefunktion des Chips infolge thermischer Überlastung nicht genutzt werden. Die nächste Hardwareiteration benötigt eine Kühlfläche und den korrekten Footprint mit Kühlpad.
+
+\paragraph{Blockkondensator für ADC Pin (Batteriespannung)}
+
+Der Spannungsteiler für die Batteriespannungsmessung benötigt einen Blockkondensator um AC-Noise zu filtern. Der Kondensator soll idealerweise nahe am STM32 platziert sein.
+
+\paragraph{JST-Battery Connector}
+
+Der JST-Stecker ist ebenfalls zur Überarbeitung ausgeschrieben. Hier braucht es den korrekten Stecker, der auch zum entsprechenden Akku passt.
+
 \todo{Mic-Bias-Schaltung ist falsch (nur für Electret, aber auf 2 Kanäle) / DTCT auch ändern}
-\todo{Kleinere JST-Stecker für akku}
-\todo{Kühlfläche BQ-Ladechip}
+
+
+% müssen die folgenden Punkte dokumentiert werden?
+\todo{FP Audio-Clock -> der war doch dann doch kein Problem? also nicht erwähnen?}
+\todo{PCB Beschriftungen In-/Outputs oben - dieser Punkt ist nicht relevant, wenn beschriftung auf Gehäuse ist}
+\todo{Audio-Switch auf Board 4 auswechseln (schaltet nur eine Seite)}
