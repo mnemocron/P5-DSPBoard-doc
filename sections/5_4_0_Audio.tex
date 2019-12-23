@@ -36,7 +36,7 @@ Um jedoch die Messung zu verifizieren wird eine zweite Messung mit dem AD2 \ref{
 
 \begin{figure} [H]
 \begin{center}
- \includegraphics[width=\textwidth]{../graphics/THD_LineINOUT_Kopie.png}
+ \includegraphics[width=\textwidth]{../graphics/THD_LineINOUT.png}
  \caption{Die gemessene Total Harmonic Distortion mit dem Analog Discovery 2 von Digilent}
 \label{fig:thdAD2}
 \end{center}
@@ -45,10 +45,12 @@ Um jedoch die Messung zu verifizieren wird eine zweite Messung mit dem AD2 \ref{
 \subsubsection{ENOB/SINAD}
 \label{subsubsec:ENOB/SINAD}
 
-Die "Effective number of bits", oder kurz ENOB genannt, gibt an wieviel Bits an Auflösung eines AD-Wandlers effektiv nutzbar sind. Durch Rauschen verschiedener Art, sei es von der Quantisierung oder von Widerständen, hat der Wandler-Kanal einen gewissen Grundpegel der nicht für Information genutzt werden kann. Entsprechend sinkt der Amplitudenbereich in dem Information eines Signals übertragen werden kann. Sozusagen die effektive Anzahl nutzbarer Bits (wie es der Name schon sagt).
+Die \glqq Effective number of bits\grqq, oder kurz ENOB genannt, gibt an wieviel Bits an Auflösung eines AD-Wandlers effektiv nutzbar sind. Durch Rauschen verschiedener Art, sei es von der Quantisierung oder von Widerständen, hat der Wandler-Kanal einen gewissen Grundpegel der nicht für Information genutzt werden kann. Entsprechend sinkt der Amplitudenbereich in dem Information eines Signals übertragen werden kann. Sozusagen die effektive Anzahl nutzbarer Bits (wie es der Name schon sagt).
 
-Der SINAD oder auch "Signal to noise and distortion" ist das Leistungs-Verhältnis  von Rauschen und den Harmonischen Verzerrungen zum Signal (wie der SNR, aber mit Distortion). Er steht auch in direktem Verhältnis zum ENOB:
+Der SINAD, oder auch \glqq Signal-to-interference ratio including noise and distortion\grqq , ist das Leistungs-Verhältnis  von Rauschen und den harmonischen Verzerrungen zum Signal (wie der SNR, aber mit Distortion). Er steht auch in direktem Verhältnis zum ENOB:
 
 \begin{equation}
 ENOB=\frac{SINAD-1.76dB}{6.02dB}
 \end{equation} 
+
+Beide Werte wurden ebenfalls mit dem AD2 gemessen. Beim SINAD ergab das einen Wert von 69.367dB und für den ENOB 11.23. Gerade für den ENOB ist dieser wert enttäuschend für einen 16 Bit ADC. Ein Grund dafür könnte die Messkette sein, da von Eingang zu Ausgang gemessen wurde. Sprich das Signal wurde zweimal gewandelt und erfährt dementsprechend auch mehr Rauschen. 
