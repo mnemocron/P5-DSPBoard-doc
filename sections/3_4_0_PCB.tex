@@ -33,6 +33,8 @@ Die räumliche Trennung verschiedener Teile auf dem PCB sollte mögliche gegense
 \end{center}
 \end{figure}
 
+Im Audio-Teil wurden zusätzliche Messpunkte zur Überprüfung der I2S Kommunikation hinzugefügt. \todo{Was ist hier noch wichtig?}
+
 \begin{figure} [H]
 \begin{center}
  \includegraphics[scale=0.37]{../graphics/PCB-Layout_DGTL.jpg}
@@ -40,6 +42,8 @@ Die räumliche Trennung verschiedener Teile auf dem PCB sollte mögliche gegense
 \label{fig:PCB_DGTL}
 \end{center}
 \end{figure}
+
+Im Digital-Teil wurden vor allem die Stützkondensatoren der Speisung und der 8MHz Quartz möglichst nahe an den Pins des Microcontrollers platziert. Für den Clock wurde ein differenzielles Leitungspaar verwendet, ein Befehl in KiCad welcher bewirkt dass die beiden Leitungen exakt gleich lang werden. Dieser Befehl wurde ebenfalls für den 12.28MHz des Audio-Teils und die Datenleitungen des USB-Steckers angewendet.
 
 \begin{figure} [H]
 \begin{center}
@@ -49,4 +53,14 @@ Die räumliche Trennung verschiedener Teile auf dem PCB sollte mögliche gegense
 \end{center}
 \end{figure}
 
+Mit dem Gedanken das Board später mit einem Gehäuse zu ergänzen wurden die Ein-/Ausgänge, speziell die AVX-Stecker für die Board-zu-Board Verbindung, möglichst nahe am Rand platziert. Um es einheitlich zu halten, dient die Unterseite als Audio-Interface und die Oberseite als Digital-/Power-Interface. 
 
+\begin{figure} [H]
+\begin{center}
+ \includegraphics[scale=0.37]{../graphics/PCB-Layout_GUI.jpg}
+ \caption{Die Bedienoberfläche mit je zwei Rotary-Encodern, Buttons und OLED-Displays}
+\label{fig:PCB_INOUT}
+\end{center}
+\end{figure}
+
+Um Kosten zu sparen sind die Bedienelemente für das Benutzer-Interface gleich auf der Rückseite des PCBs angebracht. Da auf der Rückseite auch die Ground-Planes verteilt sind war vor allem zu beachten, dass man mit den Vias zu Ground von der Vorderseite an den Bedienelementen auf der Rückseite vorbeikam.
