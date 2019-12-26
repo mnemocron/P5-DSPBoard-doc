@@ -1,11 +1,11 @@
 \section*{Abstract}
 \label{sec:Abstract}
 
-In amateur radio (HAM) and hobby music one often wishes a cheap and simple solution for an signal processing box to either apply an effect to the music or use a filter to block unwanted tones.
-The ARM Cortex-M4 series is a low cost processor architecture that offers floating point digital signal processing (DSP) capabilities.
-The goal of this project is the development of such an effect box with the focus on good performance at low cost. 
-The device uses an STM32F412 microcontroller with a TLV320 stereo audio codec and features a USB port for power and programming. Additionally the board also features two 1" OLED displays, two rotary encoders and two pushbuttons and is capable of running on a rechargeable battery.
-As a result, the audio signal can be processed using the ARM CMSIS/DSP signal processing library. For demonstration purposes a software, implementing a simple FIR lopass filter, along with a user interface is installed on the board.
+In HAM radio or hobby music exists a demand for a cheap and simple audio effect box.
+The goal of this project is the development of such an effect box with the focus on good performance at low cost using the ARM Cortex-M4 series processor architecture because it offers floating point digital signal processing (DSP).
+The device uses an STM32F412 microcontroller with a TLV320 stereo audio codec and features a USB port for power and programming. Additionally the board also features two 1 inch OLED displays, two rotary encoders and two pushbuttons and is capable of running on a rechargeable battery.
+The board allows to manipulate the audio signal using the CMSIS/DSP library, where a simple FIR filter is implemented for demonstration purposes.
+As a result the hardware has a $THD_2$ of 75.77dB and an ENOB of 11.23 bit.
 
 % - Background
 % - Why?

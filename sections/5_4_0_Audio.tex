@@ -21,7 +21,11 @@ Offensichtlich verstärkt die Schaltung um ca. 0.3dB was ein Faktor 1.035 ist. D
 
 \subsubsection{Total Harmonic Distortion}
 \label{subsubsec:Total Harmonic Distortion}
-Die Total Harmonic Distortion oder auch THD genannt ist ein Leistungs-Verhältnis der harmonischen Oberschwingungen zum ursprünglich  eingespeisten Signal. In diesem Fall ist das eine Sinusschwingung mit einer Frequenz von 1kHz und $2V_{PP}$ Amplitude (generiert mit einem Agilent 33220A Waveform Generator). Das Signal wird am Eingang eingespiesen, wird einmal AD gewandelt, im Microcontroller 1zu1 kopiert und wieder zurückgewandelt. Am Ausgang wird nun die Amplitudde des Signals im Verhältnis zu dessen harmonischen Vielfachen gemessen.
+Die Total Harmonic Distortion oder auch THD genannt ist ein Leistungs-Verhältnis der harmonischen Oberschwingungen zum ursprünglich  eingespeisten Signal. In diesem Fall ist das eine Sinusschwingung mit einer Frequenz von 1kHz und $2\si{V_{PP}}$ Amplitude (generiert mit einem Agilent 33220A Waveform Generator). Das Signal wird am Eingang eingespiesen, wird einmal AD gewandelt, im Microcontroller 1zu1 kopiert und wieder zurückgewandelt. Am Ausgang wird nun die Amplitudde des Signals im Verhältnis zu dessen harmonischen Vielfachen gemessen.
+
+\begin{equation}
+THD_{dB}=20*\log{\frac{THD_{percent}}{100}}
+\end{equation} 
 
 \begin{figure} [H]
 \begin{center}
@@ -31,8 +35,16 @@ Die Total Harmonic Distortion oder auch THD genannt ist ein Leistungs-Verhältni
 \end{center}
 \end{figure}
 
+\begin{equation}
+THD_2=75.7744\si{dB}
+\end{equation} 
+
+\begin{equation}
+THD_5=73.56\si{dB}
+\end{equation} 
+
 Die Messung mit dem Stanford SR770 FFT Network Analyzer \ref{fig:thd} ergab eine THD von 0.016\% unter Berücksichtigung von 2 Harmonischen.
-Um jedoch die Messung zu verifizieren wird eine zweite Messung mit dem AD2 \ref{fig:thdAD2}  durchgeführt. Diese ergab eine THD von -75.7744dB, was ebenfalls 0.016\% entspricht. Betrachtet man fünf harmonische Vielfache erhöht sich die THD nur leicht auf 0.021\%. Das heisst die ersten fünf harmonische Vielfachen des 1kHz Sinus tragen nicht einmal ein tausendstel zum übertragenen Signal bei.
+Um jedoch die Messung zu verifizieren wird eine zweite Messung mit dem AD2 \ref{fig:thdAD2}  durchgeführt. Diese ergab eine THD von 75.7744dB, was ebenfalls 0.016\% entspricht. Betrachtet man fünf harmonische Vielfache erhöht sich die THD nur leicht auf 0.021\%. Das heisst die ersten fünf harmonische Vielfachen des 1kHz Sinus tragen nicht einmal ein tausendstel zum übertragenen Signal bei.
 
 \begin{figure} [H]
 \begin{center}
@@ -50,7 +62,7 @@ Die \glqq Effective number of bits\grqq, oder kurz ENOB genannt, gibt an wieviel
 Der SINAD, oder auch \glqq Signal-to-interference ratio including noise and distortion\grqq , ist das Leistungs-Verhältnis  von Rauschen und den harmonischen Verzerrungen zum Signal (wie der SNR, aber mit Distortion). Er steht auch in direktem Verhältnis zum ENOB:
 
 \begin{equation}
-ENOB=\frac{SINAD-1.76dB}{6.02dB}
+ENOB=\frac{SINAD-1.76dB}{6.02dB}=11.23\si{bit}
 \end{equation} 
 
 Beide Werte wurden ebenfalls mit dem AD2 gemessen. Beim SINAD ergab das einen Wert von 69.367dB und für den ENOB 11.23. Gerade für den ENOB ist dieser wert enttäuschend für einen 16 Bit ADC. Ein Grund dafür könnte die Messkette sein, da von Eingang zu Ausgang gemessen wurde. Sprich das Signal wurde zweimal gewandelt und erfährt dementsprechend auch mehr Rauschen. 
