@@ -1,6 +1,19 @@
 \subsection{Kosten}
 \label{sec:Kosten}
 
+Die Vorgabe des Auftraggebers bezüglich der Herstellungskosten für das DSP-Board beläuft sich auf eine Limite von 50SFr pro Board, bei einer Serie von 100 Stück. Die Kosten für die ersten fünf Prototypen haben diese Limite noch nicht eingehalten. Ein grosser Faktor ist hier jedoch der Stückpreis für die Herstellung des PCBs. Mit einer Serie vonn 100 Stück werden die PCB-Kosten jedoch massiv gesenkt.
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|r|r|r|r|}
+		\hline
+		\textbf{Serie} & \textbf{Bauteile /Board}             & \textbf{PCB /Board} & \textbf{Total /Board} \\ \hline
+		5 Stück              &           47.7 SFr      & 21.8 SFr & 69.5 SFr    \\ \hline
+		100 Stück           & 35.2 SFr                       & 4.7 SFr  & 39.9 SFr    \\ \hline
+	\end{tabular}
+	\caption{Die Kosten pro DSP-Board (bei verschiedenen Serien)}
+	\label{tab:kosten}
+\end{table}
 
-\todo{MS - Octopart Liste und etwas blabla...}
+Die Preise basieren auf dem Online-Shop Digi-Key \cite{www:digikey} für die Bauteile und Euro Crircuits \cite{www:eurocircuits} für das PCB.
+Nicht eingerechnet  sind die Kosten für ein allfälliges Gehäuse, für einen zusätzlichen Akku und für die SMD-Widerstände. Letztere machen keinen signifikanten Unterschied (max 0.5 SFr) und sind in jedem ausgerüsteten Elektronik-Labor in grösseren Mengen verfügbar. Der Akku jedoch würde das Budget sprengen und ist entsprechend nur ein optionale Erweiterung.
