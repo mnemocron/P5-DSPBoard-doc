@@ -1,7 +1,7 @@
 \subsubsection{Schema Codec}
 \label{sec:Schema_Codec}
 
-Die Wandlung des analogen Audio-Signale sowie die Rückwandlung der digitalen Signale vom Microcontroller  übernimmt ein TLV320AIC23B von Texas Instruments. Dieser Codec hat eine variable Sampling-Frequenz (8kHz-96kHz), einen Köpfhörer- und einen Mikrofon-Vorverstärker. Die Register des Codecs werden über I2C programmiert (wobei auch SPI möglich wäre), dazu wird der Mode-Pin über einen Widerstand auf GND gezogen. Die gesampelten Daten wiederum werden über I2S an den Microcontroller übermittelt. Zusätzlich wird der 12.28 \si{MHz} Audio-Clock mit dem der Codec taktet von einem externen ECS-Quartz erzeugt (Abbildung \ref{fig:Schema_Codec}). 
+Die Wandlung des analogen Audio-Signale sowie die Rückwandlung der digitalen Signale vom Microcontroller  übernimmt ein TLV320AIC23B von Texas Instruments. Dieser Codec hat eine variable Sampling-Frequenz (8kHz-96kHz), einen Köpfhörer- und einen Mikrofon-Vorverstärker. Die Register des Codecs werden über I\textsuperscript{2}C programmiert (wobei auch SPI möglich wäre), dazu wird der Mode-Pin über einen Widerstand auf GND gezogen. Die gesampelten Daten wiederum werden über I\textsuperscript{2}S an den Microcontroller übermittelt. Zusätzlich wird der 12.28 \si{MHz} Audio-Clock mit dem der Codec taktet von einem externen ECS-Quartz erzeugt (Abbildung \ref{fig:Schema_Codec}). 
 
 \begin{figure} [H]
 \begin{center}
@@ -11,7 +11,7 @@ Die Wandlung des analogen Audio-Signale sowie die Rückwandlung der digitalen Si
 \end{center}
 \end{figure}
 
-Die Analog-Speisung des TLVs wird neben den 100\si{nF} Stütz-Kondensatoren zusätzlich von einem Ferrit Bead geglättet. Damit wird sichergestellt, dass keine ungewollten hochfrequente Spitzen in der Speisung das Audio-Signal verfälschen.
+Die Analog-Speisung des TLVs wird neben den 100\si{nF} Blockkondensatoren zusätzlich von einem Ferrit Bead geglättet. Damit wird sichergestellt, dass keine ungewollten hochfrequente Spitzen in der Speisung das Audio-Signal verfälschen.
 
 Intern sind die Audio-Eingänge des Codecs mit der halben Speisespannung (im Datenblatt VMID genannt) biased, sprich mit einem Offset versehen, damit nur positive Spannungen vorkommen.
 In den nachfolgenden Unterkapiteln wird genauer auf die In- und Outputs des DSP-Boards, beziehungsweise deren äusseren Beschaltung eingegangen.
@@ -21,6 +21,7 @@ In den nachfolgenden Unterkapiteln wird genauer auf die In- und Outputs des DSP-
 \label{par:LineIN}
 Das Line-Signal wird am Eingang (Abbildung \ref{fig:Schema_LineIN}) erstmal durch den Spannungsteiler mit \textit{R23} und \textit{R14} bzw. \textit{R27} und \textit{R26} halbiert. Im Datenblatt des TLV320AIC23B \cite{tlv320} wird empfohlen die Signal-Amplitude von 2V auf 1V runterzubringen. Zudem bilden \textit{R23/R26} zusammen mit \textit{C23/C26}  einen Tiefpass-Filter mit einer Grenzfrequenz von 604.7 MHz (nach Gleichung \ref{eq:fg}), was schonmal die gröbsten hochfrequenten Störungen filtert. Mit \textit{C24/C20} wird das Signal zusätzlich galvanisch entkoppelt. Da der Audio-Eingang grundsätzlich eher hochohmig gehalten werden sollen, sind die Widerstands-Werte mit 5.6k$\Omega$ nicht zu klein gewählt. \cite{book:douglas}
 Über den Tip-Switch des Mini-Jack-Steckers kann an einem GPIO-Pin des Microcontrollers auch detektiert werden ob ein Stecker eingesteckt ist, oder nicht.
+\todo{Mischa: Quelle Douglas nicht vollständig, (Date published, Herausgeber, Ortschaft ...)}
 
 \begin{equation}
 f_g=\frac{1}{2\pi \cdot R \cdot C}
@@ -54,7 +55,7 @@ Wie am Eingang wird hier der Ausgang parallel an einen AVX-Stecker geführt, um 
 
 \paragraph{Headphone Output}
 \label{par:HPOUT}
-Wie schon in der Line-Ausgangsstufe werden am Kopfhörer mit einem Hochpass, bestehend aus \textit{R4/R5} und \textit{C8/C9}, DC-Anteile rausgefiltert. Hier kommt parallel zu den Widerständen die Impedanz des Kopfhörers dazu (gängig sind $32\Omega$) was zu einer Grenzfrequenz von 22.61Hz führt (nach Gleichung \ref{eq:fg}). Durch die relativ kleine Impedanz des Kopfhörers müssen die Kondensatoren grösser sein um die Grenzfrequenz niedrig zu halten. Dies legt nahe polarisierte Elektrolytkondensatoren (sogenannte Elkos) zu verwenden, welche in Audio-Anwendungen oft zum Einsatz kommen.
+Wie schon in der Line-Ausgangsstufe werden am Kopfhörer mit einem Hochpass, bestehend aus \textit{R4/R5} und \textit{C8/C9}, DC-Anteile rausgefiltert. Hier kommt parallel zu den Widerständen die Impedanz des Kopfhörers dazu (gängig sind $32\Omega$) was zu einer Grenzfrequenz von 22.61Hz führt (nach Gleichung \ref{eq:fg}). Durch die geringe Impedanz des Kopfhörers müssen die Kondensatoren entsprechend gross sein um die Grenzfrequenz niedrig zu halten. Die grosse Kapazität kann nur mit Elektrolytkondensatoren erreicht werden.
 
 \begin{figure} [H]
 \begin{center}

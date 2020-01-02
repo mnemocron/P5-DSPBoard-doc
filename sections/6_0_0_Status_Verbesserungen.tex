@@ -40,8 +40,13 @@ Der JST-Stecker ist ebenfalls zur Überarbeitung ausgeschrieben. Hier braucht es
 
 \todo{Mic-Bias-Schaltung ist falsch (nur für Electret, aber auf 2 Kanäle) / DTCT auch ändern}
 
+\paragraph{Überspannungsschutz für Audio-Eingang}
+
+Die Audio-Eingänge des TLV320 halten maximal $1\si{V_{RMS}}$ aus. Die Eingänge könnten sehr einfach mit deiner Schaltung aus zwei antiparallel geschalteten Leuchtdioden vor zu grossen Spannungen geschützt werden. LEDs eignen sich aufgrund des geringen Leckstromes und einer Durchlassspannung im Bereich 1.5V besonders gut für diese Anwendung.
+Die Mehrkosten und Nutzen der Schutzschaltung sind abzuwägen.
+
+\todo{TLV320 Lautstärke bei +12dB auf Mute}
+
 
 % müssen die folgenden Punkte dokumentiert werden?
-\todo{FP Audio-Clock -> der war doch dann doch kein Problem? also nicht erwähnen?}
-\todo{PCB Beschriftungen In-/Outputs oben - dieser Punkt ist nicht relevant, wenn beschriftung auf Gehäuse ist}
-\todo{Audio-Switch auf Board 4 auswechseln (schaltet nur eine Seite)}
+% \todo{Audio-Switch auf Board 4 auswechseln (schaltet nur eine Seite)}

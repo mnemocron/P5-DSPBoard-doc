@@ -3,7 +3,7 @@
 
 Im nachfolgenden Kapitel wird näher erläutert wie das PCB aufgebaut ist und worauf geachtet wurde.
 
-Grundsätzlich wurde das Board in zwei fundamentale Teile eingeteilt (ersichtlich in Abbildung \ref{fig:PCB_GNDVDD}).  Den Digital-Teil inklusive Speisung, Microcontroller und den digitalen Schnittstellen. Und den Analog-Teil mit dem Codec und den verschiedenen Ein- und Ausgängen. In beiden Teilen wird rückseitig separat die Ground-Fläche geführt. Die beiden sind, wie schon in \ref{par:GND} erläutert, an genau einem Punkt durch einen $0\Omega$ Widerstand verbunden. Um die Speisungen grösstmöglich zu führen wurden vorderseitig die beiden Teile mit 3.3VA beziehungsweise 3.3VD ausgegossen (nachdem alle Verbindungen gezogen worden sind).
+Grundsätzlich ist das Board in zwei fundamentale Teile eingeteilt (ersichtlich in Abbildung \ref{fig:PCB_GNDVDD}).  Den Digital-Teil inklusive Speisung, Microcontroller und den digitalen Schnittstellen. Und den Analog-Teil mit dem Codec und den verschiedenen Ein- und Ausgängen. In beiden Teilen wird rückseitig separat die Ground-Fläche geführt. Die beiden Flächen sind, wie in \ref{par:GND} erläutert, an genau einem Punkt durch einen $0\Omega$ Widerstand verbunden. Um die Speisungen grösstmöglich zu führen sind vorderseitig die beiden Teile mit 3.3VA beziehungsweise 3.3VD ausgegossen (nachdem alle Verbindungen gezogen worden sind).
 
 \begin{figure} [H]
 \begin{center}
@@ -23,7 +23,7 @@ Im Speisungs-Teil musste beachtet werden, dass keine Speisungs-Schleifen entsteh
 \end{center}
 \end{figure}
 
-Die räumliche Trennung verschiedener Teile auf dem PCB sollte mögliche gegenseitige Wechselwirkungen vermeiden oder zumindest vermindern. Speziell die Speisung und der Audio-Teil wurden getrennt. Im Speisungs-Teil fliessen sicher die grössten Ströme auf dem ganzen Print, was mögliche EMV-Einflüsse nachsichziehen kann. Im Audio-Teil würden im schlimmsten Fall solche Induktions-Spannungen als Signal interpretiert werden. Deswegen wurden diese beiden Teile weitmöglichst voneinander, in den beiden Ecken, platziert.
+Die räumliche Trennung verschiedener Teile auf dem PCB sollte mögliche gegenseitige Wechselwirkungen vermeiden oder zumindest vermindern. Speziell die Speisung und der Audio-Teil sind getrennt. Im Speisungs-Teil fliessen sicher die grössten Ströme auf dem ganzen Print, was mögliche EMV-Komplikationen nach sich ziehen kann. Im Audio-Teil würden im schlimmsten Fall solche Induktions-Spannungen als Signal interpretiert werden. Deswegen sind diese beiden Teile weitmöglichst voneinander, in den beiden Ecken, platziert.
 
 \begin{figure} [H]
 \begin{center}
@@ -33,7 +33,7 @@ Die räumliche Trennung verschiedener Teile auf dem PCB sollte mögliche gegense
 \end{center}
 \end{figure}
 
-Im Audio-Teil wurden zusätzliche Messpunkte zur Überprüfung der I2S Kommunikation hinzugefügt. \todo{Was ist hier noch wichtig?}
+Im Audio-Teil wurden zusätzliche Messpunkte zur Überprüfung der I\textsuperscript{2} S Kommunikation hinzugefügt. \todo{Was ist hier noch wichtig?}
 
 \begin{figure} [H]
 \begin{center}
@@ -53,7 +53,7 @@ Im Digital-Teil wurden vor allem die Stützkondensatoren der Speisung und der 8M
 \end{center}
 \end{figure}
 
-Mit dem Gedanken das Board später mit einem Gehäuse zu ergänzen wurden die Ein-/Ausgänge, speziell die AVX-Stecker für die Board-zu-Board Verbindung, möglichst nahe am Rand platziert. Um es einheitlich zu halten, dient die Unterseite als Audio-Interface und die Oberseite als Digital-/Power-Interface. 
+Mit dem Gedanken das Board später mit einem Gehäuse zu ergänzen sind die Ein-/Ausgänge, speziell die AVX-Stecker für die Board-zu-Board Verbindung, möglichst nahe am Rand platziert. Um es einheitlich zu halten, dient die Unterseite als Audio-Interface und die Oberseite als Digital-/Power-Interface. 
 
 \begin{figure} [H]
 \begin{center}

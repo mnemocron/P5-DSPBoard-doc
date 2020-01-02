@@ -50,6 +50,34 @@ Normal             & 0              & 0              \\ \hline
 \caption{Mode Auswahl über BOOT[1:0] Pins}
 \end{table}
 
+\paragraph{Bootstrap Schaltung für Bootpin}
+
+Der STM32 ist fähig, per Software in den Bootloader Modus zu wechseln \cite{STM32-Softreset-Stackoverflow}. Die Software dazu ist jedoch aufwändiger als den Bootvorgang per Hardware auszulösen.
+
+Aus diesem Grund ist der \texttt{BOOT0} Pin mit einem GPIO Pin (\texttt{PD2}) verbunden, Abbildung \ref{fig:Schema_Bootpin_Bootstrap}.
+
+\begin{figure} [H]
+	\begin{center}
+		\includegraphics[scale=0.5]{../graphics/Schema_Bootpin_Bootstrap}
+		\caption{Beschaltung des \texttt{BOOT0} Pins um über einen GPIO den Bootmodus zu setzen}
+		\label{fig:Schema_Bootpin_Bootstrap}
+	\end{center}
+\end{figure}
+
+So kann per Software der GPIO \texttt{PD2} auf \texttt{HIGH} gezogen werden und ein Software-Reset ausgelöst werden (siehe Abschnitt \ref{sec:Enter_DFU} in der Software), damit der STM32 im DFU-Bootloader startet.
+Um dem Controller genügend Zeit zum Booten zu verschaffen, ist der \texttt{BOOT0} Pin mit einem $22\si{\mu F}$ Kondensator abgestützt. Der maximale Ausgangsstrom für einen GPIO beträgt $I_{GPIO}=25\si{mA}$ \cite[Table 14]{STM32f412}.
+Mit dem Widerstand \textit{R12} beträgt der maximale Strom bei ungeladenem Kondensator \textit{C17}: 
+
+\begin{equation}
+I_{GPIO_{max}}=\frac{V_{CC}}{R_{12}}=\frac{3.3\si{V}}{200\si{\Omega}}=16.5\si{mA}
+\end{equation}
+
+Der Kondensator \textit{C17} wird über \textit{R15} entladen. Dabei bleibt dem STM32 ungefähr $1\tau=R*C$ Zeit um zu rebooten und den korrekten Pin-Zustand einzulesen. Diese Zeit beträgt ungefähr:
+
+\begin{equation}
+t_{reboot_{max}} \approx \tau = R_{15}*C_{17} = 200\si{k\Omega}*22\si{\mu F}=220\si{ms}
+\end{equation}
+
 
 \paragraph{Rotary Encoder und Buttons}
 
