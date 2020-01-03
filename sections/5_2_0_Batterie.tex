@@ -3,7 +3,7 @@
 
 \subsubsection{ADC Messung der Batteriespannung}
 
-Die Spannungsmessung inkl. Korrekturfaktor für den Spannungsteiler mit Hilfe einer Source Measuring Unit überprüft. Die Dabei entstandenen Werte sind in der Abbildung \ref{pic:ADC_Spannung_Graph} geplottet.
+Die Spannungsmessung inkl. Korrekturfaktor für den Spannungsteiler wird mit Hilfe einer Source Measuring Unit überprüft. Die Dabei entstandenen Werte sind in der Abbildung \ref{pic:ADC_Spannung_Graph} geplottet.
 
 \begin{figure}[H]
 	\centering
@@ -21,7 +21,32 @@ Verwendetes Messgerät:
 
 Agilent N6705B (Prüfmittel Nr. \texttt{MSZ-M-0064}) auf Channel 1 mit Strombegrenzung $I_{max}=600\si{mA}$.
 
+Verwendeter Prüfling:
+
+\textit{DSP-Board Nr. 5}
+
 \todo{SB - Verweis auf einen Zielwert. zb. Eingehalten auf +- 100mV genau blabla reicht um Low Voltage zu detektieren}
 
-\todo{SB - Ladestrom = 317mA ...}
+\subsubsection{Ladestrombegrenzung}
+
+Zum Testen der Strombegrenzung des BQ2409x wurde der GPIO \texttt{PB14} (Set $I_{LIM}$) getogglet. Als Akkumulator dient die SMU von vorher mit einer Spannung von $U_{bat}=3.9\si{V}$.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|r|r|}
+		\hline
+		\texttt{SET\_I\_LIM} & $I_{charge}[\si{mA}]$ (erwartet) &  $I_{charge}[\si{mA}]$ (gemessen) \\ \hline
+		\texttt{HIGH}     &           $500$                  &          $317$             \\ \hline
+		\texttt{LOW}      &           $100$                  &          $317$             \\ \hline
+		\hline 
+	\end{tabular}
+\end{table}
+
+Erwartet wird, dass gemäss Datenblatt des BQ2409x \cite{bq2409x} beim Pin-State auf \texttt{HIGH} ...
+\todo{nochmals neu Messen mit neuem Widerstand...}
+
+
+
+
+
 

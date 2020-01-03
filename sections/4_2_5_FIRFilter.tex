@@ -29,7 +29,7 @@ Die Dokumentation des Filters bzw. der gesamten CMSIS/DSP Library ist auf der We
 
 Für das Stereofilter wurde mit dem \texttt{fir1} MATLAB-Befehl die 11 Filterkoeffizienten berechnet. Das Filter hat eine 3dB-Grenzfrequenz bei $6\si{kHz}$ bei einer Abtastfrequenz von $2*24\si{kHz}=48\si{kHz}$.
 
-Die MATLAB-Funktion \texttt{fir1} arbeitet mit der \textit{Windowing-Methode} \cite{FIR-Windowing}, die nächer im Abschnitt \ref{sec:LibFIRAdaptive} beschrieben wird.
+Die MATLAB-Funktion \texttt{fir1} arbeitet mit der \textit{Windowing-Methode} \cite{FIR-Windowing}, die genauer im Abschnitt \ref{sec:LibFIRAdaptive} beschrieben wird.
 Dabei steht das erste Argument (hier: 10) für den Filtergrad oder $Anzahl Koeffizienten\ -\ 1$. Der zweite Parameter ist die auf die Samplingfrequenz normierte Grenzfrequenz.
 
 \begin{lstlisting}[language=matlab]

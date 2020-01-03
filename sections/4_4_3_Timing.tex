@@ -1,6 +1,8 @@
 \subsubsection{Ressourcenbedarf und Timing der CMSIS/DSP Funktionen}
 \label{sec:DSP_Timing}
 
+\todo{move Section to Validierung}
+
 Um den Ressourcenbedarf (Timing) besser abschätzen zu können, sind hier sind die Resultate einiger Performancetests aufgeführt.
 Die Tests sind mit der im Abschnitt \ref{sec:Dataflow} beschriebenen Datenverarbeitungsstruktur durchgeführt worden.
 Die Taktfrequenz des Cores beträgt $f_{CPU}=100\si{MHz}$.
@@ -30,9 +32,9 @@ Bei der Messung wird der GPIO vor dem Kopieren der Buffer eingeschaltet und dana
 
 Die beiden kurzen Pulse in der Abbildung \ref{pic:FIR_Delay_Blocksize} entstehen durch den nachfolgend gelisteten Code in der Datei \texttt{dsp\_processing.c}.
 Das Kopieren (Aufteilen in Links/Rechts) geschieht je ein Mal für die rxBuffer und die txBuffer, wobei ein Delay von $t_{Buffersplit}=16\mu\si{s}$ pro Kopiervorgang entsteht.
-Die Abbildung \ref{pic:FIR_Delay_Blocksize} zeigt die Audiofunktion mit FIR-Filter. Im Falle der Verewndung einer Audio Passthrough Funktion beträgt die gesammte Verarbeitungszeit
+Die Abbildung \ref{pic:FIR_Delay_Blocksize} zeigt die Audiofunktion mit FIR-Filter. Im Falle der Verwendung einer Audio Passthrough Funktion beträgt die gesammte Verarbeitungszeit
 inkl. Kopieren: $t_{delay}=40.8\mu\si{s}$. Daraus lässt sich schliessen, dass das Kopieren 
-von rx in tx ohne weitere Verarbeitung nochmals ca. $f_{copy}=8\mu\si{s}$.
+von rx in tx ohne weitere Verarbeitung nochmals ca. $f_{copy}=8\mu\si{s}$ benötigt.
 
 \begin{lstlisting}[style=Cuvision, caption={GPIO togglen um die Kopierzeit zu messen}]
 /* This Code takes 16 us for DSP_BUFFERSIZE_HALF = 64 and fCPU = 100MHz */
@@ -106,13 +108,13 @@ In der Tabelle \ref{tab:FIR_performance} und der Abbildung \ref{pic:FIR_NvsT} is
 Der Zusammenhang der Berechnungszeit und der Länge des Filters ist linear.
 Bei der aktuellen Konfiguration mit der Buffergrösse und Samplingrate, können zwei FIR Filter also eine maximale Anzahl Filterkoeffizienten in der Nähe von $1'000$ haben, da sonst die kritische Verarbeitungsdauer von $t_{p}=1.333\si{ms}$ erreicht würde.
 
-Die Abweichung um den Faktor 3 bis 4 in der Effizient kann aktuell nicht erklärt werden.
+Die Abweichung um den Faktor 3 bis 4 in der Effizienz kann aktuell nicht erklärt werden.
 
 \paragraph{FFT Performance}
 
 Hier wurde nur die FIR Performance behandelt. Relevant für die Beurteilung der FFT Performance ist das Whitepaper von ARM Limited \cite{ARM-Performance-Whitepaper}.
 
-Gemäss den Zahlen im Whitepaper kann mit einer Taktfrequenz von $f_{CPU}=100\si{kHz}$
+Gemäss den Zahlen im Whitepaper können mit einer Taktfrequenz von $f_{CPU}=100\si{kHz}$ auf einer Cortex-M4 Plattform folgende Werte erzielt werden.
 
 \begin{table}[H]
 	\centering
