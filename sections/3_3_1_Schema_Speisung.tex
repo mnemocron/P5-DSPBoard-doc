@@ -14,12 +14,12 @@ Zum Schutz der USB-Host Geräte vor einem Kurschlussstrom, ist F1 (MF-MSMF110) m
 \paragraph{Battery Management (BQ2409x)}
 
 Der BQ24093 ist ein single-cell Li-Ion / Li-Po Akkulade-IC, das speziell für USB Applikationen gemacht ist.
-Die Beschaltung des IC1 ist gemäss Vorgaben aus dem Datenblatt \cite{bq2409x}.
+Die Beschaltung des \textit{IC1} ist gemäss Vorgaben aus dem Datenblatt \cite{bq2409x}.
 
-Der Akkumulator ist nicht Teil des Systems. Aus diesem Grund ist ein 2-Pin JST-XH Connector (J6) Vorgesehen.
+Der Akkumulator ist nicht Teil des Systems. Aus diesem Grund ist ein 2-Pin JST-XH Connector (\textit{J6}) Vorgesehen.
 Weil der Akkumulator und ein entsprechender temperaturabhängiger Widerstand nicht bekannt ist, 
-wird der Pin für die Temperaturüberwachung mit R19 terminiert.
-IC1 wird mit dem Pull-Down R51 am \texttt{ISET2} Pin auf \texttt{LOW} gezogen, was den Ladestrom auf ${I_{charge}=100\si{mA}}$ beschränkt. 
+wird der Pin für die Temperaturüberwachung mit \textit{R19} terminiert.
+\textit{IC1} wird mit dem Pull-Down \textit{R51} am \texttt{ISET2} Pin auf \texttt{LOW} gezogen, was den Ladestrom auf ${I_{charge}=100\si{mA}}$ beschränkt. 
 Bei Bedarf kann der Ladestrom vom STM32 über \texttt{PB14} auf \texttt{HIGH} und damit ${I_{charge}=500\si{mA}}$ festgelegt werden.
 
 
@@ -35,7 +35,7 @@ Bei Bedarf kann der Ladestrom vom STM32 über \texttt{PB14} auf \texttt{HIGH} un
 
 Die Akkumulatorspannung mit ${V_{bat}=4.2\si{V}}$ übersteigt den Eingangsspannungsbereich des\\
  STM32 Microcontrollers von ${V_{GPIO_{max}}=3.3\si{V}}$.
-Damit zur Bestimmung des Ladestandes die Spannung gemessen werden kann, wird diese mit dem Spannungsteiler R35/R36 auf ein Maximum von 3.3\si{V} heruntergeteilt. 
+Damit zur Bestimmung des Ladestandes die Spannung gemessen werden kann, wird diese mit dem Spannungsteiler \textit{R35/R36} auf ein Maximum von 3.3\si{V} heruntergeteilt. 
 Mit Widerstandswerten aus der E12-Reihe ergibt sich folgender Spannungsteiler.
 
 \begin{equation}
@@ -83,11 +83,11 @@ reserve                 & 30.00                  \\ \hline
 \caption{Stromverbrauch 3.3V analog}
 \end{table}
 
-Die verbauten Festspannungsregler TLC7333 (IC2, IC3) mit Low Dropout Voltage können bis zu ${I_{out}=300\si{mA}}$ liefern.
+Die verbauten Festspannungsregler TLC7333 \textit{(IC2, IC3)} mit Low Dropout Voltage können bis zu ${I_{out}=300\si{mA}}$ liefern.
 
 \paragraph{Verlustleistung der Spannungsregler}
 
-Die maximale Verlustleistung an einem der Spannungsregler (IC2, IC3) tritt auf, wenn die Eingangsspannung ${V_{in}=5\si{V}}$ beträgt und der maximale Strom von ${I_{max}=0.15\si{A}}$ fliesst.
+Die maximale Verlustleistung an einem der Spannungsregler \textit{(IC2, IC3)} tritt auf, wenn die Eingangsspannung ${V_{in}=5\si{V}}$ beträgt und der maximale Strom von ${I_{max}=0.15\si{A}}$ fliesst.
 Dabei entsteht eine Verlustleistung von:
 
 \begin{equation}
