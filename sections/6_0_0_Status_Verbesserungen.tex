@@ -3,6 +3,47 @@
 
 \subsection{Aktueller Status des DSP Boards}
 
+Hier wird auf die Zielsetzung aus dem Pflichtenheft \ref{app:Pflichtenheft} eingegangen. 
+Die Tabelle \ref{tab:harteZiele} zeigt, dass alle harten Ziele erfüllt sind. 
+Von den weichen Zielen in Tabelle \ref{tab:weicheZiele} sind lediglich zwei Ziele nicht erreicht.
+
+\todo{Tabellen mit Zielen sind nicht referenziert ??WTF}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Nr.} & \textbf{Ziel}                                                                                     & \textbf{Erreichungsgrad} \\ \hline
+		1.1         & \begin{tabular}[c]{@{}l@{}}Microcontroller mit\\   Cortex-M4(F) Architektur mit FPU\end{tabular}  & erfüllt \\ \hline
+		1.2         & Audio Passthrough von Line-In nach Line-Out                                                       & erfüllt \\ \hline
+		1.3         & \begin{tabular}[c]{@{}l@{}}Audio Schnittstelle (analog)\\   - Line-IN\\   - Line OUT\end{tabular} & erfüllt \\ \hline
+		1.4         & 2 Stk. Drehencoder für HMI                                                                        & erfüllt \\ \hline
+		1.5         & 2 Stk. Taster für HMI                                                                             & erfüllt \\ \hline
+		1.6         & \begin{tabular}[c]{@{}l@{}}1 Display zur Anzeige des\\   Funktionsmodus\end{tabular}              & erfüllt \\ \hline
+		1.7         & \begin{tabular}[c]{@{}l@{}}Microcontroller ohne Debugger\\   über USB programmierbar\end{tabular} & erfüllt \\ \hline
+	\end{tabular}
+	\label{tab:harteZiele}
+	\caption{Harte Ziele aus dem Pflichtenheft}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Nr.} & \textbf{Ziel}                                                                                                                                                  & \textbf{Erreichungsgrad} \\ \hline
+		2.1         & Anzahl Layer der Leiterplatte                                                                                                                                  & $n_{Layer} = 2 \leq 2$ \\ \hline
+		2.2         & \begin{tabular}[c]{@{}l@{}}Bauteile sind handbestückbar\\   - SMD passiv $\geq$ 0603\\   - SMD cases: keine QFN / BGA\end{tabular}                                  & erfüllt    \\ \hline
+		2.3         & \begin{tabular}[c]{@{}l@{}}Stromverbrauch erlaubt Betrieb über\\   USB 2.0 Speisung\end{tabular}                                                               & $I_{USB} = 0.32\si{A} \leq 0.5\si{A}$ \\ \hline
+		2.4         & \begin{tabular}[c]{@{}l@{}}Audio Schnittstelle (analog)\\   - Headphone OUT\\   - Microphone IN\end{tabular}                                                   & erfüllt \\ \hline
+		2.5         & \begin{tabular}[c]{@{}l@{}}Audio Verbindung (digital)\\   - IN/OUT Board-to-Board Kommunikation\\   (mehrere Boards können\\   kaskadiert werden)\end{tabular} & nicht erfüllt    \\ \hline
+		2.6         & Akkubetrieb möglich                                                                                                                                            & erfüllt \\ \hline
+		2.7         & \begin{tabular}[c]{@{}l@{}}zusätzliche (farbige) LEDs als\\   Anzeige des Betriebsmodus\end{tabular}                                                           & nicht erfüllt    \\ \hline
+	\end{tabular}
+	\label{tab:weicheZiele}
+	\caption{Weiche Ziele aus dem Pflichtenheft}
+\end{table}
+
+\clearpage
 
 \subsection{Nächste Schritte}
 
@@ -59,6 +100,12 @@ Die Mehrkosten und Nutzen der Schutzschaltung sind abzuwägen.
 Bei allen Ausgängen des TLV320 (L/R sowie Headphone und Line-Out) resultiert die maximale Lautstärke in den entsprechenden Registern mit einem gemuteten Signal.
 Der Grund dafür ist nicht bekannt.
 
+\paragraph{Energiesparmodus}
+
+Derzeit ist kein Energiesparmodus realisiert. Einerseits hat das Abschalten der analogen Speisung mit dem LDO nicht funktioniert, andererseits wurde nicht evaluiert, welche Sleep-Optionen der STM32 hat.
+
 
 % müssen die folgenden Punkte dokumentiert werden?
 % \todo{Audio-Switch auf Board 4 auswechseln (schaltet nur eine Seite)}
+
+
