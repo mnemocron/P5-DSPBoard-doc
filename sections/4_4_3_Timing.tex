@@ -1,7 +1,5 @@
-\subsubsection{Ressourcenbedarf und Timing der CMSIS/DSP Funktionen}
+\subsection{Ressourcenbedarf und Timing der CMSIS/DSP Funktionen}
 \label{sec:DSP_Timing}
-
-\todo{move Section to Validierung}
 
 Um den Ressourcenbedarf (Timing) besser abschätzen zu können, sind hier sind die Resultate einiger Performancetests aufgeführt.
 Die Tests sind mit der im Abschnitt \ref{sec:Dataflow} beschriebenen Datenverarbeitungsstruktur durchgeführt worden.
@@ -18,7 +16,7 @@ kritische Zeit $t_p$ auf keinen Fall erreicht, oder überschritten werden.
 \end{equation}
 
 
-\paragraph{Delay des Audio Passthrough}
+\subsubsection{Delay des Audio Passthrough}
 
 Auch wenn die Daten beim Passthrough durch kein Filter geführt werden, wird beim Splitten des DMA Buffers in die beiden Kanalbuffer (L/R) Zeit benötigt.
 Bei der Messung wird der GPIO vor dem Kopieren der Buffer eingeschaltet und danach wieder ausgeschaltet.
@@ -51,7 +49,7 @@ HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
 \end{lstlisting}
 
 
-\paragraph{FIR Filter unterschiedlicher Anzahl Koeffizienten}
+\subsubsection{FIR Filter unterschiedlicher Anzahl Koeffizienten}
 
 Theoretisch wird von einer FPU erwartet, dass diese ein FIR Filter mit der Effizienz von $1\frac{cycle}{TAP}$ mit Hilfe des Multiply-Accumulate Befehls (\texttt{MAC})) berechnet.
 Bei ARM Cortex-M4 ist es jedoch so, dass das FIR Filter ohne Multiply-Accumulate Funktion kompiliert wird. Die Instruktion \texttt{VMLA.F32} benötigt 3 clock cycles \cite{ARM-M4-FPU-reference}. 
@@ -84,7 +82,7 @@ HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
 	\centering
 	\begin{tabular}{|c|c|c|c|}
 		\hline
-		\textbf{NUM\_TAPS} & \textbf{delay {[}$\mu s${]}} & \textbf{clk cycles (@100MHz)} & \textbf{$\frac{\si{clk cycles}}{\si{TAP}}$} \\ \hline
+		\textbf{NUM\_TAPS} & \textbf{$t_{delay}$ {[}$\mu s${]}} & \textbf{clk cycles (@100MHz)} & \textbf{$\frac{\si{clk cycles}}{\si{TAP}}$} \\ \hline
 		11                 & 63                      & 6'300                          & 4.47                       \\ \hline
 		21                 & 103                     & 10'300                         & 3.83                       \\ \hline
 		31                 & 148                     & 14'800                         & 3.73                       \\ \hline
@@ -95,6 +93,13 @@ HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
 	\label{tab:FIR_performance}
 \end{table}
 
+\begin{equation}
+\frac{clkcycles}{TAP}=\frac{f_{CPU}*t_{delay}}{NUM_TAPS*2*BUFFERSIZE}
+\end{equation}
+
+\begin{equation}
+\frac{clkcycles}{TAP}=\frac{100\si{MHz}*63\mu\si{s}}{11*2*64}=4.47
+\end{equation}
 
 \begin{figure}[H]
 	\centering
@@ -103,14 +108,13 @@ HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
 	\label{pic:FIR_NvsT}
 \end{figure}
 
-
 In der Tabelle \ref{tab:FIR_performance} und der Abbildung \ref{pic:FIR_NvsT} ist der Einfluss der Koeffizientenanzahl auf die Performance dargestellt.
 Der Zusammenhang der Berechnungszeit und der Länge des Filters ist linear.
 Bei der aktuellen Konfiguration mit der Buffergrösse und Samplingrate, können zwei FIR Filter also eine maximale Anzahl Filterkoeffizienten in der Nähe von $1'000$ haben, da sonst die kritische Verarbeitungsdauer von $t_{p}=1.333\si{ms}$ erreicht würde.
 
 Die Abweichung um den Faktor 3 bis 4 in der Effizienz kann aktuell nicht erklärt werden.
 
-\paragraph{FFT Performance}
+\subsubsection{FFT Performance}
 
 Hier wurde nur die FIR Performance behandelt. Relevant für die Beurteilung der FFT Performance ist das Whitepaper von ARM Limited \cite{ARM-Performance-Whitepaper}.
 

@@ -11,8 +11,16 @@ Nachfolgend ist aufgelistet, welche Fehler und Probleme mit der jetzigen Hardwar
 \paragraph{Pull-Up Widerstände in digitalen Signalen}
 
 Einige Signale haben im Schema keinen Pull-Up oder Pull-Down Widerstand verbaut.
-
-\todo{Welche Signalleitungen?}
+Folgende Signale benötigen zum setzen auf eines definierten Default-Wert einen solchen Widerstand.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Signal} & \textbf{Kommentar}                                          \\ \hline
+		AUDIO\_LDO\_ON  & evtl. nicht benötigt, da LDO nicht abgeschaltet werden darf \\ \hline
+		SW\_LINE\_IN    & Pull Up = Line In (default)                                 \\ \hline
+	\end{tabular}
+\end{table}
 
 \paragraph{Analoge Speisung muss immer enabled sein}
 
