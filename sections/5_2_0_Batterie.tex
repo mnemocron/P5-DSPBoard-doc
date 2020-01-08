@@ -29,23 +29,49 @@ Verwendeter Prüfling:
 
 \subsubsection{Ladestrombegrenzung}
 
-Zum Testen der Strombegrenzung des BQ2409x wurde der GPIO \texttt{PB14} (Set $I_{LIM}$) getogglet. Als Akkumulator dient die SMU von vorher mit einer Spannung von $U_{bat}=3.9\si{V}$.
+\todo{Diesen Abschnitt nochmals gut durchlesen und auf vollstädnigkeit überprüfen -ich war müde}
+
+Zum Testen der Strombegrenzung des BQ2409x wurde das DSP Board gemäss dem Messschema in Abbildung \ref{pic:SMU_Messung} an angeschlossen.
+Dabei erzeugt die SMU mit den Parametern aus Tabelle \ref{tab:SMU_Params_Current} zusätzlich eine Spannung vom $U_{SMU}=+0.1\si{V}$.
+Zum Ändern der Ladestromlimite wird der GPIO \texttt{PB14} (Set $I_{LIM}$) getogglet.
+\textit{R16} hat einen Wert von $R_{16}=2.7k\Omega$, was einen Ladestrom von $I_{charge}=200\si{mA}$ einstellt.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{SMU_Messung}
+	\caption{Messschaltung zur Bestimmung des Ladestroms durch Serieschaltung einer SMU}
+	\label{pic:SMU_Messung}
+\end{figure}
+
+\begin{table}[H]
+	\begin{tabular}{|l|l|l|c|c|}
+		\hline
+		Messgerät      & Kanal & Prüffmittelnummer & Spannungsbereich & Strombegrenzung \\ \hline
+		Agilent N6705B & CH1   & MSZ-M-0064        & 0.1V      & 0.5A            \\ \hline
+	\end{tabular}
+	\caption{Parameter der SMU}
+	\label{tab:SMU_Params_Current}
+\end{table}
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|c|r|r|}
+	\begin{tabular}{|c|r|r|r|}
 		\hline
-		\texttt{SET\_I\_LIM} & $I_{charge}[\si{mA}]$ (erwartet) &  $I_{charge}[\si{mA}]$ (gemessen) \\ \hline
-		\texttt{HIGH}     &           $500$                  &          $317$             \\ \hline
-		\texttt{LOW}      &           $100$                  &          $317$             \\ \hline
-		\hline 
+		\texttt{SET\_I\_LIM} & $I_{bat}[\si{mA}]$ (erwartet) &  $I_{bat}[\si{mA}]$ (on) & $I_{bat}[\si{mA}]$ (off) \\ \hline
+		\texttt{HIGH} & $500$ & $200$ & $145$ \\ \hline
+		\textit{floating} (0.9V) & (\textit{set by R16}) $200$ & $200$ & $145$ \\ \hline
+		\texttt{LOW} & $100$ & $200$ & $145$ \\ \hline
 	\end{tabular}
+	\label{tab:Icharge_Results}
+	\caption{Gemessene Ladeströme beim Akku}
 \end{table}
 
-Erwartet wird, dass gemäss Datenblatt des BQ2409x \cite{bq2409x} beim Pin-State auf \texttt{HIGH} ...
-\todo{nochmals neu Messen mit neuem Widerstand...}
+\todo{LAdestrom Tabelle wird nicht referenziert?? WTF??}
 
-
+Die Resultate aus der Tabelle \ref{tab:Icharge_Results} zeigen, dass bei eingeschaltetem STM32 ein Betriebsstrom von ca. $55\si{mA}$ entfallen.
+Bei ausgeschalteter Schaltung beträgt der Ladestrom, wie erwartet $I_{charge}=200\si{mA}$.
+Jedoch ist dieser in jedem Betriebsfall gleich hoch. Der Zustand vom \texttt{ISET2} Pin hat keinerlei Einfluss auf die Strombegrenzung.
+Diese Abweichung kann aktuell nicht erklärt werden.
 
 
 
