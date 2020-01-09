@@ -51,7 +51,7 @@ Nachfolgend ist aufgelistet, welche Fehler und Probleme mit der jetzigen Hardwar
 \paragraph{Pull-Up Widerstände in digitalen Signalen}
 
 Einige Signale haben im Schema keinen Pull-Up oder Pull-Down Widerstand verbaut.
-Folgende Signale benötigen zum setzen auf eines definierten Default-Wert einen solchen Widerstand.
+Folgende Signale benötigen zum setzen auf einen definierten Default-Wert einen solchen Widerstand.
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|l|}
@@ -70,7 +70,7 @@ Die neue Hardware benötigt ein neues Konzept für den Energiesparmodus.
 \paragraph{Kompatibilität des AVX Steckers mit einem Gehäuse}
 
 Die Beiden AVX Stecker für die Kaskadierung sind genau an der Kante des PCBs montiert. Dadurch müssen zwei Boards Kante an Kante nebeneinander platziert werden.
-Ein Gehäuse, dass die PCB Kante einschliesst, kann deshalb nicht verbaut werden.
+Ein Gehäuse das die PCB Kante einschliesst, kann deshalb nicht verbaut werden.
 Das Konzept mit den Steckverbindern muss nochmals überarbeitet werden.
 Der Vorschlag lautet: AVX Stecker beibehalten und die PCB-Kante beim Stecker um einige Millimeter nach aussen versetzen (PCB-Form nicht rechteckig).
 
@@ -87,11 +87,10 @@ Der Spannungsteiler für die Batteriespannungsmessung benötigt einen Blockkonde
 Der JST-Stecker ist ebenfalls zur Überarbeitung ausgeschrieben. Hier braucht es den korrekten Stecker, der auch zum entsprechenden Akku passt. 
 Der aktuell auf der Stückliste ausgeschriebene Steckertyp ist zu gross für den testweise bestellten Akkumulator.
 
-\todo{Mic-Bias-Schaltung ist falsch (nur für Electret, aber auf 2 Kanäle) / DTCT auch ändern}
 
 \paragraph{Überspannungsschutz für Audio-Eingang}
 
-Die Audio-Eingänge des TLV320 halten maximal $1\si{V_{RMS}}$ aus. Die Eingänge könnten sehr einfach mit deiner Schaltung aus zwei antiparallel geschalteten Leuchtdioden vor zu grossen Spannungen geschützt werden. LEDs eignen sich aufgrund des geringen Leckstromes und einer Durchlassspannung im Bereich 1.5V besonders gut für diese Anwendung.
+Die Audio-Eingänge des TLV320 halten maximal $1\si{V_{RMS}}$ aus. Die Eingänge könnten sehr einfach mit einer Schaltung aus zwei antiparallel geschalteten Leuchtdioden vor zu grossen Spannungen geschützt werden. LEDs eignen sich aufgrund des geringen Leckstromes und einer Durchlassspannung im Bereich 1.5V besonders gut für diese Anwendung.
 Die Mehrkosten und Nutzen der Schutzschaltung sind abzuwägen.
 
 \paragraph{Lautstärke von +12dB beim TLV320 resultiert mit Mute}

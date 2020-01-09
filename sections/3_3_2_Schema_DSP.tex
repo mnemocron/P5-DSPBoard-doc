@@ -75,7 +75,7 @@ I_{GPIO_{max}}=\frac{V_{CC}}{R_{12}}=\frac{3.3\si{V}}{200\si{\Omega}}=16.5\si{mA
 Der Kondensator \textit{C17} wird über \textit{R15} entladen. Dabei bleibt dem STM32 ungefähr $1\tau=R*C$ Zeit um zu rebooten und den korrekten Pin-Zustand einzulesen. Diese Zeit beträgt ungefähr:
 
 \begin{equation}
-t_{reboot_{max}} \approx \tau = R_{15}*C_{17} = 200\si{k\Omega}*22\si{\mu F}=220\si{ms}
+t_{reboot_{max}} \approx \tau = R_{15}\cdot C_{17} = 200\si{k\Omega}\cdot 22\si{\mu F}=220\si{ms}
 \end{equation}
 
 

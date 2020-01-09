@@ -24,7 +24,7 @@ Offensichtlich verstärkt die Schaltung um ca. 0.3dB was ein Faktor 1.035 ist. D
 Die Total Harmonic Distortion oder auch THD genannt ist ein Leistungs-Verhältnis der harmonischen Oberschwingungen zum ursprünglich  eingespeisten Signal. In diesem Fall ist das eine Sinusschwingung mit einer Frequenz von 1kHz und $2\si{V_{PP}}$ Amplitude (generiert mit einem Agilent 33220A Waveform Generator). Das Signal wird am Eingang eingespiesen, wird einmal AD gewandelt, im Microcontroller 1zu1 kopiert und wieder zurückgewandelt. Am Ausgang wird nun die Amplitudde des Signals im Verhältnis zu dessen harmonischen Vielfachen gemessen.
 
 \begin{equation}
-THD_{dB}=20*\log{\frac{THD_{percent}}{100}}
+THD_{dB}=20\cdot \log{\frac{THD_{percent}}{100}}
 \end{equation} 
 
 \begin{figure} [H]
