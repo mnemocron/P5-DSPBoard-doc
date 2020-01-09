@@ -13,7 +13,7 @@ Grundsätzlich ist das Board in zwei fundamentale Teile eingeteilt (ersichtlich 
 \end{center}
 \end{figure}
 
-Im Speisungs-Teil musste beachtet werden, dass keine Speisungs-Schleifen entstehen. Die  Speiseleitungen sind zudem doppelt so breit wie die restlichen Leitungen (0.5mm), um den maximalen Strom von 500mA auszuhalten.
+Im Speisungs-Teil ist wichtig, dass keine Speisungs-Schleifen entstehen. Die  Speiseleitungen sind zudem doppelt so breit wie die restlichen Leitungen (0.5mm), um den maximalen Strom von 500mA auszuhalten.
 
 \begin{figure} [H]
 \begin{center}
@@ -33,7 +33,7 @@ Die räumliche Trennung verschiedener Teile auf dem PCB sollte mögliche gegense
 \end{center}
 \end{figure}
 
-Im Audio-Teil wurden zusätzliche Messpunkte zur Überprüfung der I\textsuperscript{2} S Kommunikation hinzugefügt. 
+Im Audio-Teil sind zusätzliche Messpunkte zur Überprüfung der I\textsuperscript{2} S Kommunikation hinzugefügt, welche nur für den Prototyp vorgesehen sind. 
 
 \begin{figure} [H]
 \begin{center}
@@ -43,7 +43,7 @@ Im Audio-Teil wurden zusätzliche Messpunkte zur Überprüfung der I\textsupersc
 \end{center}
 \end{figure}
 
-Im Digital-Teil wurden vor allem die Stützkondensatoren der Speisung und der 8MHz Quartz möglichst nahe an den Pins des Microcontrollers platziert. Für den Clock wurde ein differenzielles Leitungspaar verwendet, ein Befehl in KiCad welcher bewirkt dass die beiden Leitungen exakt gleich lang werden. Dieser Befehl wurde ebenfalls für den 12.28MHz des Audio-Teils und die Datenleitungen des USB-Steckers angewendet.
+Im Digital-Teil sind vor allem die Stützkondensatoren der Speisung und der 8MHz Quartz möglichst nahe an den Pins des Microcontrollers platziert. Für den Clock ist ein differenzielles Leitungspaar gezogent, ein Befehl in KiCad welcher bewirkt dass die beiden Leitungen exakt gleich lang werden. Dieser Befehl ist ebenfalls für den 12.28MHz des Audio-Teils und die Datenleitungen des USB-Steckers implementiert.
 
 \begin{figure} [H]
 \begin{center}
@@ -53,7 +53,7 @@ Im Digital-Teil wurden vor allem die Stützkondensatoren der Speisung und der 8M
 \end{center}
 \end{figure}
 
-Mit dem Gedanken das Board später mit einem Gehäuse zu ergänzen sind die Ein-/Ausgänge, speziell die AVX-Stecker für die Board-zu-Board Verbindung, möglichst nahe am Rand platziert. Um es einheitlich zu halten, dient die Unterseite als Audio-Interface und die Oberseite als Digital-/Power-Interface. 
+Mit dem Gedanken das Board später mit einem Gehäuse zu ergänzen sind die Ein-/Ausgänge, speziell die AVX-Stecker für die Board-zu-Board Verbindung, möglichst nahe am Rand platziert. Um es einheitlich zu halten, dient die untere Kante als Audio-Interface und die obere Kante als Digital-/Power-Interface. 
 
 \begin{figure} [H]
 \begin{center}
