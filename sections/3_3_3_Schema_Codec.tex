@@ -21,7 +21,6 @@ In den nachfolgenden Unterkapiteln wird genauer auf die In- und Outputs des DSP-
 \label{par:LineIN}
 Das Line-Signal wird am Eingang (Abbildung \ref{fig:Schema_LineIN}) erstmal durch den Spannungsteiler mit \textit{R23} und \textit{R14} bzw. \textit{R27} und \textit{R26} halbiert. Im Datenblatt des TLV320AIC23B \cite{tlv320} wird empfohlen die Signal-Amplitude von 2V auf 1V runterzubringen. Zudem bilden \textit{R23/R26} zusammen mit \textit{C23/C26}  einen Tiefpass-Filter mit einer Grenzfrequenz von 604.7 MHz (nach Gleichung \ref{eq:fg}), was schonmal die gröbsten hochfrequenten Störungen filtert. Mit \textit{C24/C20} wird das Signal zusätzlich galvanisch entkoppelt. Da der Audio-Eingang grundsätzlich eher hochohmig gehalten werden sollen, sind die Widerstands-Werte mit 5.6k$\Omega$ nicht zu klein gewählt. \cite{book:douglas}
 Über den Tip-Switch des Mini-Jack-Steckers kann an einem GPIO-Pin des Microcontrollers auch detektiert werden ob ein Stecker eingesteckt ist, oder nicht.
-\todo{Mischa: Quelle Douglas nicht vollständig, (Date published, Herausgeber, Ortschaft ...)}
 
 \begin{equation}
 f_g=\frac{1}{2\pi \cdot R \cdot C}
