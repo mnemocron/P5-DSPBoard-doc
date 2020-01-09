@@ -22,6 +22,10 @@
 		
 		{\scshape\Large Fachbericht: Projekt 5 - \theauthor \\} \Large{\today}
 		\vfill
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.3]{dspboard_title}
+		\end{figure}
 		\begin{normalsize}
 			{\begin{tabbing}
 					\textbf{Betreuung:} \hspace{5cm}\= Prof. Dr. Markus Hufschmid\\
@@ -30,11 +34,11 @@
 					%\textbf{Auftraggeber:} 
 					%\>Prof. Dr. Markus Hufschmid\\
 					
-					\\[0.8cm]
+					\\[0.2cm]
 					\textbf{Team:} \> Simon Burkhardt\\ 
 					\> Mischa Studer\\
-					\\[0.8cm]
-					\\[0.8cm]
+					%\\[0.8cm]
+					\\[0.2cm]
 					\textbf{Studiengang:} \>Elektro- und Informationstechnik
 					\\[0.8cm]	\textbf{Semester:} \>Herbstsemester 2019
 			\end{tabbing}}
@@ -87,8 +91,10 @@
 
 \clearpage
 \input{sections/4_0_0_Firmware}
+	\input{sections/4_1_0_0_GUI}
 	\input{sections/4_1_0_Entwicklungsumgebung}
 		\input{sections/4_1_1_Installation}
+	\input{sections/4_w_0_JTAG_Debugger}
 	\input{sections/4_x_0_Projektdateien}
 	\input{sections/4_2_0_Libraries}
 		\input{sections/4_2_x_BSP_Library}
@@ -113,7 +119,6 @@
 		\input{sections/4_4_x_Datenformat}
 		\input{sections/4_4_1_Datenfluss}
 		\input{sections/4_4_2_Erweiterung}
-		\input{sections/4_4_3_Timing}
 \clearpage
 	\input{sections/4_5_0_USBDFU}
 		\input{sections/4_5_1_Bootloader}
@@ -122,6 +127,8 @@
 \input{sections/5_0_0_Validierung}
 	\input{sections/5_1_0_Spannungsversorgung}
 	\input{sections/5_2_0_Batterie}
+	\input{sections/4_4_3_Timing}
+	\clearpage
 	\input{sections/5_3_0_Speisung}
 	\input{sections/5_4_0_Audio}
 \clearpage
