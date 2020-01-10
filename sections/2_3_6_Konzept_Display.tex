@@ -1,6 +1,8 @@
 \subsection{Human Machine Interface (HMI)}
 \label{subsec:Konzept_HMI}
 
+Für die Interaktion mit den jeweiligen Effekten wird eine Benutzeroberfläche für den Benutzer benötigt. Konzeptionell gibt es zwei Ideen die funktionieren. Einerseits ein etwas grösseres Display mit integrierter Touch-Funktion was ebenfalls die Rotary Encoders und die Buttons ersetzen würden. Und andererseits zwei kleinere Displays, die vor allem die jeweiligen Funktionen der Bedienelemente anzeigen würde. Eine dynamische Beschriftung ist insofern nötig, da die Rotary Encoders und die Buttons bei den einzelnen Effekten verschiedene Funktionen bedienen und das entsprechend intuitiv ersichtlich sein sollte.
+
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|}
@@ -9,9 +11,10 @@
 		Grösse              & 2.8 inch                & 0.96 inch    \\ \hline
 		Auflösung           & 320x240                         & 128x64      \\ \hline
 		Farbe              & full color RGB & single color, white, blue    \\ \hline
-		Gehäuse                & MSOP-10                      & SO-8             \\ \hline
-		Preis         & 1.13                         & 3.90             \\ \hline
+		Preis         & 12.00                         & 2.00            \\ \hline
 	\end{tabular}
 	\caption{Parametervergleich zweier verschieden grosser Displays}
 	\label{tab:displays}
 \end{table}
+
+Durch die Limitierung der Materialkosten kommt nur das Konzept mit den zwei kleineren \textbf{SSD1306} Displays in Frage. Auch wenn man die Kosten für Buttons und Rotary Encoders einrechnet spart man damit noch ca. 3 SFr pro Board, im Gegensatz zum Touch-Display.

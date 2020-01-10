@@ -1,10 +1,21 @@
 \subsection{Codec}
 \label{subsec:Konzept_Codec}
 
-Der Codec bildet das analoge Frontend und muss mindestens die Verbindungen für Line-IN und einen Line-OUT vorweisen.
-Wünschenswert sind zudem ein MIC-IN und ein Headphone-OUT.
-Der Codec unterstützt Samplingraten zwischen 
+Der Codec bildet das analoge Frontend und muss mindestens die Verbindungen für Line-IN und einen Line-OUT vorweisen. Wünschenswert sind zudem ein MIC-IN und ein Headphone-OUT. Der Codec soll variable Samplingraten zwischen 8-96kHz unterstützen eine sinnvolle Auflösung (sicher über 10 bit) bieten. 
 
-\todo{ - Prosa, dass nicht nach Pflichtenheft klingt. Konzept =/= Anforderung. Warum den TLV320? Weil Handsolder, Nachteil: teuer. TLV320 kostet 8CHF im vgl. mit SGTL5000, günstig aber nicht handlötbar}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{Specification} & \textbf{TLV320AIC23B}             & \textbf{TSCS25A3} & \textbf{SGTL5000XNAA3R2} \\ \hline
+		Auflösung              & 24 bit      & 32 bit          & 24 bit    \\ \hline
+		Gehäuse           & TSOP  & QFN & QFN   \\ \hline
+		SNR              & 90 / 100 dB & 90 / 102 dB &85 / 100 dB   \\ \hline
+		Sampling                &8-96 kHz                      & 8-96 kHz&8-96 kHz             \\ \hline
+		Preis         & 8.66                         & 7.45 &    2.96         \\ \hline
+	\end{tabular}
+	\caption{Parametervergleich der Audio-Codecs}
+	\label{tab:codec}
+\end{table}
 
-
+Die drei verglichenen Audio-Codecs erfüllen alle die geforderten Qualitätsmerkmale, jedoch ist nur der \textbf{TLV320AIC23B}, wie vom Auftraggeber gefordert, handlötbar. Die anderen beiden anderen wären zwar günstiger, aber beide in einem QFN Gehäuse.
