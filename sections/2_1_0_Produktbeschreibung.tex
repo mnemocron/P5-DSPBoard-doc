@@ -1,7 +1,40 @@
-\subsection{Produktbeschreibung}
-\label{sec:Produktbeschreibung}
+\subsection{Projektziele}
+\label{sec:Projektziele}
+
+In Zusammenarbeit mit dem betreuenden Fachdozenten Prof. Dr. Markus Hufschmid, welcher auch gleichzeitig Auftraggeber ist, wurden folgende Projektziele und Anforderungen an das DSP-Board erarbeitet.
 
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Nr.} & \textbf{Ziel}                                                                                     \\ \hline
+		1.1         & \begin{tabular}[c]{@{}l@{}}Microcontroller mit\\   Cortex-M4(F) Architektur mit FPU\end{tabular}   \\ \hline
+		1.2         & Audio Passthrough von Line-In nach Line-Out                                                        \\ \hline
+		1.3         & \begin{tabular}[c]{@{}l@{}}Audio Schnittstelle (analog)\\   - Line-IN\\   - Line OUT\end{tabular}  \\ \hline
+		1.4         & 2 Stk. Drehencoder für HMI                                                                  \\ \hline
+		1.5         & 2 Stk. Taster für HMI                                                                             \\ \hline
+		1.6         & \begin{tabular}[c]{@{}l@{}}1 Display zur Anzeige des\\   Funktionsmodus\end{tabular}               \\ \hline
+		1.7         & \begin{tabular}[c]{@{}l@{}}Microcontroller ohne Debugger\\   über USB programmierbar\end{tabular} \\ \hline
+	\end{tabular}
+	\caption{Harte Ziele aus dem Pflichtenheft}
+	\label{tab:harteZiele2}
+\end{table}
 
-
-
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Nr.} & \textbf{Ziel}                                                                                                                                                   \\ \hline
+		2.1         & \begin{tabular}[c]{@{}l@{}}Anzahl Layer der Leiterplatte\\$n_{Layer} \leq 2$                                                                                                                                    \end{tabular} \\ \hline
+		2.2         & \begin{tabular}[c]{@{}l@{}}Bauteile sind handbestückbar\\   - SMD passiv $\geq$ 0603\\   - SMD cases: keine QFN / BGA\end{tabular}                                 \\ \hline
+		2.3         & \begin{tabular}[c]{@{}l@{}}Stromverbrauch erlaubt Betrieb über\\   USB 2.0 Speisung\\$I_{USB} =\leq 0.5\si{A}$\end{tabular}                                                                \\ \hline
+		2.4         & \begin{tabular}[c]{@{}l@{}}Audio Schnittstelle (analog)\\   - Headphone OUT\\   - Microphone IN\end{tabular}                                                   \\ \hline
+		2.5         & \begin{tabular}[c]{@{}l@{}}Audio Verbindung (digital)\\   - IN/OUT Board-to-Board Kommunikation\\   (mehrere Boards können\\   kaskadiert werden)\end{tabular}     \\ \hline
+		2.6         & Akkubetrieb möglich                                                                                                                                             \\ \hline
+		2.7         & \begin{tabular}[c]{@{}l@{}}zusätzliche (farbige) LEDs als\\   Anzeige des Betriebsmodus\end{tabular}                                                             \\ \hline
+	\end{tabular}
+	\caption{Weiche Ziele aus dem Pflichtenheft}
+	\label{tab:weicheZiele2}
+\end{table}
+Die harten Ziele \ref{tab:harteZiele2} sind Mindestanforderungen welche unbedingt einzuhalten sind, während die weichen Ziele \ref{tab:weicheZiele2} optional sind. Nachfolgend ist das erarbeitete Lösungskonzept näher erklärt welches zur Erreichung der Projektziele führen sollte.
