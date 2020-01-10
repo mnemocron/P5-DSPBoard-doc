@@ -1,10 +1,27 @@
 \subsection{Kaskadierung mehrerer Boards}
-\label{sec:Konzept_Kaskadierung}
+\label{subsec:Konzept_Kaskadierung}
 
-Mehrere Boards sollen mit Gehäuse nebeneinander kaskadierbar sein. 
-Das Audio Signal wird von einem Board zum nächsten jeweils analog weitergereicht. 
-Der Steckverbinder soll kleiner als D-Sub sein. 
-Auf eine digitale Schnittstelle wird wegen der aufwändigen Clock-synchronisation und der Kosten für Steckverbinder (vgl. Optisch Toslink) verzichtet.
+Mehrere DSP-Boards sollen untereinander kaskadierbar sein, um das bearbeite Audio-Signal auf einem nächsten Board weiter zu bearbeiten. Auf eine digitale Schnittstelle wird in Absprache mit dem Auftraggeber,  wegen der aufwändigen Clock-Synchronisation verzichtet. Das Signal wird analog weitergereicht, was zwar in mehr analogem Rauschen resultiert, was jedoch durch die kurzen Leitungen von Board zu Board minimiert wird. Da die Gefahr besteht, dass der Benutzer jeweilige Link-Kabel verlegt oder zumindest nicht in nützlicher Frist zur Hand hat wird die Kaskadierung mit einer Steck-Verbindung gelöst. Dabei werden zwei Boards direkt nebeinander (Kante an Kante) zusammengesteckt.
 
-\todo{SB: Kaskadierungskonzept
-Weitergabe von analogem Signal und dadurch entstehendes mehrmaliges Wandeln ist unsauber aber analog ist einfach..oder so AVX-Stecker/Audio-Switch}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{Specification} & \textbf{Mill-Max 868}             & \textbf{Pin Header 2x3} & \textbf{AVX 9159} \\ \hline
+		Preis         & 5.26 + 7.00 (F/M 3P.)& 1.50 + 0.80 (M/F 6P.)&1.05 + 0.78 (F/M 3P)         \\ \hline
+	\end{tabular}
+	\caption{Preisvergleich der analogen Steckverbinder}
+	\label{tab:stecker}
+\end{table}
+
+Da die verschiedenen Steckverbinder in \ref{tab:stecker} in Anzahl Leitungen alle ziemlich das gleiche bieten, ist hier vor allem der Preis matchentscheidend. Der \textbf{AVX 9159}, welcher ursprünglich für LED-Schienen eingesetzt wird, ist mit Abstand der günstigste und eignet sich ebenso für eine Audio-Anwendung.
+
+
+
+%Das Audio Signal wird von einem Board zum nächsten jeweils analog weitergereicht. 
+%Der Steckverbinder soll kleiner als D-Sub sein. 
+%Auf eine digitale Schnittstelle wird in Absprache mit dem Auftraggeber,  wegen der aufwändigen Clock-synchronisation und der Kosten für Steckverbinder (vgl. Optisch Toslink) verzichtet. 
+%
+%\todo{SB: Kaskadierungskonzept
+%Weitergabe von analogem Signal und dadurch entstehendes mehrmaliges Wandeln ist unsauber aber analog ist einfach..oder so AVX-Stecker/Audio-Switch}
