@@ -14,27 +14,22 @@ Die Spannungsmessung inkl. Korrekturfaktor für den Spannungsteiler wird mit Hil
 
 Auf die gemessenen Werte liefert ein linearer Fit folgende Erkenntnis.
 Die Messwerte sind durchschnittlich um $V_{offset}=-130\si{mV}$ zu gering.
-Zu einem Teil sind die Abweichungen auf die Widerstandtoleranzen des Spannungsteilers zurückzuführen.
+Zu einem Teil sind die Abweichungen auf die Widerstandstoleranzen des Spannungsteilers zurückzuführen.
 Ein weiterer Einflussfaktor hat die Batteriespannung selber, da diese durch den BQ2409x nicht konstant gehalten wird. Auch das Fehlen einer Filterschaltung für das ADC Signal verschlechtert die Messergebnisse.
+Mit der jetzigen Messgenauigkeit, müsste beispielsweise für die Energiesparfunktion bei leerem Akku die Schwelle um mindestens $V_{offset}=-130\si{mV}$ höher angesetzt werden als bei einer genauen Messung. Dadurch würde Kapazität verloren gehen. Um die maximale Kapazität ausnutzen zu können, muss die Akkuspannung genauer gemessen werden.
 
 Verwendetes Messgerät:
 
 Agilent N6705B (Prüfmittel Nr. \texttt{MSZ-M-0064}) auf Channel 1 mit Strombegrenzung $I_{max}=600\si{mA}$.
 
-Verwendeter Prüfling:
-
-\textit{DSP-Board Nr. 5}
-
-\todo{SB - Verweis auf einen Zielwert. zb. Eingehalten auf +- 100mV genau blabla reicht um Low Voltage zu detektieren}
+Verwendeter Prüfling: \textit{DSP-Board Nr. 5}
 
 \subsubsection{Ladestrombegrenzung}
-
-\todo{Diesen Abschnitt nochmals gut durchlesen und auf vollstädnigkeit überprüfen -ich war müde}
 
 Zum Testen der Strombegrenzung des BQ2409x wurde das DSP Board gemäss dem Messschema in Abbildung \ref{pic:SMU_Messung} an angeschlossen.
 Dabei erzeugt die SMU mit den Parametern aus Tabelle \ref{tab:SMU_Params_Current} zusätzlich eine Spannung vom $U_{SMU}=+0.1\si{V}$.
 Zum Ändern der Ladestromlimite wird der GPIO \texttt{PB14} (Set $I_{LIM}$) getogglet.
-\textit{R16} hat einen Wert von $R_{16}=2.7k\Omega$, was einen Ladestrom von $I_{charge}=200\si{mA}$ einstellt.
+\textit{R16} hat einen Wert von $R_{16}=2.7k\Omega$, was laut Datenblatt \cite{bq2409x}[Abschnitt 10.2.2.1.1] einen Ladestrom von $I_{charge}=200\si{mA}$ einstellt.
 
 \begin{figure}[H]
 	\centering
@@ -73,5 +68,5 @@ Jedoch ist dieser in jedem Betriebsfall gleich hoch. Der Zustand vom \texttt{ISE
 Diese Abweichung kann aktuell nicht erklärt werden.
 
 
-
+\todo{SB - Validierung Speisung. ist der Stromverbrauch 64mA dokumentiert?}
 

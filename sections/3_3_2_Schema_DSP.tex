@@ -86,7 +86,7 @@ Einige Timer des STM32 unterstützen einen Encoder Modus, bei dem zwei GPIO Inpu
 Alle 4 Pushbuttons sind an interruptfähige (EXTI) GPIO Pins angeschlossen. 
 Die STM32 Familie unterstützt externe GPIO Interrupts an allen Pins. 
 Dabei stehen 16 Interrupt Channels zur Verfügung, von welchen die Channel Nummer jeweils mit der GPIO Port Nummer übereinstimmen muss. 
-Wie in der nachfolgenden Tabelle \ref{tab:EXTIPins} aufgeführt, werden insgesamt 4 EXTI Channels belegt.
+Wie in der nachfolgenden Tabelle \ref{tab:EXTIPins} aufgeführt, werden insgesamt 6 EXTI Channels belegt.
 
 \begin{table}[H]
 	\centering
@@ -97,12 +97,13 @@ Wie in der nachfolgenden Tabelle \ref{tab:EXTIPins} aufgeführt, werden insgesam
 	Encoder 2 Button & PB13          & 13            \\ \hline
 	Button 1         & PA0           & 0             \\ \hline
 	Button 2         & PA1           & 1             \\ \hline
+	Line In Detect   & PC14          & 14            \\ \hline
+	MIC In Detect    & PC15          & 15            \\ \hline
 	\end{tabular}
 	\caption{GPIO Mapping auf EXTI Interrupt Channels}
 	\label{tab:EXTIPins}
 \end{table}
 
-\todo{SB: Jack Connector haben auch Interrupt}
 
 
 
