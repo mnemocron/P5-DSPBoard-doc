@@ -25,6 +25,7 @@ Agilent N6705B (Prüfmittel Nr. \texttt{MSZ-M-0064}) auf Channel 1 mit Strombegr
 Verwendeter Prüfling: \textit{DSP-Board Nr. 5}
 
 \subsubsection{Ladestrombegrenzung}
+\label{sec:Valid_Ladestrom}
 
 Zum Testen der Strombegrenzung des BQ2409x wurde das DSP Board gemäss dem Messschema in Abbildung \ref{pic:SMU_Messung} an angeschlossen.
 Dabei erzeugt die SMU mit den Parametern aus Tabelle \ref{tab:SMU_Params_Current} zusätzlich eine Spannung vom $U_{SMU}=+0.1\si{V}$.
@@ -62,11 +63,9 @@ Zum Ändern der Ladestromlimite wird der GPIO \texttt{PB14} (Set $I_{LIM}$) geto
 \end{table}
 
 
-Die Resultate aus der Tabelle \ref{tab:Icharge_Results} zeigen, dass bei eingeschaltetem STM32 ein Betriebsstrom von ca. $55\si{mA}$ entfallen.
+Die Resultate aus der Tabelle \ref{tab:Icharge_Results} zeigen, dass bei eingeschaltetem STM32 ein Betriebsstrom von ca. $55\si{mA}$ entfallen (vgl. Abschnitt \ref{sec:Valid_Stromverbrauch} $I_{bat}=64\si{mA}$).
 Bei ausgeschalteter Schaltung beträgt der Ladestrom, wie erwartet $I_{charge}=200\si{mA}$.
 Jedoch ist dieser in jedem Betriebsfall gleich hoch. Der Zustand vom \texttt{ISET2} Pin hat keinerlei Einfluss auf die Strombegrenzung.
 Diese Abweichung kann aktuell nicht erklärt werden.
 
-
-\todo{SB - Validierung Speisung. ist der Stromverbrauch 64mA dokumentiert?}
 

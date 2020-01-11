@@ -80,6 +80,11 @@ Der Vorschlag lautet: AVX Stecker beibehalten und die PCB-Kante beim Stecker um 
 
 Der BQ2409x hat auf der Unterseite ein Kühlpad. Die Kühlung des Chips ist in diesem Projekt nicht beachtet worden. Dadurch kann die Ladefunktion des Chips infolge thermischer Überlastung nicht genutzt werden. Die nächste Hardwareiteration benötigt eine Kühlfläche und den korrekten Footprint mit Kühlpad.
 
+\paragraph{maximaler Ladestrom des BQ2409x}
+
+Das Einstellen des Ladestromes über einen externen Widerstand hat grundsätzlich Funktioniert. Jedoch funktioniert die Umschaltung zwischen den möglichen Ladestrom-Einstellungen nicht.
+Siehe Abschnitt \ref{sec:Valid_Ladestrom} in der Validierung.
+
 \paragraph{Blockkondensator für ADC Pin (Batteriespannung)}
 
 Der Spannungsteiler für die Batteriespannungsmessung benötigt einen Blockkondensator um AC-Noise zu filtern. Der Kondensator soll idealerweise nahe am STM32 platziert sein.
