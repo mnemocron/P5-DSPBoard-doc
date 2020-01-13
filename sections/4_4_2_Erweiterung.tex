@@ -32,3 +32,22 @@ Die gesamte Rechenzeit darf auf keinen Fall länger als die oben berechneten $1.
 
 Weitere Details zum Ressourcenbedarf und Timing der DSP Funktionen sind dem Abschnitt \ref{sec:DSP_Timing} aus der Validierung zu entnehmen.
 
+\subsubsection{Grobkonzept für das Backend der Benutzersoftware}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{arm_mdk_gui.pdf}
+	\caption{Interaktion der Backend Komponenten der Benutzersoftware.}
+	\label{pic:arm_mdk_gui}
+\end{figure}
+
+Die Abbildung \ref{pic:arm_mdk_gui} zeigt einen groben Überblick, wie die angedachte Benutzersoftware im Hintergrund arbeitet. 
+Als Ausgangslage dient die Projektstruktur (MDK-ARM) mit der Datei für die Signalverarbeitung \texttt{dsp\_processing.c} sowie allfällige Dateien für um Bedienelemente auf Funktionen zuzuweisen.
+Das Programm verändert/erstellt diese Datei und leitet das ganze Projekt an den Compiler \texttt{arm-none-eabi-gcc} resp. \texttt{make} weiter.
+Bei der Erstellung der Software, muss beachtet werden, dass diese selber den Compiler mitliefern soll. 
+Dabei besteht der Vorteil, dass der Compiler \texttt{arm-none-eabi-gcc} Open Source \cite{ARM-NONE-EABI} ist und beispielsweise als Package in JavaScript (über NPM) \cite{NPM-ARM} verfügbar ist.
+Weiterhin werden die Funktionen von STMicroelectronics für das DFU Interface mit der STM32 MCU benötigt, um die Binaries zu konvertieren und auf das Board zu flashen.
+
+
+
+
