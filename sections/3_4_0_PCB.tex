@@ -1,3 +1,4 @@
+\newpage
 \subsection{PCB}
 \label{sec:PCB}
 
@@ -7,7 +8,7 @@ Grundsätzlich ist das Board in zwei fundamentale Teile eingeteilt (ersichtlich 
 
 \begin{figure} [H]
 \begin{center}
- \includegraphics[scale=0.37]{../graphics/PCB-Layout_GNDVDD.jpg}
+ \includegraphics[scale=0.35]{../graphics/PCB-Layout_GNDVDD.jpg}
  \caption{Die Unterteilung des PCBs in Analog- und Digital-Teil}
 \label{fig:PCB_GNDVDD}
 \end{center}
@@ -17,27 +18,26 @@ Im Speisungs-Teil ist wichtig, dass keine Speisungs-Schleifen entstehen. Die  Sp
 
 \begin{figure} [H]
 \begin{center}
- \includegraphics[scale=0.37]{../graphics/PCB-Layout_PWR.jpg}
+ \includegraphics[scale=0.35]{../graphics/PCB-Layout_PWR.jpg}
  \caption{Die Speisung des PCBs mit der Mini-USB-Buchse, dem Lade-IC für den Akku sowie den beiden LDOs für Digital- sowie Analog-Teil}
 \label{fig:PCB_PWR}
 \end{center}
 \end{figure}
-
-Die räumliche Trennung verschiedener Teile auf dem PCB sollte mögliche gegenseitige Wechselwirkungen vermeiden oder zumindest vermindern. Speziell die Speisung und der Audio-Teil sind getrennt. Im Speisungs-Teil fliessen sicher die grössten Ströme auf dem ganzen Print, was mögliche EMV-Komplikationen nach sich ziehen kann. Im Audio-Teil würden im schlimmsten Fall solche Induktions-Spannungen als Signal interpretiert werden. Deswegen sind diese beiden Teile weitmöglichst voneinander, in den beiden Ecken, platziert.
+Die räumliche Trennung verschiedener Teile auf dem PCB sollte mögliche gegenseitige Wechselwirkungen vermeiden oder zumindest vermindern. Speziell die Speisung und der Audio-Teil sind getrennt. Im Speisungs-Teil fliessen sicher die grössten Ströme auf dem ganzen Print, was mögliche EMV-Komplikationen nach sich ziehen kann. Im Audio-Teil würden im schlimmsten Fall solche Induktions-Spannungen als Signal interpretiert werden. Deswegen sind diese beiden Teile weitmöglichst voneinander entfernt, in den beiden Ecken, platziert.
 
 \begin{figure} [H]
 \begin{center}
- \includegraphics[scale=0.37]{../graphics/PCB-Layout_AUDIO.jpg}
+ \includegraphics[scale=0.35]{../graphics/PCB-Layout_AUDIO.jpg}
  \caption{Der Audio-Teil mit dem Codec, dem Audio-Switch, dem 12.28MHz Quartz sowie der äusseren Beschaltung der Ein- und Ausgänge}
 \label{fig:PCB_AUDIO}
 \end{center}
 \end{figure}
 
-Im Audio-Teil sind zusätzliche Messpunkte zur Überprüfung der I\textsuperscript{2} S Kommunikation hinzugefügt, welche nur für den Prototyp vorgesehen sind. 
+Im Audio-Teil sind zusätzliche Messpunkte zur Überprüfung der I\textsuperscript{2}S Kommunikation hinzugefügt, welche nur für den Prototyp vorgesehen sind. 
 
 \begin{figure} [H]
 \begin{center}
- \includegraphics[scale=0.37]{../graphics/PCB-Layout_DGTL.jpg}
+ \includegraphics[scale=0.35]{../graphics/PCB-Layout_DGTL.jpg}
  \caption{Der Digital-Teil mit dem Mikrokontroller, dem 8MHz Quartz und der JTAG-Schnittstelle}
 \label{fig:PCB_DGTL}
 \end{center}
@@ -47,7 +47,7 @@ Im Digital-Teil sind vor allem die Stützkondensatoren der Speisung und der 8MHz
 
 \begin{figure} [H]
 \begin{center}
- \includegraphics[scale=0.37]{../graphics/PCB-Layout_INOUT.jpg}
+ \includegraphics[scale=0.35]{../graphics/PCB-Layout_INOUT.jpg}
  \caption{Die Audio-Ein- und -Ausgänge mit 2x2 Mini-Jack Buchsen und 2 AVX-Verbinder für die Board-to-Board Verbindung}
 \label{fig:PCB_INOUT}
 \end{center}
@@ -57,7 +57,7 @@ Mit dem Gedanken das Board später mit einem Gehäuse zu ergänzen sind die Ein-
 
 \begin{figure} [H]
 \begin{center}
- \includegraphics[scale=0.37]{../graphics/PCB-Layout_GUI.jpg}
+ \includegraphics[scale=0.35]{../graphics/PCB-Layout_GUI.jpg}
  \caption{Die Bedienoberfläche mit je zwei Rotary-Encodern, Buttons und OLED-Displays}
 \label{fig:PCB_GUI}
 \end{center}

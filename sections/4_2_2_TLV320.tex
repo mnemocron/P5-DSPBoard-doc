@@ -3,10 +3,9 @@
 
 Zur Konfiguration des Codecs über die I2C Schnittstelle wird eine Library verwendet.
 Dazu kommt eine auf STM32 angepasste Version der Library von Simon Gerber und Belinda Kneubühler von August 2016 zum Einsatz. \cite{FHNWtlv320}
-
-\paragraph{Anwendung der Library}
-
-Im \texttt{main.c} wird mit den folgenden Befehlen der TLV320aic über den I2C Bus angesteuert.
+\\
+\paragraph{Anwendung der Library}\vspace{-0.3cm}\\
+Im \texttt{main.c} wird mit den folgenden Befehlen der TLV320aic über den I2C Bus angesteuert.\\
 
 \begin{lstlisting}[style=Cuvision,caption={TLV320 Funktionen}]
 // Codec mit Standardkonfig initialisieren
@@ -28,13 +27,11 @@ TLV320_SetHeadphoneVol(0x04F);
 
 \end{lstlisting}
 
-Die Init-Funktion ist auf die Einstellungen des STM32 abgestimmt und weiter unten im Detail erkärt. 
+Die Init-Funktion ist auf die Einstellungen des STM32 abgestimmt und weiter unten im Detail erklärt. 
 Bei der \texttt{TLV320\_SetInput()} Funktion kann der Input am Codec ausgewählt werden, jedoch nicht, ob der Line-In vom Jack-Connector oder vom externen Board kommt. 
 Dazu muss die, in Abschnitt \ref{sec:LibBSP} erklärte \texttt{BSP\_SelectAudioIn} Funktion verwendet werden.
-
-
-\paragraph{Grundkonfiguration (Init)}
-
+\\
+\paragraph{Grundkonfiguration (Init)}\vspace{-0.3cm}\\
 Die in diesem Abschnitt beschriebenen Einstellungen müssen zu den Einstellungen des STM32 in Abschnitt \ref{sec:CubeMXI2S} passen. Der Codec ist im Master Modus, der STM32 im Slave Modus. Die Register sind ab Seite 21 (3-2) im Datenblatt des Codecs beschrieben. \cite{tlv320}
 
 Die Konfiguration der Register ist in der Datei \texttt{tlv320aic.c} in den Kommentaren vermerkt. Beide (links/rechts) Line-In Volume Control Register sind auf $+0\si{dB}$.
@@ -46,9 +43,8 @@ Mit dem Power Down Control Register werden alle Teilschaltungen im Codec eingesc
 Das \textbf{Digital Audio Interface Format Register} ist für die I2S Kommunikation relevant und enthält folgende Einstellungen. Bit \texttt{MS[6]} = 1, der Codec ist als Master aktiv. Bit \texttt{LRP[4]s} = 0 für den \textit{Left-Justified} Übertragungsmodus.
 Bits \texttt{IWL[1:0]} = 00 für 16-bit Datenweite.
 Bits \texttt{FOR[1:0]} = 01 für \textit{MSB-First, left aligned} Datenformat.
-
-\paragraph{Änderungen an der Library}
-
+\\
+\paragraph{Änderungen an der Library}\vspace{-0.3cm}\\
 Gegenüber der ursprünglichen Library von S. Gerber und B. Kneubühler sind folgende Anpassungen an der Library vorgenommen worden.
 
 Die Funktion \texttt{\_tlv320\_write8} enthält hardwarespezifische Aufrufe der I2C Schnittstelle. Dazu kommt die STM32\_HAL Library zum Einsatz.

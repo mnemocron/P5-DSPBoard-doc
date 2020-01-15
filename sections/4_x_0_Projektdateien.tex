@@ -3,57 +3,47 @@
 
 Die Dateistruktur des Softwareprojektes in Keil uVision 5 ist unten beschrieben. 
 Es sind nur die Dateien erwähnt, die für die Entwicklung der Software massgebend sind.
-
-\paragraph{main.c}
-
+\\
+\paragraph{main.c}\vspace{-0.3cm}\\
 In der \texttt{main.c} Datei befindet sich der Hauptteil des Softwareprojektes.
 Libraries werden inkludiert, globale sowie lokale Variablen deklariert und die Initialisierung des STM32 und aller Peripherie aufgerufen.
 Innerhalb der \texttt{while(1)} Schlaufe ist eine State Machine realisierbar, die den Programmablauf des User Interfaces bestimmt.
 Viele Variablen sind global und \texttt{volatile} deklariert und werden laufend von den Interrupt Handlern (IRQ) in \texttt{stm32f4xx\_it.c} verändert.
-
-
-\paragraph{stm32f4xx\_it.c}
-
+\\
+\paragraph{stm32f4xx\_it.c}\vspace{-0.3cm}\\
 In dieser Datei sind die Interrupt Request Handler (IRQ) Funktionen ausprogrammiert.
 Die definierten Funktionen werden bei verschiedenen Interrupt Events wie externen GPIO Interrupts (EXTI) oder DMA Transmission Completion Interrupt aufgerufen.
 
 Eine detaillierte Beschreibung des Datenverarbeitungskonzeptes und die Rolle des Interrupthandlers ist im Kapitel \ref{sec:DSPKonzept} beschrieben.
-
-\paragraph{dsp\_board\_bsp.c}
-
+\\
+\paragraph{dsp\_board\_bsp.c}\vspace{-0.3cm}\\
 Die Datei \texttt{dsp\_board\_bsp.} stellt ein Board Support Package für das P5 DSP Board dar.
 In dieser Datei sind Funktionen ausgelagert, die spezifisch für die Hardware gemacht sind.
 Die Interrupts werden hier abgefangen und über \texttt{extern volatile} Variablen an die State Machine im \texttt{main.c} weitergegeben.
 Ausserdem sind gewisse, nicht spezifisch auf die Hardware ausgelegte, Helferfunktionen (z.B. Sinusgenerator) in dieser Datei ausgelagert.
 
 Die Dokumentation des Board Support Packages ist im Abschnitt \ref{sec:LibBSP} zu finden.
-
-\paragraph{ssd1306.c}
-
+\\
+\paragraph{ssd1306.c}\vspace{-0.3cm}\\
 Die Dateien \texttt{ssd1306.c}, \texttt{ssd1306\_fonts.c} und \texttt{ssd1306\_tests.c} beinhalten die Funktionen zur Ansteuerung der SSD1306 OLED Displays und bilden die Library.
 Die Anwendung der OLED Library ist im Abschnitt \ref{sec:Library_ssd1306} dokumentiert.
-
-\paragraph{tlv320aic.c}
-
+\\
+\paragraph{tlv320aic.c}\vspace{-0.3cm}\\
 Die \texttt{tlv320aic.c} Datei bildet die Library für den TLV320 Audio Codec und beinhaltet Funktionen zur Lautstärkeregelung und Initialisierung des Codecs.
 Die Anwendung der Codec Library ist im Abschnitt \ref{sec:Library_tlv320} dokumentiert.
-
-
-\paragraph{dsp\_processing.c}
-
+\\
+\paragraph{dsp\_processing.c}\vspace{-0.3cm}\\
 In der DSP Processing Datei werden die empfangenen Audiodaten an verschiedene \\
 DSP-Funktionen wie FIR-Filter verteilt und der Output-Buffer für den DMA Controller befüllt.
 
 Die Dokumentation der Datei ist in Abschnitt \ref{sec:LibDSPProcessing} zu finden.
 Eine detaillierte Beschreibung des Datenverarbeitungskonzeptes und die Rolle der \texttt{dsp\_processing.c} Datei folgt im Kapitel \ref{sec:DSPKonzept}.
-
-\paragraph{fir.c}
-
+\\
+\paragraph{fir.c}\vspace{-0.3cm}\\
 In dieser Datei ist ein FIR Filter aus der CMSIS/DSP Library implementiert.
 Genauere Details zur Implementation von FIR Filtern und Erzeugung von Filterkoeffizienten mit MATLAB sind im Abschnitt \ref{sec:LibFIRFilter} beschrieben.
-
-\paragraph{adaptive\_fir.c}
-
+\\
+\paragraph{adaptive\_fir.c}\vspace{-0.3cm}\\
 Diese Hilfsbibliothek stellt eine Funktion ähnlich dem MATLAB Befehl \texttt{fir1()} zur Verfügung und wird benutzt um auf dem STM32 die FIR Tiefpassfilterkoeffizienten zu berechnen.
 Die Datei beinhaltet ausserdem eine Window-Funktion, die von \texttt{fir1} benötigt wird.
 

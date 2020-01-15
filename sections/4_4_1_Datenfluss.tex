@@ -10,9 +10,7 @@ Anhand der nachfolgenden Abbildung \ref{pic:DMA_Dataflow} wird gezeigt, wie der 
 	\label{pic:DMA_Dataflow}
 \end{figure}
 
-
-\paragraph{Ablauf der Datenverarbeitung}
-
+\paragraph{Ablauf der Datenverarbeitung}\vspace{-0.3cm}\\
 Der DMA Controller wird im \texttt{main.c} so gestartet, dass ankommende Daten automatisch in den \texttt{uint16\_t} Buffer \texttt{pRxData} geschrieben werden. Die Datengrösse des DMA Buffers ist 256. 
 
 Sobald der Buffer halb voll (128 Samples) ist, wird ein DMA Half-Transfer Interrupt ausgelöst.

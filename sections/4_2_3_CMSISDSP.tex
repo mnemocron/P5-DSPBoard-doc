@@ -15,12 +15,12 @@ Die Abbildung \ref{pic:Keil_Cmsis_Symbols} zeigt die Targetoptionen mit den ben�
 	\label{pic:Keil_Cmsis_Symbols}
 \end{figure}
 
-Des weiteren muss in den Projektoptionen die DSP Library zu den Include Paths hinzugef체gt werden.
+Desweiteren muss in den Projektoptionen die DSP Library zu den Include Paths hinzugef체gt werden.
 
 Unter \texttt{Project > Options for Target 'DSP Board' > C/C++ > Include Paths} muss der \\
 String \texttt{../Drivers/CMSIS/DSP/Include} hinzugef체gt werden.
 
-Weiterhin muss der CMSIS/DSP mitgeteilt werden, welche CPU Architektur verwendet wird. Im Falle des \texttt{STM32F4xx} entspricht dies dem Wert \texttt{ARM\_MATH\_CM4}, der als Preprocessor Symbol im selben Konfigurationsfenster hinzugef체gt werden muss.
+Ebenfalls muss der CMSIS/DSP mitgeteilt werden, welche CPU Architektur verwendet wird. Im Falle des \texttt{STM32F4xx} entspricht dies dem Wert \texttt{ARM\_MATH\_CM4}, der als Preprocessor Symbol im selben Konfigurationsfenster hinzugef체gt werden muss.
 Unter \texttt{Project > Options for Target 'DSP Board' > C/C++ > Preprocessor Symbols > Define:} muss der oben genannte String angef체gt werden.
 
 
@@ -31,7 +31,8 @@ Unter \texttt{Project > Options for Target 'DSP Board' > C/C++ > Preprocessor Sy
 	\label{pic:Keil_FPU}
 \end{figure}
 
-Um sicher zu stellen, dass auch wirklich die FPU auf dem STM32 f체r Floating-Point Operationen verwendet wird, muss die entsprechende Einstellung im Compiler gesetzt werden.
+Um sicherzustellen, dass auch wirklich die FPU auf dem STM32 f체r Floating-Point Operationen verwendet wird, muss die entsprechende Einstellung im Compiler gesetzt werden.
 Abbildung \ref{pic:Keil_FPU} zeigt die den entsprechenden Parameter mit dem Korrekten Wert \texttt{Single-Precision}.
 
 
+\newpage

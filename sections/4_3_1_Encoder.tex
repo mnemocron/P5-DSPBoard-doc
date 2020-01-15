@@ -14,8 +14,7 @@ In Abbildung \ref{pic:CubeMX_TIM3} ist die Konfiguration für den Timer 3 darges
 	\label{pic:CubeMX_TIM3}
 \end{figure}
 
-\paragraph{Parameter}
-
+\paragraph{Parameter}\vspace{-0.3cm}\\
 Die nachfolgende Tabelle listet einige wichtige Parameter und deren Einfluss.
 
 \begin{table}[H]
@@ -30,10 +29,9 @@ Die nachfolgende Tabelle listet einige wichtige Parameter und deren Einfluss.
 	\end{tabular}
 \end{table}
 
-\paragraph{Anwendung im Code}
-
+\paragraph{Anwendung im Code}\vspace{-0.3cm}\\
 Das untenstehende Listing stellt dar, wie der Timer im \texttt{main.c} gestartet werden muss.
-Eine Initialisierung alleine reicht nicht aus.
+Eine Initialisierung alleine reicht nicht aus.\\
 
 \begin{lstlisting}[style=Cuvision, caption={Timer im Encoder Modus starten}]
 /* USER CODE BEGIN 2 */
@@ -42,7 +40,7 @@ HAL_TIM_Encoder_Start(&htim2, TIM_CHANNEL_1);
 /* USER CODE END 2 */
 \end{lstlisting}
 
-Mit dem unten gezeigten Befehl lässt sich der aktuelle Zählstand des Timers resp. Encoders auslesen.
+Mit dem unten gezeigten Befehl lässt sich der aktuelle Zählstand des Timers resp. Encoders auslesen.\\
 
 \begin{lstlisting}[style=Cuvision, caption={Encoderwert auslesen}]
 /* USER CODE BEGIN x */

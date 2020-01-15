@@ -49,9 +49,8 @@ Die Kaskadierung der DSP-Boards wurde in Absprache mit dem Auftraggeber analog g
 \subsection{Nächste Schritte}
 
 Nachfolgend ist aufgelistet, welche Fehler und Probleme mit der jetzigen Hardware bestehen.
-
-\paragraph{Pull-Up Widerstände in digitalen Signalen}
-
+\\
+\paragraph{Pull-Up Widerstände in digitalen Signalen}\vspace{-0.3cm}\\
 Einige Signale haben im Schema keinen Pull-Up oder Pull-Down Widerstand verbaut.
 Folgende Signale benötigen zum setzen auf einen definierten Default-Wert einen solchen Widerstand.
 \begin{table}[H]
@@ -64,49 +63,39 @@ Folgende Signale benötigen zum setzen auf einen definierten Default-Wert einen 
 	\end{tabular}
 \end{table}
 
-\paragraph{Analoge Speisung muss immer enabled sein}
-
+\paragraph{Analoge Speisung muss immer enabled sein}\vspace{-0.3cm}\\
 Ursprünglich war angedacht, dass der analoge Schaltungsteil über den Enable des LDO ausgeschaltet werden kann. Dies funktioniert nicht, da der STM32 ebenfalls eine stabile analoge Speisung benötigt. Fällt die analoge Speisung weg, fällt der STM32 in einen Reset-Loop.
 Die neue Hardware benötigt ein neues Konzept für den Energiesparmodus.
-
-\paragraph{Kompatibilität des AVX Steckers mit einem Gehäuse}
-
+\\
+\paragraph{Kompatibilität des AVX Steckers mit einem Gehäuse}\vspace{-0.3cm}\\
 Die Beiden AVX Stecker für die Kaskadierung sind genau an der Kante des PCBs montiert. Dadurch müssen zwei Boards Kante an Kante nebeneinander platziert werden.
 Ein Gehäuse das die PCB Kante einschliesst, kann deshalb nicht verbaut werden.
 Das Konzept mit den Steckverbindern muss nochmals überarbeitet werden.
 Der Vorschlag lautet: AVX Stecker beibehalten und die PCB-Kante beim Stecker um einige Millimeter nach aussen versetzen (PCB-Form nicht rechteckig).
-
-\paragraph{Kühlfläche für BQ2409x}
-
+\\
+\paragraph{Kühlfläche für BQ2409x}\vspace{-0.3cm}\\
 Der BQ2409x hat auf der Unterseite ein Kühlpad. Die Kühlung des Chips ist in diesem Projekt nicht beachtet worden. Dadurch kann die Ladefunktion des Chips infolge thermischer Überlastung nicht genutzt werden. Die nächste Hardwareiteration benötigt eine Kühlfläche und den korrekten Footprint mit Kühlpad.
-
-\paragraph{maximaler Ladestrom des BQ2409x}
-
+\\
+\paragraph{maximaler Ladestrom des BQ2409x}\vspace{-0.3cm}\\
 Das Einstellen des Ladestromes über einen externen Widerstand hat grundsätzlich Funktioniert. Jedoch funktioniert die Umschaltung zwischen den möglichen Ladestrom-Einstellungen nicht.
 Siehe Abschnitt \ref{sec:Valid_Ladestrom} in der Validierung.
-
-\paragraph{Blockkondensator für ADC Pin (Batteriespannung)}
-
+\\
+\paragraph{Blockkondensator für ADC Pin (Batteriespannung)}\vspace{-0.3cm}\\
 Der Spannungsteiler für die Batteriespannungsmessung benötigt einen Blockkondensator um AC-Noise zu filtern. Der Kondensator soll idealerweise nahe am STM32 platziert sein.
-
-\paragraph{JST-Battery Connector}
-
+\\
+\paragraph{JST-Battery Connector}\vspace{-0.3cm}\\
 Der JST-Stecker ist ebenfalls zur Überarbeitung ausgeschrieben. Hier braucht es den korrekten Stecker, der auch zum entsprechenden Akku passt. 
 Der aktuell auf der Stückliste ausgeschriebene Steckertyp ist zu gross für den testweise bestellten Akkumulator.
-
-
-\paragraph{Überspannungsschutz für Audio-Eingang}
-
+\\
+\paragraph{Überspannungsschutz für Audio-Eingang}\vspace{-0.3cm}\\
 Die Audio-Eingänge des TLV320 halten maximal $1\si{V_{RMS}}$ aus. Die Eingänge könnten sehr einfach mit einer Schaltung aus zwei antiparallel geschalteten Leuchtdioden vor zu grossen Spannungen geschützt werden. LEDs eignen sich aufgrund des geringen Leckstromes und einer Durchlassspannung im Bereich 1.5V besonders gut für diese Anwendung.
 Die Mehrkosten und Nutzen der Schutzschaltung sind abzuwägen.
-
-\paragraph{Lautstärke von +12dB beim TLV320 resultiert mit Mute}
-
+\\
+\paragraph{Lautstärke von +12dB beim TLV320 resultiert mit Mute}\vspace{-0.3cm}\\
 Bei allen Ausgängen des TLV320 (L/R sowie Headphone und Line-Out) resultiert die maximale Lautstärke in den entsprechenden Registern mit einem gemuteten Signal.
 Der Grund dafür ist nicht bekannt.
-
-\paragraph{Energiesparmodus}
-
+\\
+\paragraph{Energiesparmodus}\vspace{-0.3cm}\\
 Derzeit ist kein Energiesparmodus realisiert. Einerseits hat das Abschalten der analogen Speisung mit dem LDO nicht funktioniert, andererseits wurde nicht evaluiert, welche Sleep-Optionen der STM32 hat.
 
 

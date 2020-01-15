@@ -3,13 +3,10 @@
 
 Für das DSP Board existiert in der Projektstruktur eine Library mit Funktionen speziell auf die Hardware des DSP Boards zugeschnittenen Funktionen.
 Nachfolgend sind deren Funktion und Anwendung beschrieben.
-
-
-\paragraph{Klinkenstecker Verbindungsstatus \texttt{BSP\_ReadJackConnected}}
-
+\\
+\paragraph{Klinkenstecker Verbindungsstatus \texttt{BSP\_ReadJackConnected}}\vspace{-0.3cm}\\
 Die Jack Verbindungsstecker haben einen Schalter eingebaut, dessen Zustand über einen GPIO am STM32 ausgelesen werden kann.
-Nachfolgendes Listing zeigt ein Beispiel in C.
-
+Nachfolgendes Listing zeigt ein Beispiel in C.\\
 \begin{lstlisting}[style=Cuvision,caption={Verbindungsstatus des Line-In auslesen}]
 if(BSP_ReadJackConnected(JACK_LINE_IN) == 1){
   // Line-In Jack is present / connected
@@ -19,33 +16,27 @@ if(BSP_ReadJackConnected(JACK_LINE_IN) == 1){
 \end{lstlisting}
 
 
-\paragraph{Encoderwerte auslesen \texttt{BSP\_ReadEncoder\_Difference}}
-
+\paragraph{Encoderwerte auslesen \texttt{BSP\_ReadEncoder\_Difference}}\vspace{-0.3cm}\\
 Zum Auslesen der Encoder exisiteren zwei Funktionen.
 \texttt{BSP\_ReadEncoder} gibt den absoluten Encoderwert zurück.
 Interessanter für die Anwendung ist jedoch die Differenz seit dem letzten Mal auslesen.
 Die Funktion \texttt{BSP\_ReadEncoder\_Difference} liefert einen signed (\texttt{int16\_t}) Wert zurück, um wie viele Ticks der Encoder in welche Richtung (Vorzeichen) gedreht wurde.
 Positive Werte bedeuten im Uhrzeigersinn (CW), negative Werte stehen für Gegenuhrzeigersinn (CCW). \\
- \\
- 
 \begin{lstlisting}[style=Cuvision,caption={Auslesen wie weit und in welche Richtung der linke Encoder gedreht wurde.}]
 int16_t encoder_change = BSP_ReadEncoder_Difference(ENCODER_LEFT);
 \end{lstlisting}
 
 
-\paragraph{Akkuspannung messen \texttt{BSP\_ReadBatteryVoltage}}
-
+\paragraph{Akkuspannung messen \texttt{BSP\_ReadBatteryVoltage}}\vspace{-0.3cm}\\
 Die Funktion \texttt{BSP\_ReadBatteryVoltage} liefert einen \texttt{float} Wert für die über den ADC gemessene Akkuspannung zurück. 
 Die Genauigkeit dieser Art der Messung ist im Kapitel \ref{sec:Valid_Batterie} beschrieben.
-
-
-\paragraph{Audio Inputquelle auswählen \texttt{BSP\_SelectAudioIn}}
-
+\\
+\paragraph{Audio Inputquelle auswählen \texttt{BSP\_SelectAudioIn}}\vspace{-0.3cm}\\
 Es existieren 3 Audio Input-Quellen: Line-In, MIC, Ext-In.\\
 Der TLV320 Codec hat eine interne Pfadbeschaltung um zwischen MIC und Line-In auszuwählen.
 Mit dem externen Analog-Swich IC wird der Line-In zusätzlich aus Ext-In und Line-In gemultiplext.
 Die Funktion \texttt{BSP\_SelectAudioIn} nimmt die Konfiguration des Audiopfades sowohl  beim Codec als auch beim Analog Multiplexer vor.
-Durch einen einzigen Funktionsaufruf wird über eine GPIO Operation und der Verwendung der \texttt{tlv320aic}-Library der korrekte Audiopfad ausgewählt.
+Durch einen einzigen Funktionsaufruf wird über eine GPIO Operation und der Verwendung der \texttt{tlv320aic}-Library der korrekte Audiopfad ausgewählt.\\
 
 \begin{lstlisting}[style=Cuvision,caption={Audiopfad Input auf Line-In setzen.}]
 BSP_SelectAudioIn(AUDIO_IN_LINE);

@@ -4,7 +4,7 @@
 Der STM32 muss in den internen Bootloader starten. Dies könnte theoretisch über Software (Assembler) per Anpassung der \texttt{startup.s} Datei erreicht werden.
 Jedoch ist auf dem DSP Board eine Schaltung vorhanden, um den \texttt{BOOT0} Pin vorübergehend auf \texttt{HIGH} zu ziehen.
 Wenn ein Starten des Bootloaders und somit des DFU Modus gewünscht wird, muss dies in der Software folgendermassen realisiert werden.
-
+\\
 \begin{lstlisting}[style=Cuvision,caption={Starten des Bootloaders durch CPU Reset}]
 /* If User Button is pressed on Startup, enter DFU Firmware Upgrade Mode */
 if(HAL_GPIO_ReadPin(SW2_GPIO_Port, SW2_Pin) == GPIO_PIN_SET){

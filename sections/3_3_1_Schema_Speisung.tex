@@ -3,16 +3,12 @@
 
 Nachfolgend wird der Speisungspfad vom USB mini-B Connector bis zu den regulierten 3.3\si{V} beschrieben.
 
-\paragraph{USB Port}
-
-Ein standard USB 2.0 Port kann einen maximalen Strom von ${I_{max}=500\si{mA}}$ bereitstellen.
-Dieser Strom ist die obere Grenze für das DSP Board. In keinem Betriebsfall inkl. Akkuladen wird dieser maximale Strom überschritten.
-\
+\paragraph{USB Port}\vspace{-0.3cm}\\
+Ein Standard USB 2.0 Port kann einen maximalen Strom von ${I_{max}=500\si{mA}}$ bereitstellen. Dieser Strom ist die obere Grenze für das DSP Board. In keinem Betriebsfall inkl. Akkuladen wird dieser maximale Strom überschritten. \\
 Zum Schutz der USB-Host Geräte vor einem Kurschlussstrom, ist F1 (MF-MSMF110) mit einem Auslösestrom von ${I_{trip}=2.20\si{A}}$ \cite{usb-fuse} verbaut.
 
 
-\paragraph{Battery Management (BQ2409x)}
-
+\paragraph{Battery Management (BQ2409x)}\vspace{-0.3cm}\\
 Der BQ24093 ist ein single-cell Li-Ion / Li-Po Akkulade-IC, das speziell für USB Applikationen gemacht ist.
 Die Beschaltung des \textit{IC1} ist gemäss Vorgaben aus dem Datenblatt \cite{bq2409x}.
 
@@ -25,14 +21,13 @@ Bei Bedarf kann der Ladestrom vom STM32 über \texttt{PB14} auf \texttt{HIGH} un
 
 \begin{figure} [H]
 \begin{center}
-\includegraphics[scale=0.5]{../graphics/Schema_Akku.png}
+\includegraphics[width=\textwidth]{../graphics/Schema_Akku.png}
 \caption{BQ24093 mit äusserer Beschaltung nach Datenblatt}
 \label{fig:Schema_Akku}
 \end{center}
 \end{figure}
 
-\paragraph{ADC Akkumulator Spannungsmessung}
-
+\paragraph{ADC Akkumulator Spannungsmessung}\vspace{-0.3cm}\\
 Die Akkumulatorspannung mit ${V_{bat}=4.2\si{V}}$ übersteigt den Eingangsspannungsbereich des\\
  STM32 Microcontrollers von ${V_{GPIO_{max}}=3.3\si{V}}$.
 Damit zur Bestimmung des Ladestandes die Spannung gemessen werden kann, wird diese mit dem Spannungsteiler \textit{R35/R36} auf ein Maximum von 3.3\si{V} heruntergeteilt. 
@@ -51,9 +46,8 @@ Somit muss die gemessene Spannung in der Software um folgenden Faktor korrigiert
 \begin{equation}
 F_C=\frac{V_{bat_{max}}}{V_{out_{max}}}=\frac{3.27\si{V}}{4.5\si{V}}=\underline{0.7\bar{3}}
 \end{equation}
-
-\paragraph{Energiebedarf der Schaltung}
-
+\\
+\paragraph{Energiebedarf der Schaltung}\vspace{-0.3cm}\\
 Unten aufgeführt ist eine Abschätzung des Energiebedarfs der Schaltung, die massgebend für die Wahl der Spannungsregler ist. Die Speisung ist in analog und digital aufgeteilt.
 
 \begin{table}[H]
@@ -83,10 +77,9 @@ reserve                 & 30.00                  \\ \hline
 \caption{Stromverbrauch 3.3V analog}
 \end{table}
 
-Die verbauten Festspannungsregler TLC7333 \textit{(IC2, IC3)} mit Low Dropout Voltage können bis zu ${I_{out}=300\si{mA}}$ liefern.
+Die verbauten Festspannungsregler TLC7333 \textit{(IC2, IC3)} mit Low Dropout Voltage können bis zu ${I_{out}=300\si{mA}}$ liefern.\\
 
-\paragraph{Verlustleistung der Spannungsregler}
-
+\paragraph{Verlustleistung der Spannungsregler}\vspace{-0.3cm}\\
 Die maximale Verlustleistung an einem der Spannungsregler \textit{(IC2, IC3)} tritt auf, wenn die Eingangsspannung ${V_{in}=5\si{V}}$ beträgt und der maximale Strom von ${I_{max}=0.15\si{A}}$ fliesst.
 Dabei entsteht eine Verlustleistung von:
 

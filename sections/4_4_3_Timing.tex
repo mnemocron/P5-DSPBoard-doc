@@ -32,7 +32,7 @@ Die beiden kurzen Pulse in der Abbildung \ref{pic:FIR_Delay_Blocksize} entstehen
 Das Kopieren (Aufteilen in Links/Rechts) geschieht je ein Mal für die rxBuffer und die txBuffer, wobei ein Delay von $t_{Buffersplit}=16\mu\si{s}$ pro Kopiervorgang entsteht.
 Die Abbildung \ref{pic:FIR_Delay_Blocksize} zeigt die Audiofunktion mit FIR-Filter. Im Falle der Verwendung einer Audio Passthrough Funktion beträgt die gesammte Verarbeitungszeit
 inkl. Kopieren: $t_{delay}=40.8\mu\si{s}$. Daraus lässt sich schliessen, dass das Kopieren 
-von rx in tx ohne weitere Verarbeitung nochmals ca. $f_{copy}=8\mu\si{s}$ benötigt.
+von rx in tx ohne weitere Verarbeitung nochmals ca. $f_{copy}=8\mu\si{s}$ benötigt.\\
 
 \begin{lstlisting}[style=Cuvision, caption={GPIO togglen um die Kopierzeit zu messen}]
 /* This Code takes 16 us for DSP_BUFFERSIZE_HALF = 64 and fCPU = 100MHz */
@@ -52,7 +52,7 @@ HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
 \subsubsection{FIR Filter unterschiedlicher Anzahl Koeffizienten}
 
 Theoretisch wird von einer FPU erwartet, dass diese ein FIR Filter mit der Effizienz von $1\frac{cycle}{TAP}$ mit Hilfe des Multiply-Accumulate Befehls (\texttt{MAC})) berechnet.
-Bei ARM Cortex-M4 ist es jedoch so, dass das FIR Filter ohne Multiply-Accumulate Funktion kompiliert wird. Die Instruktion \texttt{VMLA.F32} benötigt 3 clock cycles \cite{ARM-M4-FPU-reference}. 
+Bei ARM Cortex-M4 ist es jedoch so, dass das FIR Filter ohne Multiply-Accumulate Funktion kompiliert wird. Die Instruktion \texttt{VMLA.F32} benötigt 3 clock cycles \cite{ARM-M4-FPU-reference}. \\
 
 \begin{lstlisting}[style=Cuvision,caption={Kompilierte Multiply-Accumulate Instruktion}]
 0x080008E8 EE628A0D VMUL.F32 s17,s4,s26
@@ -66,7 +66,7 @@ Bei ARM Cortex-M4 ist es jedoch so, dass das FIR Filter ohne Multiply-Accumulate
 Die folgende Messung liefert das tatsächliche Ergebnis.
 
 Mit dem Nachfolgenden Code wird die Verzögerung des FIR Filters bestimmt.
-Der Versuch wird mehrmals mit unterschiedlicher Anzahl Koeffizienten durchgeführt.
+Der Versuch wird mehrmals mit unterschiedlicher Anzahl Koeffizienten durchgeführt.\\
 
 \begin{lstlisting}[style=Cuvision,caption={GPIO togglen um FIR Verarbeitungszeit zu messen}]
 HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);

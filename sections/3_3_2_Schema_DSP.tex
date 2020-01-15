@@ -3,9 +3,8 @@
 
 In diesem Abschnitt wird die Beschaltung des STM32F412 beschrieben. Für die genaue Pinkonfiguration, Pinfunktionen und Konfiguration dient das \\
 Kapitel \ref{sec:CubeMX} "Konfiguration mit STM32CubeMX".
-
-\paragraph{I2S Schnittstelle}
-
+\\
+\paragraph{I2S Schnittstelle}\vspace{-0.3cm}\\
 Die Hersteller des TLV320 und des STM32 verwenden nicht die gleichen Signalbezeichnungen für das Pinout der Bauteile.
 Die Tabelle \ref{tab:I2SPins} stellt den Bezug der Signale an beiden Chips her und zeigt die Signalrichtung und Verbindung wie sie im Schema des DSP Boards zur Anwendung kommt.
 
@@ -24,9 +23,7 @@ Die Tabelle \ref{tab:I2SPins} stellt den Bezug der Signale an beiden Chips her u
 	\label{tab:I2SPins}
 \end{table}
 
-
-\paragraph{Bootloader und Bootpins}
-
+\paragraph{Bootloader und Bootpins}\vspace{-0.3cm}\\
 Die STM32 Familie hat einen integrierten Firmware upgrade Bootloader.
 Um diesen zu aktivieren müssen die externen BOOT[1:0] Pins im richtigen Muster gesetzt werden.
 In diesem Projekt wird die Firmware über den USB mini-B Connector auf den STM32 überspielt.
@@ -50,8 +47,7 @@ Normal             & 0              & 0              \\ \hline
 \caption{Mode Auswahl über BOOT[1:0] Pins}
 \end{table}
 
-\paragraph{Bootstrap Schaltung für Bootpin}
-
+\paragraph{Bootstrap Schaltung für Bootpin}\vspace{-0.3cm}\\
 Der STM32 ist fähig, per Software in den Bootloader Modus zu wechseln \cite{STM32-Softreset-Stackoverflow}. Die Software dazu ist jedoch aufwändiger als den Bootvorgang per Hardware auszulösen.
 
 Aus diesem Grund ist der \texttt{BOOT0} Pin mit einem GPIO Pin (\texttt{PD2}) verbunden, Abbildung \ref{fig:Schema_Bootpin_Bootstrap}.
@@ -77,10 +73,8 @@ Der Kondensator \textit{C17} wird über \textit{R15} entladen. Dabei bleibt dem 
 \begin{equation}
 t_{reboot_{max}} \approx \tau = R_{15}\cdot C_{17} = 200\si{k\Omega}\cdot 22\si{\mu F}=220\si{ms}
 \end{equation}
-
-
-\paragraph{Rotary Encoder und Buttons}
-
+\\
+\paragraph{Rotary Encoder und Buttons}\vspace{-0.3cm}\\
 Einige Timer des STM32 unterstützen einen Encoder Modus, bei dem zwei GPIO Inputs zum Zählen der Encoderpulse verwendet werden können.
 
 Alle 4 Pushbuttons sind an interruptfähige (EXTI) GPIO Pins angeschlossen. 

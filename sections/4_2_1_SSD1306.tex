@@ -2,9 +2,8 @@
 \label{sec:Library_ssd1306}
 
 Zur Ansteuerung der OLED Displays wird die Library stm32-ssd1306 von Aleksander Alekseev \cite{stm32-ssd1306} verwendet. Die wichtigsten Eigenschaften der Library sind in der Tabelle \ref{tab:LibSSD1306} aufgeführt.
-
-\paragraph{Spezifikationen}
-
+\\
+\paragraph{Spezifikationen}\vspace{-0.3cm}\\
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|c|}
@@ -28,12 +27,11 @@ Dadurch entsteht ein RAM Bedarf von:
 RAM_{usage}=\frac{W * H}{8} = \frac{128 * 64}{8} = 1024\ \si{Bytes}
 \end{equation}
 
-\paragraph{Änderungen an der Library}
-
+\paragraph{Änderungen an der Library}\vspace{-0.3cm}\\
 Die Library unterstützt nur ein Display an einem I\textsuperscript{2}C oder SPI Bus. Da bei diesem Projekt zwei Displays an unterschiedlichen Peripherischnittstellen sitzen, ist die Library für diese Anwendung angepasst.
 Jeder Funktion muss nun ein Pointer auf einen Display Struct mitgegeben werden.
-Im folgenden Listing ist dargestellt, wie die Library in C verwendet wird.
-
+Im folgenden Listing ist dargestellt, wie die Library in C verwendet wird.\\
+\newpage
 \begin{lstlisting}[style=Cuvision, caption={Initialisierung und Anwendung der SSD1306 Library}]
 /* USER CODE BEGIN Includes */
 #include "ssd1306.h"
@@ -55,9 +53,8 @@ ssd1306_UpdateScreen(&holed1);      // write Buffer to OLED Display
 
 Die Library hat folgende Einschränkung: Alle Displays müssen entweder über I2C oder SPI Peripheriebusse angeschlossen sein.
 Ein Mischen von SPI und I\textsuperscript{2}C ist nicht möglich. Ausserdem sind die Funktionen für SPI nicht implementiert.
-
-\paragraph{Copyright Notice}
-
+\\
+\paragraph{Copyright Notice}\vspace{-0.3cm}\\
 \textbf{Copyright (c) 2018 Aleksander Alekseev}\
 \
 \
