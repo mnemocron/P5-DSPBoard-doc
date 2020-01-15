@@ -54,13 +54,13 @@ HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
 Theoretisch wird von einer FPU erwartet, dass diese ein FIR Filter mit der Effizienz von $1\frac{cycle}{TAP}$ mit Hilfe des Multiply-Accumulate Befehls (\texttt{MAC})) berechnet.
 Bei ARM Cortex-M4 ist es jedoch so, dass das FIR Filter ohne Multiply-Accumulate Funktion kompiliert wird. Die Instruktion \texttt{VMLA.F32} benötigt 3 clock cycles \cite{ARM-M4-FPU-reference}. \\
 
-\begin{lstlisting}[style=Cuvision,caption={Kompilierte Multiply-Accumulate Instruktion}]
-0x080008E8 EE628A0D VMUL.F32 s17,s4,s26
-0x080008EC EE766AA8 VADD.F32 s13,s13,s17
+\begin{lstlisting}[style=Cuvision,caption={Beispiel eines Multiply-Accumulate Befehls in C aus der CMSIS/DSP Library \texttt{arm\_fir\_f32.c}}, firstnumber=465]
+acc3 += x4 * c0;
 \end{lstlisting}
 
-\begin{lstlisting}[style=Cuvision,caption={Multiply-Accumulate Befehl in C aus der CMSIS/DSP Library \texttt{arm\_fir\_f32.c}}, firstnumber=465]
-    acc3 += x4 * c0;
+\begin{lstlisting}[style=Cuvision,caption={Assemblierte Multiply-Accumulate Instruktion aus obiger C-Code Zeile}]
+0x080008E8 EE628A0D VMUL.F32 s17,s4,s26
+0x080008EC EE766AA8 VADD.F32 s13,s13,s17
 \end{lstlisting}
 
 Die folgende Messung liefert das tatsächliche Ergebnis.
@@ -94,11 +94,11 @@ HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
 \end{table}
 
 \begin{equation}
-\frac{clkcycles}{TAP}=\frac{f_{CPU}*t_{delay}}{NUM_TAPS*2*BUFFERSIZE}
+\frac{clkcycles}{TAP}=\frac{f_{CPU}*t_{delay}}{2*NUM\_TAPS*BUFFERSIZE}
 \end{equation}
 
 \begin{equation}
-\frac{clkcycles}{TAP}=\frac{100\si{MHz}*63\mu\si{s}}{11*2*64}=4.47
+\frac{clkcycles}{TAP}=\frac{100\si{MHz}*63\mu\si{s}}{2*11*64}=4.47
 \end{equation}
 
 \begin{figure}[H]
