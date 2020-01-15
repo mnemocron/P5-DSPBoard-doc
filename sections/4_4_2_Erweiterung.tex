@@ -14,7 +14,8 @@ Die Abbildung \ref{pic:Buffer_stage} zeigt die letzten beiden Abschnitte der Dat
 Die Daten werden in Form eines Buffers an die nächste Funktion weitergereicht.
 Damit die Datenverarbeitung wie gewünscht funktioniert, muss im \texttt{dsp\_processing.c} das Management der Buffer im Sinne von "\textit{Verbindungskabel}" verwaltet werden.
 
-Das nachfolgende Listing zeigt das Beispiel aus Abbildung \ref{pic:Buffer_stage}, bei dem die Daten durch zwei FIR Filter durchgereicht werden.
+Das nachfolgende Listing zeigt das Beispiel aus Abbildung \ref{pic:Buffer_stage}, bei dem die Daten durch zwei FIR Filter durchgereicht werden.\\
+\\
 
 \begin{lstlisting}[style=Cuvision, caption={Daten mittels Buffer und zwei FIR Filter bearbeiten}]
 // process rxLeft in FIR(1), store in intermediate buffer: firLeft
